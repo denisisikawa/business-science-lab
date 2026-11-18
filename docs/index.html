@@ -66,6 +66,41 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
 .macro-flow small{color:#ead1da;margin-top:5px;font-size:.875rem}
 .macro-flow li+li::before{content:"";position:absolute;left:-22px;top:calc(50% - 4px);width:8px;height:8px;border-right:2px solid #f198b1;border-top:2px solid #f198b1;transform:rotate(45deg)}
 @media(max-width:760px){.macro-flow{flex-direction:column;gap:22px}.macro-flow li+li::before{left:calc(50% - 4px);top:-17px;transform:rotate(135deg)}}
+
+.tech-diagram>p,.tech-group p,.tech-contract p{color:#ead1da;font-size:.875rem;line-height:1.55;margin:0}
+.tech-diagram>p{margin-bottom:20px}
+.tech-group{border:1px solid #6b3b50;border-radius:14px;padding:clamp(12px,2vw,20px);background:#221421}
+.tech-group h4{color:#fff0f5;font-size:.96rem;margin:0 0 10px}
+.tech-grid,.tech-metrics{list-style:none;margin:0;padding:0}
+.tech-grid{display:grid;gap:12px}
+.tech-sources{grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:12px}
+.tech-outcomes{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
+.tech-card{min-width:0;background:#351a29;border:1px solid #704457;border-radius:10px;padding:13px}
+.tech-card>span{display:block;color:#ffd9e5;font-size:.875rem;font-weight:600}
+.tech-card p+p,.tech-card>span+p,.tech-join p+p{margin-top:6px}
+.tech-diagram code{color:#ffcbdd;overflow-wrap:anywhere;font-size:.85em}
+.tech-diagram a{text-decoration:underline;text-underline-offset:3px}
+.tech-metrics{display:grid;gap:5px;margin-bottom:10px}
+.tech-outcomes .tech-card:last-child{background:#311721}
+.tech-contract{margin-top:14px;border-top:1px solid #704457;padding-top:12px}
+.tech-contract summary{cursor:pointer;color:#ffd9e5;font-size:.9rem}
+.tech-contract summary:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.tech-contract dl{margin:12px 0}
+.tech-contract dl>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:4px 14px;padding:8px 0;border-bottom:1px solid #704457}
+.tech-contract dd{margin:0;font-size:.875rem;color:#ead1da}
+.tech-contract>a{display:inline-block;margin-top:8px}
+@media(max-width:760px){.tech-sources,.tech-outcomes,.tech-contract dl>div{grid-template-columns:minmax(0,1fr)}}
+
+.tech-inputs{background:#1d1423}
+.tech-runtime{padding:clamp(9px,2vw,18px);border:1px dashed #ae748b;border-radius:15px;background:#241522}
+.tech-boundary{margin:0 0 12px;color:#ffd9e5;font-size:.875rem}
+.tech-edge{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:10px;margin:10px 4px 14px;color:#fbd6e4;font-size:.8rem;line-height:1.45;text-align:center}
+.tech-edge i{height:1px;background:#ab6681}
+.tech-edge span{display:block;position:relative;padding:0 0 4px}
+.tech-edge span::after{content:"";position:absolute;top:100%;left:50%;width:7px;height:7px;border-bottom:1px solid #f198b1;border-right:1px solid #f198b1;transform:translateX(-50%) rotate(45deg)}
+.tech-diagram .tech-legend{margin:11px 0 0;font-size:.8rem}
+.tech-contract .tech-sample{margin-top:10px;padding:8px 12px;border-left:2px solid #bd7b94;background:#2d1826}
+@media(max-width:760px){.tech-edge{grid-template-columns:1fr}.tech-edge i{display:none}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Denis Isikawa","url":"https://github.com/denisisikawa","sameAs":["https://github.com/denisisikawa","https://www.linkedin.com/in/denisisikawa"],"knowsAbout":["Finance Systems","FP&A","Databricks","Python","PySpark","SQL","Revenue Assurance","Data Architecture"]}</script>
 </head>
@@ -142,15 +177,68 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
     <li><strong data-en="Decision support" data-pt="Apoio à decisão">Decision support</strong><small data-en="Identify variances to investigate and inform forecast assumptions." data-pt="Identificar desvios para investigar e embasar premissas do forecast.">Identify variances to investigate and inform forecast assumptions.</small></li>
   </ol>
 </figure>
-  <figure class="macro-diagram" aria-labelledby="macro-technical">
-  <figcaption id="macro-technical"><span data-en="Technical view" data-pt="Visão técnica">Technical view</span></figcaption>
-  <ol class="macro-flow">
-    <li><strong data-en="Public APIs + CSV" data-pt="APIs públicas + CSV">Public APIs + CSV</strong><small data-en="BCB SGS 3696 · IBGE SIDRA 1737/63 · synthetic monthly costs" data-pt="BCB SGS 3696 · IBGE SIDRA 1737/63 · custos mensais simulados">BCB SGS 3696 · IBGE SIDRA 1737/63 · synthetic monthly costs</small></li>
-    <li><strong data-en="Ingest and normalize" data-pt="Coleta e normalização">Ingest and normalize</strong><small data-en="Python requests the date window and standardizes month keys and decimal values." data-pt="Python consulta o período e padroniza a chave mensal e os valores decimais.">Python requests the date window and standardizes month keys and decimal values.</small></li>
-    <li><strong data-en="Validate and calculate" data-pt="Validação e cálculo">Validate and calculate</strong><small data-en="Check coverage and duplicates. Join by month and compute the three measures." data-pt="Checa cobertura e duplicidade. Cruza por mês e calcula as três medidas.">Check coverage and duplicates. Join by month and compute the three measures.</small></li>
-    <li><strong data-en="Monthly report" data-pt="Relatório mensal">Monthly report</strong><small data-en="Write the CSV after validation. Mocked responses support offline tests." data-pt="Grava o CSV após a validação. Respostas simuladas permitem testes offline.">Write the CSV after validation. Mocked responses support offline tests.</small></li>
-  </ol>
-</figure>
+  <figure class="macro-diagram tech-diagram" aria-labelledby="macro-technical">
+    <figcaption id="macro-technical"><span data-en="Technical view · FP&amp;A data lineage" data-pt="Visão técnica · Linhagem de dados de FP&amp;A">Technical view · FP&amp;A data lineage</span></figcaption>
+    <p data-en="Python 3.11+ · local CLI · one output row per cost month" data-pt="Python 3.11+ · execução local por linha de comando · uma linha de saída por mês de custo">Python 3.11+ · local CLI · one output row per cost month</p>
+    <div class="tech-group tech-inputs">
+      <h4 data-en="Period and inputs" data-pt="Período e entradas">Period and inputs</h4>
+      <ul class="tech-grid tech-sources" role="list">
+        <li class="tech-card"><h4><a href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/macro-fpa/example/costs.csv"><code>costs.csv</code></a></h4>
+        <span data-en="Synthetic financial input" data-pt="Entrada financeira sintética">Synthetic financial input</span>
+        <p data-en="One row per completed calendar month. The first and last months define the API request window." data-pt="Uma linha por mês fechado. O primeiro e o último mês definem o período consultado nas APIs.">One row per completed calendar month. The first and last months define the API request window.</p>
+        <p><code>read_costs</code> <span aria-hidden="true">·</span> <span data-en="1–120 consecutive months" data-pt="1–120 meses consecutivos">1–120 consecutive months</span></p>
+      </li>
+        <li class="tech-card"><h4><a href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/macro-fpa/report.py#L76"><code>BCB SGS 3696</code></a></h4>
+        <span data-en="USD selling rate · monthly average" data-pt="Dólar venda · média mensal">USD selling rate · monthly average</span>
+        <p data-en="SGS JSON provides data (DD/MM/YYYY) and valor (BRL per USD)." data-pt="O JSON do SGS retorna data (DD/MM/AAAA) e valor (BRL por USD).">SGS JSON provides data (DD/MM/YYYY) and valor (BRL per USD).</p>
+        <p><code>read_fx</code> <span aria-hidden="true">·</span> <span data-en="FX must be greater than zero" data-pt="Câmbio deve ser maior que zero">FX must be greater than zero</span></p>
+      </li>
+        <li class="tech-card"><h4><a href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/macro-fpa/report.py#L89"><code>IBGE SIDRA 1737/63</code></a></h4>
+        <span data-en="National IPCA · monthly change" data-pt="IPCA nacional · variação mensal">National IPCA · monthly change</span>
+        <p data-en="SIDRA JSON provides a header, month code (YYYYMM) and V (monthly percent)." data-pt="O JSON do SIDRA retorna cabeçalho, código do mês (AAAAMM) e V (percentual mensal).">SIDRA JSON provides a header, month code (YYYYMM) and V (monthly percent).</p>
+        <p><code>read_ipca</code> <span aria-hidden="true">·</span> <span data-en="IPCA must be greater than −100%" data-pt="IPCA deve ser maior que −100%">IPCA must be greater than −100%</span></p>
+      </li>
+      </ul>
+      <p data-en="Live mode requests BCB first, then IBGE. Explicit --fixtures mode loads fx.json and ipca.json through the same parsers. Each live request has a 15-second timeout and up to three attempts for transient failures." data-pt="O modo ao vivo consulta o BCB primeiro e, depois, o IBGE. Com --fixtures, fx.json e ipca.json passam pelos mesmos parsers. Cada tentativa ao vivo tem limite de 15 segundos, com até três tentativas em falhas temporárias.">Live mode requests BCB first, then IBGE. Explicit --fixtures mode loads fx.json and ipca.json through the same parsers. Each live request has a 15-second timeout and up to three attempts for transient failures.</p>
+    </div>
+    <div class="tech-edge"><i aria-hidden="true"></i><span data-en="CSV + HTTPS JSON or local fixtures" data-pt="CSV + JSON via HTTPS ou arquivos locais">CSV + HTTPS JSON or local fixtures</span><i aria-hidden="true"></i></div>
+    <div class="tech-runtime">
+      <p class="tech-boundary"><code>macro-fpa/report.py</code> <span data-en="· local Python process" data-pt="· processo Python local">· local Python process</span></p>
+      <div class="tech-group tech-join">
+      <h4 data-en="Join and validation" data-pt="Cruzamento e validação">Join and validation</h4>
+      <p data-en="Normalize dates to the first day of each month and values to finite decimals. The cost series drives the join by month. Each cost month requires exactly one FX record and one IPCA record." data-pt="Normaliza as datas para o primeiro dia do mês e os valores para decimais finitos. A série de custos define os meses do cruzamento. Cada mês de custo exige exatamente um registro de câmbio e um de IPCA.">Normalize dates to the first day of each month and values to finite decimals. The cost series drives the join by month. Each cost month requires exactly one FX record and one IPCA record.</p>
+      <p data-en="Reject duplicate month keys, gaps in the cost series, negative costs and missing indicators. A recent closed month can fail if IPCA is still pending publication." data-pt="Rejeita chaves mensais duplicadas, lacunas nos custos, custos negativos e indicadores ausentes. Um mês recém-fechado pode falhar se o IPCA ainda aguarda divulgação.">Reject duplicate month keys, gaps in the cost series, negative costs and missing indicators. A recent closed month can fail if IPCA is still pending publication.</p>
+    </div>
+    <div class="tech-edge"><i aria-hidden="true"></i><span data-en="Complete monthly match → report · any failure → error" data-pt="Cruzamento mensal completo → relatório · falha → erro">Complete monthly match → report · any failure → error</span><i aria-hidden="true"></i></div>
+    <div class="tech-group">
+      <h4 data-en="Execution outcomes" data-pt="Resultados da execução">Execution outcomes</h4>
+      <ul class="tech-grid tech-outcomes" role="list">
+        <li class="tech-card"><h4><span data-en="Success → calculate and write" data-pt="Sucesso → calcular e gravar">Success → calculate and write</span></h4>
+        <ul class="tech-metrics" role="list"><li><p><code>variance_brl</code> <span aria-hidden="true">·</span> <span data-en="Actual − budget. Positive means above budget." data-pt="Realizado − orçamento. Valor positivo indica gasto acima do orçamento.">Actual − budget. Positive means above budget.</span></p></li><li><p><code>actual_usd</code> <span aria-hidden="true">·</span> <span data-en="Actual BRL ÷ monthly FX in BRL/USD." data-pt="Realizado em BRL ÷ câmbio médio mensal em BRL/USD.">Actual BRL ÷ monthly FX in BRL/USD.</span></p></li><li><p><code>actual_brl_in_first_month_prices</code> <span aria-hidden="true">·</span> <span data-en="Actual BRL ÷ compounded IPCA index. First month = 1." data-pt="Realizado em BRL ÷ índice acumulado do IPCA. Primeiro mês = 1.">Actual BRL ÷ compounded IPCA index. First month = 1.</span></p></li></ul>
+        <p data-en="Write the complete CSV to a temporary file in the destination directory, then replace the destination with os.replace." data-pt="Grava o CSV completo em arquivo temporário no diretório de destino e substitui o destino com os.replace.">Write the complete CSV to a temporary file in the destination directory, then replace the destination with os.replace.</p>
+      </li>
+        <li class="tech-card"><h4><span data-en="Failure → stop with exit code 1" data-pt="Falha → encerrar com código 1">Failure → stop with exit code 1</span></h4>
+        <p data-en="An API, parsing, validation or write error is reported to stderr. The previous destination stays available when a run fails before replacement." data-pt="Erros de API, leitura, validação ou gravação são enviados ao stderr. O arquivo anterior continua disponível quando a execução falha antes da substituição.">An API, parsing, validation or write error is reported to stderr. The previous destination stays available when a run fails before replacement.</p>
+      </li>
+      </ul>
+    </div>
+    </div>
+    <p class="tech-legend"><span data-en="Solid cards show processing or data. The dashed boundary marks the local runtime. Arrows show data handoffs and execution outcomes." data-pt="Os blocos mostram processos ou dados. A borda tracejada delimita a execução local. As setas mostram a passagem dos dados e os resultados da execução.">Solid cards show processing or data. The dashed boundary marks the local runtime. Arrows show data handoffs and execution outcomes.</span></p>
+    <details class="tech-contract">
+      <summary><span data-en="Output contract · 8 CSV columns" data-pt="Contrato da saída · 8 colunas no CSV">Output contract · 8 CSV columns</span></summary>
+      <dl>
+      <div><dt><code>month</code></dt><dd data-en="Unique key formatted as YYYY-MM" data-pt="Chave única no formato AAAA-MM">Unique key formatted as YYYY-MM</dd></div>
+      <div><dt><code>actual_brl · budget_brl</code></dt><dd data-en="Synthetic actuals and budget in BRL" data-pt="Realizado e orçamento sintéticos em BRL">Synthetic actuals and budget in BRL</dd></div>
+      <div><dt><code>usd_brl_avg · ipca_month_pct</code></dt><dd data-en="Monthly FX in BRL/USD and IPCA in percent" data-pt="Câmbio mensal em BRL/USD e IPCA em percentual">Monthly FX in BRL/USD and IPCA in percent</dd></div>
+      <div><dt><code>variance_brl</code></dt><dd data-en="Actual − budget. Positive means above budget." data-pt="Realizado − orçamento. Valor positivo indica gasto acima do orçamento.">Actual − budget. Positive means above budget.</dd></div>
+      <div><dt><code>actual_usd</code></dt><dd data-en="Actual BRL ÷ monthly FX in BRL/USD." data-pt="Realizado em BRL ÷ câmbio médio mensal em BRL/USD.">Actual BRL ÷ monthly FX in BRL/USD.</dd></div>
+      <div><dt><code>actual_brl_in_first_month_prices</code></dt><dd data-en="Actual BRL ÷ compounded IPCA index. First month = 1." data-pt="Realizado em BRL ÷ índice acumulado do IPCA. Primeiro mês = 1.">Actual BRL ÷ compounded IPCA index. First month = 1.</dd></div>
+      </dl>
+      <p data-en="The offline tests verify the formulas, reject a gap in the cost series and confirm that a missing indicator preserves a previous report." data-pt="Os testes offline verificam as fórmulas, rejeitam lacunas nos custos e confirmam que a ausência de um indicador preserva o relatório anterior.">The offline tests verify the formulas, reject a gap in the cost series and confirm that a missing indicator preserves a previous report.</p>
+      <p class="tech-sample"><span data-en="Offline example · Mar 2025 · BRL 105,000 actual vs. BRL 106,000 budget → −BRL 1,000 variance · USD 20,000 equivalent · BRL 102,931.09 in Jan 2025 prices." data-pt="Exemplo offline · mar/2025 · R$ 105.000 realizados e R$ 106.000 orçados → desvio de −R$ 1.000 · equivalente a US$ 20.000 · R$ 102.931,09 a preços de jan/2025.">Offline example · Mar 2025 · BRL 105,000 actual vs. BRL 106,000 budget → −BRL 1,000 variance · USD 20,000 equivalent · BRL 102,931.09 in Jan 2025 prices.</span></p>
+      <a href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/macro-fpa/test_report.py"><span data-en="Inspect tests ↗" data-pt="Ver os testes ↗">Inspect tests ↗</span></a>
+    </details>
+  </figure>
   <a class="project-link" href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/macro-fpa"><span data-en="View code and reproduction steps ↗" data-pt="Ver código e instruções para reproduzir ↗">View code and reproduction steps ↗</span></a>
 </section>
 <section class="section philosophy" id="approach"><div class="wrap">

@@ -18,6 +18,45 @@ A monthly report that combines a synthetic cost and budget series with Brazilian
 
 The input CSV contains one synthetic row per month. Both sources are joined to that month. A month can be over while its IPCA release is still pending. Use a window covered by both providers. Source revisions may change results across live reruns.
 
+## Technical lineage
+
+```mermaid
+flowchart TD
+    CSV["Synthetic costs CSV"] --> Window["Validate costs and define the request window"]
+    Window --> FX["BCB 3696 or FX fixture"]
+    Window --> IPCA["IBGE 1737/63 or IPCA fixture"]
+    FX --> Join["Normalize and match each cost month"]
+    IPCA --> Join
+    Window --> Join
+    Join -->|Complete| Build["Calculate variance, USD and constant BRL"]
+    Build --> Write["Write temporary CSV and replace destination"]
+    Join -->|Invalid or incomplete| Error["Report error and exit 1"]
+    FX -. Request or parsing error .-> Error
+    IPCA -. Request or parsing error .-> Error
+    Write -. File error .-> Error
+```
+
+| Step | Implementation | Contract |
+| --- | --- | --- |
+| Read costs | [`read_costs`](report.py) | `month`, `actual_brl`, `budget_brl`. One row per closed calendar month, 1–120 consecutive months, nonnegative costs. |
+| Request public data | [`main` and `fetch`](report.py) | The cost window determines both API requests. Each HTTP attempt has a 15-second timeout. Transient errors can trigger two retries. |
+| Normalize sources | [`read_fx` and `read_ipca`](report.py) | Convert source periods to month-start dates and amounts to finite decimals. Require positive FX, IPCA above −100% and unique source months. The same parsers read fixtures when explicitly selected. |
+| Match and calculate | [`build_report`](report.py) | Match each cost month to both indicators. Emit one sorted row per cost month. Missing observations fail the run. |
+| Write | [`write_report`](report.py) | Write the entire CSV to a temporary file in the destination directory, then replace the destination. Failed runs before replacement preserve a previous report. |
+
+### Output columns
+
+| Column | Meaning |
+| --- | --- |
+| `month` | Monthly key, formatted as YYYY-MM |
+| `actual_brl` | Synthetic actual costs in nominal BRL |
+| `budget_brl` | Synthetic budget in nominal BRL |
+| `variance_brl` | Actual minus budget, in BRL |
+| `usd_brl_avg` | Monthly selling-rate average, in BRL per USD |
+| `ipca_month_pct` | Monthly IPCA change, in percent |
+| `actual_usd` | Indicative equivalent in USD at the monthly average rate |
+| `actual_brl_in_first_month_prices` | Actual costs in constant BRL, using the first report month as base |
+
 ## Run
 
 Python 3.11+, standard library only. From the repository root:
@@ -43,3 +82,8 @@ The program retries transient network errors, fails on missing or duplicate mont
 In the simulated March 2025 row, BRL 105,000 actual versus BRL 106,000 budget gives a BRL 1,000 underspend. At 5.25 BRL per USD, the indicative equivalent is USD 20,000. Two months of 1% simulated inflation put actual costs at BRL 102,931.09 in January prices.
 
 The lab runs locally in Python. The repository's dbt/DuckDB lab and Databricks reference pipeline have their own execution paths.
+
+## Diagram references
+
+- [C4 notation](https://c4model.com/diagrams/notation) informs the diagram scope, boundary, edge labels and legend.
+- [Databricks reference architectures](https://learn.microsoft.com/en-us/azure/databricks/lakehouse-architecture/reference) inform the source-to-output layout. The diagram maps that structure to this lab's local Python runtime and CSV output.
