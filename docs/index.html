@@ -56,6 +56,16 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
  .statement p{font-size:18px}
  .contact-card{padding:52px 22px}
 }
+
+.macro-diagram{margin:0 0 18px;padding:clamp(16px,3vw,28px);border:1px solid #633745;border-radius:18px;background:linear-gradient(125deg,#25111d,#160b17)}
+.macro-diagram figcaption{color:#f8e8ee;font-size:1.125rem;font-weight:700;margin-bottom:16px}
+.macro-flow{display:flex;align-items:stretch;gap:28px;margin:0;padding:0;list-style:none}
+.macro-flow li{flex:1;min-width:0;position:relative;padding:14px;border:1px solid #6e4150;border-radius:12px;background:#341925}
+.macro-flow strong,.macro-flow small{display:block;line-height:1.45}
+.macro-flow strong{color:#fff0f5}
+.macro-flow small{color:#ead1da;margin-top:5px;font-size:.875rem}
+.macro-flow li+li::before{content:"";position:absolute;left:-22px;top:calc(50% - 4px);width:8px;height:8px;border-right:2px solid #f198b1;border-top:2px solid #f198b1;transform:rotate(45deg)}
+@media(max-width:760px){.macro-flow{flex-direction:column;gap:22px}.macro-flow li+li::before{left:calc(50% - 4px);top:-17px;transform:rotate(135deg)}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Denis Isikawa","url":"https://github.com/denisisikawa","sameAs":["https://github.com/denisisikawa","https://www.linkedin.com/in/denisisikawa"],"knowsAbout":["Finance Systems","FP&A","Databricks","Python","PySpark","SQL","Revenue Assurance","Data Architecture"]}</script>
 </head>
@@ -66,13 +76,13 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
 <div class="wrap header-inner">
 <a class="logo" href="#top" aria-label="Denis Isikawa home"><span class="monogram">D<b>.</b></span><small>DENIS<span>ISIKAWA</span></small></a>
 <nav class="nav" aria-label="Primary navigation">
-<a href="#work" data-en="Selected work" data-pt="Projetos">Selected work</a><a href="#approach" data-en="Approach" data-pt="Abordagem">Approach</a><a href="#story" data-en="Background" data-pt="Trajetória">Background</a><a href="#contact" data-en="Connect" data-pt="Contato">Connect</a>
+<a href="#work" data-en="Selected work" data-pt="Projetos">Selected work</a><a href="#macro-fpa" data-en="Architecture" data-pt="Arquitetura">Architecture</a><a href="#story" data-en="Background" data-pt="Trajetória">Background</a><a href="#contact" data-en="Connect" data-pt="Contato">Connect</a>
 </nav>
 <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="pt" aria-pressed="false">PT</button></div>
 <button class="menu" id="menu" type="button" aria-controls="mobile" aria-expanded="false" aria-label="Open navigation">☰</button>
 </div>
 <nav id="mobile" class="mobile-nav" aria-label="Mobile navigation">
-<a href="#work" data-en="Selected work" data-pt="Projetos">Selected work</a><a href="#approach" data-en="Approach" data-pt="Abordagem">Approach</a><a href="#story" data-en="Background" data-pt="Trajetória">Background</a><a href="#contact" data-en="Connect" data-pt="Contato">Connect</a>
+<a href="#work" data-en="Selected work" data-pt="Projetos">Selected work</a><a href="#macro-fpa" data-en="Architecture" data-pt="Arquitetura">Architecture</a><a href="#story" data-en="Background" data-pt="Trajetória">Background</a><a href="#contact" data-en="Connect" data-pt="Contato">Connect</a>
 </nav>
 </header>
 
@@ -107,7 +117,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
 <section id="metrics" class="metrics"><div class="wrap metric-grid">
 <div class="metric"><strong>17+</strong><small data-en="Years across data, finance and revenue systems" data-pt="Anos entre dados, finanças e sistemas de receita">Years across data, finance and revenue systems</small></div>
 <div class="metric"><strong>08</strong><small data-en="People in the team receiving technical direction" data-pt="Pessoas no time sob orientação técnica">People in the team receiving technical direction</small></div>
-<div class="metric"><strong>04</strong><small data-en="Independent projects using synthetic data" data-pt="Projetos independentes com dados sintéticos">Independent projects using synthetic data</small></div>
+<div class="metric"><strong>04</strong><small data-en="Core portfolio projects" data-pt="Projetos principais do portfólio">Core portfolio projects</small></div>
 </div></section>
 
 <section id="work" class="section wrap">
@@ -118,9 +128,31 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
 <article class="project reveal" data-category="platform finance"><div class="art art-lake" aria-hidden="true"><div class="layers"><span>BRONZE</span><span>SILVER</span><span>GOLD</span></div><small>DELTA · PYSPARK</small></div><div class="project-content"><div class="project-meta"><span>02 / LAKEHOUSE</span><span data-en="ARCHITECTURE DEMO" data-pt="DEMO DE ARQUITETURA">ARCHITECTURE DEMO</span></div><h3 data-en="Financial Data Pipeline" data-pt="Pipeline de Dados Financeiros">Financial Data Pipeline</h3><p data-en="Bronze / Silver / Gold processing patterns for cost ingestion, standardization and reporting-ready aggregates." data-pt="Padrões Bronze / Silver / Gold para ingestão, padronização e agregações prontas para análise.">Bronze / Silver / Gold processing patterns for cost ingestion, standardization and reporting-ready aggregates.</p><div class="chips"><span>Databricks</span><span>PySpark</span><span>Delta Lake</span></div><a class="project-link" href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/databricks-pipeline-template" target="_blank" rel="noopener noreferrer"><span data-en="View project and code" data-pt="Ver projeto e código">View project and code</span><b>↗</b></a></div></article>
 <article class="project reveal" data-category="finance"><div class="art art-forecast" aria-hidden="true"><div class="bars"><span style="height:30%"></span><span style="height:44%"></span><span style="height:39%"></span><span style="height:59%"></span><span style="height:72%"></span><span style="height:65%"></span><span style="height:92%"></span></div><small>MODEL · VALIDATE · EXPLAIN</small></div><div class="project-content"><div class="project-meta"><span>03 / FP&amp;A</span><span data-en="EXECUTABLE DEMO" data-pt="DEMO EXECUTÁVEL">EXECUTABLE DEMO</span></div><h3 data-en="IT Cost Forecasting" data-pt="Previsão de Custos de TI">IT Cost Forecasting</h3><p data-en="A reproducible forecasting and validation workflow using fictional IT expense histories and local Python." data-pt="Fluxo reproduzível de previsão e validação com despesas fictícias de TI e Python local.">A reproducible forecasting and validation workflow using fictional IT expense histories and local Python.</p><div class="chips"><span>Python</span><span>pandas</span><span>scikit-learn</span></div><a class="project-link" href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/fp-cost-forecast" target="_blank" rel="noopener noreferrer"><span data-en="View project and code" data-pt="Ver projeto e código">View project and code</span><b>↗</b></a></div></article>
 <article class="project reveal" data-category="finance ai"><div class="art art-ai" aria-hidden="true"><div class="bubble one"><i></i><i></i><i></i></div><span class="ai-star">✦</span><div class="bubble two"><i></i><i></i></div><small>GUARDRAILS · API DESIGN</small></div><div class="project-content"><div class="project-meta"><span>04 / APPLIED AI</span><span data-en="PATTERN DEMO" data-pt="DEMO DE PADRÃO">PATTERN DEMO</span></div><h3 data-en="AI-Assisted FP&A Queries" data-pt="Consultas Financeiras com IA">AI-Assisted FP&A Queries</h3><p data-en="Controlled financial query handling, auditability patterns and an offline synthetic fallback for safe exploration." data-pt="Consultas financeiras controladas, padrões de auditoria e modo offline sintético para exploração segura.">Controlled financial query handling, auditability patterns and an offline synthetic fallback for safe exploration.</p><div class="chips"><span>Python</span><span>SQL</span><span>API</span><span>Genie patterns</span></div><a class="project-link" href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/ai-agent-fpa-query" target="_blank" rel="noopener noreferrer"><span data-en="View project and code" data-pt="Ver projeto e código">View project and code</span><b>↗</b></a></div></article>
-</div><p class="disclaimer reveal" data-en="✦ All projects use synthetic data and are not presented as employer production deployments." data-pt="✦ Todos os projetos usam dados sintéticos e não representam implantações produtivas de empregadores.">✦ All projects use synthetic data and are not presented as employer production deployments.</p>
+</div><p class="disclaimer reveal" data-en="Financial records are synthetic. The macro lab supports public economic indicators." data-pt="Os dados financeiros são sintéticos. O laboratório macro usa indicadores econômicos públicos.">✦ All projects use synthetic data and are not presented as employer production deployments.</p>
 </section>
 
+<section id="macro-fpa" class="section wrap">
+  <div class="sect-head"><div><h2 data-en="Macroeconomic context for FP&amp;A" data-pt="Contexto macroeconômico para FP&amp;A">Macroeconomic context for FP&amp;A</h2></div>
+  <p data-en="A reproducible monthly report that combines public indicators with synthetic costs and budgets." data-pt="Relatório mensal reproduzível que combina indicadores públicos com custos e orçamento simulados.">A reproducible monthly report that combines public indicators with synthetic costs and budgets.</p></div>
+  <figure class="macro-diagram" aria-labelledby="macro-executive">
+  <figcaption id="macro-executive"><span data-en="Executive view" data-pt="Visão executiva">Executive view</span></figcaption>
+  <ol class="macro-flow">
+    <li><strong data-en="Inputs" data-pt="Entradas">Inputs</strong><small data-en="Actuals and budget · USD/BRL · IPCA" data-pt="Realizado e orçamento · USD/BRL · IPCA">Actuals and budget · USD/BRL · IPCA</small></li>
+    <li><strong data-en="Monthly cost review" data-pt="Revisão mensal de custos">Monthly cost review</strong><small data-en="Budget variance · USD equivalent · constant BRL" data-pt="Desvio orçamentário · equivalente em USD · reais a preços constantes">Budget variance · USD equivalent · constant BRL</small></li>
+    <li><strong data-en="Decision support" data-pt="Apoio à decisão">Decision support</strong><small data-en="Identify variances to investigate and inform forecast assumptions." data-pt="Identificar desvios para investigar e embasar premissas do forecast.">Identify variances to investigate and inform forecast assumptions.</small></li>
+  </ol>
+</figure>
+  <figure class="macro-diagram" aria-labelledby="macro-technical">
+  <figcaption id="macro-technical"><span data-en="Technical view" data-pt="Visão técnica">Technical view</span></figcaption>
+  <ol class="macro-flow">
+    <li><strong data-en="Public APIs + CSV" data-pt="APIs públicas + CSV">Public APIs + CSV</strong><small data-en="BCB SGS 3696 · IBGE SIDRA 1737/63 · synthetic monthly costs" data-pt="BCB SGS 3696 · IBGE SIDRA 1737/63 · custos mensais simulados">BCB SGS 3696 · IBGE SIDRA 1737/63 · synthetic monthly costs</small></li>
+    <li><strong data-en="Ingest and normalize" data-pt="Coleta e normalização">Ingest and normalize</strong><small data-en="Python requests the date window and standardizes month keys and decimal values." data-pt="Python consulta o período e padroniza a chave mensal e os valores decimais.">Python requests the date window and standardizes month keys and decimal values.</small></li>
+    <li><strong data-en="Validate and calculate" data-pt="Validação e cálculo">Validate and calculate</strong><small data-en="Check coverage and duplicates. Join by month and compute the three measures." data-pt="Checa cobertura e duplicidade. Cruza por mês e calcula as três medidas.">Check coverage and duplicates. Join by month and compute the three measures.</small></li>
+    <li><strong data-en="Monthly report" data-pt="Relatório mensal">Monthly report</strong><small data-en="Write the CSV after validation. Mocked responses support offline tests." data-pt="Grava o CSV após a validação. Respostas simuladas permitem testes offline.">Write the CSV after validation. Mocked responses support offline tests.</small></li>
+  </ol>
+</figure>
+  <a class="project-link" href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/macro-fpa"><span data-en="View code and reproduction steps ↗" data-pt="Ver código e instruções para reproduzir ↗">View code and reproduction steps ↗</span></a>
+</section>
 <section class="section philosophy" id="approach"><div class="wrap">
 <div class="sect-head reveal"><div><div class="section-index"><b>02 /</b><span data-en="ENGINEERING APPROACH" data-pt="ABORDAGEM TÉCNICA">ENGINEERING APPROACH</span></div><h2 data-en="Data architecture and quality" data-pt="Arquitetura e qualidade de dados">Data architecture and quality</h2></div><p data-en="A practical focus on financial definitions, data ownership, reproducible pipelines, automated tests and documentation." data-pt="Foco em definições financeiras, responsabilidade pelas fontes, pipelines reproduzíveis, testes automatizados e documentação.">A practical focus on financial definitions, data ownership, reproducible pipelines, automated tests and documentation.</p></div>
 <div class="principles">
@@ -160,7 +192,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
 <div class="buttons"><a href="https://www.linkedin.com/in/denisisikawa" target="_blank" rel="noopener noreferrer" class="btn btn-light"><span data-en="Connect on LinkedIn" data-pt="Conectar no LinkedIn">Connect on LinkedIn</span> ↗</a><a href="https://github.com/denisisikawa/denis-isikawa-databricks" target="_blank" rel="noopener noreferrer" class="btn btn-ghost"><span data-en="Explore the code" data-pt="Explorar código">Explore the code</span> ↗</a></div>
 </div></section>
 </main>
-<footer class="footer"><div class="wrap"><div class="footer-row"><div><strong>D<b>.</b></strong> <span data-en="Finance Technology · Data Architecture" data-pt="Tecnologia Financeira · Arquitetura de Dados">Finance Technology · Data Architecture</span></div><div class="footer-links"><a href="#top" data-en="Back to top ↑" data-pt="Voltar ao topo ↑">Back to top ↑</a><a href="https://github.com/denisisikawa" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/denisisikawa" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></div><p>© <span id="year">2026</span> Denis Isikawa · <span data-en="Independent portfolio · Synthetic project data." data-pt="Portfólio independente · Dados sintéticos.">Independent portfolio · Synthetic project data.</span></p></div></footer>
+<footer class="footer"><div class="wrap"><div class="footer-row"><div><strong>D<b>.</b></strong> <span data-en="Finance Technology · Data Architecture" data-pt="Tecnologia Financeira · Arquitetura de Dados">Finance Technology · Data Architecture</span></div><div class="footer-links"><a href="#top" data-en="Back to top ↑" data-pt="Voltar ao topo ↑">Back to top ↑</a><a href="https://github.com/denisisikawa" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/denisisikawa" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></div><p>© <span id="year">2026</span> Denis Isikawa · <span data-en="Independent portfolio · Synthetic financial records." data-pt="Portfólio independente · Dados financeiros sintéticos.">Independent portfolio · Synthetic financial records.</span></p></div></footer>
 <script>
 (function(){
 "use strict";
