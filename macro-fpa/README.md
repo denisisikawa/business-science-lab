@@ -32,6 +32,24 @@ The [downloadable report](../docs/data/fpa-official-2025-q1.csv) uses synthetic 
 python macro-fpa/report.py --costs macro-fpa/example/costs.csv --fixtures macro-fpa/example/official-2025-q1 --output macro-report.csv
 ```
 
+## Cost intelligence
+
+[`intelligence.py`](intelligence.py) reconciles synthetic category detail to each monthly control total before ranking costs or drafting commentary. Run it for the full period or use `--month 2025-03` for a monthly view.
+
+```bash
+python macro-fpa/intelligence.py --costs macro-fpa/example/costs.csv --detail macro-fpa/example/cost-detail.csv --output cost-intelligence.json
+```
+
+- **ABC** ranks categories by actual costs, descending. Categories enter A while prior cumulative spend is below 80%, B while it is below 95%, and C afterward. The category that crosses a threshold stays in its starting class. Ties are ordered by category name. Zero-cost categories are C when the total is positive. When the total is zero, the share and class are undefined.
+- **Variance bridge** reports actual minus budget, total unfavorable and favorable contributions, and percentage variance when the budget is positive. The drivers are arithmetic contributions. Evidence such as invoice lines, service usage, rates and accrual timing is needed to verify an operational cause.
+- **Commentary** produces English and Portuguese from the same calculated facts. The portfolio [JSON example](../docs/data/fpa-intelligence-q1.json) uses the default rules mode.
+
+### AI-assisted commentary
+
+With your own `OPENAI_API_KEY` in the environment, add `--commentary openai` to the command. You can override the default model with `--model`. This opts into an OpenAI Responses API call with the variance summary and category labels. Use synthetic inputs for the public demo. Requests may incur API charges.
+
+The model selects the order of approved facts and an investigation step from a structured schema. Python renders all amounts, category labels and bilingual text. The model's output supplies no numbers or free-form causal assertions. Invalid output and API failures fall back to rules, and `commentary.source` identifies `rules`, `openai`, or `rules_fallback`.
+
 ## Technical lineage
 
 ```mermaid

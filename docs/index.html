@@ -114,6 +114,12 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
 .macro-result thead th{background:#351a29}
 .macro-result .macro-sources{font-size:.8rem}
 .macro-sources a{text-decoration:underline;text-underline-offset:3px}
+
+.macro-abc-scroll{overflow-x:auto;margin:10px 0}
+.macro-abc-scroll:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.macro-intelligence .macro-abc-scroll table{min-width:520px;margin:0}
+.macro-commentary{padding:12px 14px;margin-top:14px;border-left:2px solid #d0829e;border-radius:0 8px 8px 0;background:#301926}
+.macro-commentary h4{margin:0;color:#fff0f5;font-size:.95rem}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Denis Isikawa","url":"https://github.com/denisisikawa","sameAs":["https://github.com/denisisikawa","https://www.linkedin.com/in/denisisikawa"],"knowsAbout":["Finance Systems","FP&A","Databricks","Python","PySpark","SQL","Revenue Assurance","Data Architecture"]}</script>
 </head>
@@ -200,6 +206,33 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
     </table>
     <p data-en="March was BRL 1,000 under budget, while the quarter finished BRL 3,000 over. March actuals of BRL 105,000 were equivalent to USD 18,271.04 and BRL 103,065.12 at January prices." data-pt="Março ficou R$ 1.000 abaixo do orçamento, e o trimestre fechou R$ 3.000 acima. Os R$ 105.000 realizados em março equivalem a US$ 18.271,04 e a R$ 103.065,12 a preços de janeiro.">March was BRL 1,000 under budget, while the quarter finished BRL 3,000 over. March actuals of BRL 105,000 were equivalent to USD 18,271.04 and BRL 103,065.12 at January prices.</p>
     <p class="macro-sources"><a href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/macro-fpa#published-example"><span data-en="Official sources and reproduction steps ↗" data-pt="Fontes oficiais e como reproduzir ↗">Official sources and reproduction steps ↗</span></a></p>
+  </section>
+  <section class="macro-result macro-intelligence" aria-labelledby="macro-intel-title">
+    <div class="macro-result-header">
+      <div>
+        <h3 id="macro-intel-title"><span data-en="Cost concentration and variance drivers" data-pt="Concentração de custos e composição do desvio">Cost concentration and variance drivers</span></h3>
+        <p data-en="Q1 2025 · Synthetic category detail reconciled to the monthly control totals." data-pt="1º tri de 2025 · Detalhe sintético por categoria conciliado com os totais mensais.">Q1 2025 · Synthetic category detail reconciled to the monthly control totals.</p> 
+      </div>
+      <a class="macro-download" href="data/fpa-intelligence-q1.json" download><span data-en="Download analysis (JSON) ↓" data-pt="Baixar análise (JSON) ↓">Download analysis (JSON) ↓</span></a>
+    </div>
+    <div class="macro-abc-scroll" tabindex="0" role="region" aria-labelledby="macro-intel-title">
+      <table>
+        <thead><tr><th scope="col"><span data-en="Category" data-pt="Categoria">Category</span></th><th scope="col"><span data-en="Actual (BRL)" data-pt="Realizado (R$)">Actual (BRL)</span></th><th scope="col"><span data-en="Budget (BRL)" data-pt="Orçamento (R$)">Budget (BRL)</span></th><th scope="col"><span data-en="Variance (BRL)" data-pt="Desvio (R$)">Variance (BRL)</span></th><th scope="col"><span data-en="Cumulative share" data-pt="% acumulado">Cumulative share</span></th><th scope="col"><span data-en="Class" data-pt="Classe">Class</span></th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><span data-en="Cloud" data-pt="Cloud">Cloud</span></th><td><span data-en="141,000" data-pt="141.000">141,000</span></td><td><span data-en="130,000" data-pt="130.000">130,000</span></td><td><span data-en="+11,000" data-pt="+11.000">+11,000</span></td><td><span data-en="45.9%" data-pt="45,9%">45.9%</span></td><td>A</td></tr>
+          <tr><th scope="row"><span data-en="Licenses" data-pt="Licenças">Licenses</span></th><td><span data-en="81,000" data-pt="81.000">81,000</span></td><td><span data-en="81,000" data-pt="81.000">81,000</span></td><td><span data-en="0" data-pt="0">0</span></td><td><span data-en="72.3%" data-pt="72,3%">72.3%</span></td><td>A</td></tr>
+          <tr><th scope="row"><span data-en="Services" data-pt="Serviços">Services</span></th><td><span data-en="53,000" data-pt="53.000">53,000</span></td><td><span data-en="64,000" data-pt="64.000">64,000</span></td><td><span data-en="-11,000" data-pt="-11.000">-11,000</span></td><td><span data-en="89.6%" data-pt="89,6%">89.6%</span></td><td>A</td></tr>
+          <tr><th scope="row"><span data-en="Connectivity" data-pt="Conectividade">Connectivity</span></th><td><span data-en="23,000" data-pt="23.000">23,000</span></td><td><span data-en="20,000" data-pt="20.000">20,000</span></td><td><span data-en="+3,000" data-pt="+3.000">+3,000</span></td><td><span data-en="97.1%" data-pt="97,1%">97.1%</span></td><td>B</td></tr>
+          <tr><th scope="row"><span data-en="Other" data-pt="Outros">Other</span></th><td><span data-en="9,000" data-pt="9.000">9,000</span></td><td><span data-en="9,000" data-pt="9.000">9,000</span></td><td><span data-en="0" data-pt="0">0</span></td><td><span data-en="100.0%" data-pt="100,0%">100.0%</span></td><td>C</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p data-en="ABC ranks actual costs. The category that crosses 80% stays in A, and the one that crosses 95% stays in B if it started there." data-pt="A curva ABC ordena o realizado. A categoria que ultrapassa 80% fica em A. A que ultrapassa 95% fica em B se começou nessa faixa.">ABC ranks actual costs. The category that crosses 80% stays in A, and the one that crosses 95% stays in B if it started there.</p>
+    <div class="macro-commentary">
+      <h4><span data-en="Automatic commentary · rules mode" data-pt="Comentário automático · modo por regras">Automatic commentary · rules mode</span></h4>
+      <p data-en="BRL 3,000.00 above budget. Overruns of BRL 14,000.00 were offset by BRL 11,000.00 in favorable variances. Cloud had the largest overrun at BRL 11,000.00. Serviços was furthest below budget at BRL 11,000.00. Class A accounts for 89.6% of actual costs. Cloud — Compare billed units and unit rates with the budget assumptions. The available data identifies the variance contribution; the operational cause requires evidence." data-pt="R$ 3.000,00 acima do orçamento. Desvios desfavoráveis de R$ 14.000,00 foram compensados por R$ 11.000,00 abaixo do orçamento. Cloud teve o maior desvio desfavorável, de R$ 11.000,00. Serviços foi a categoria mais abaixo do orçamento, em R$ 11.000,00. A classe A concentra 89,6% dos custos realizados. Cloud — Compare o volume faturado e os preços unitários com as premissas do orçamento. Os dados identificam a contribuição para o desvio. A causa operacional requer evidência.">BRL 3,000.00 above budget. Overruns of BRL 14,000.00 were offset by BRL 11,000.00 in favorable variances. Cloud had the largest overrun at BRL 11,000.00. Serviços was furthest below budget at BRL 11,000.00. Class A accounts for 89.6% of actual costs. Cloud — Compare billed units and unit rates with the budget assumptions. The available data identifies the variance contribution; the operational cause requires evidence.</p>
+    </div>
+    <p class="macro-sources"><a href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/macro-fpa#cost-intelligence"><span data-en="Reproduce the analysis and try AI-assisted mode ↗" data-pt="Reproduzir a análise e testar o modo assistido por IA ↗">Reproduce the analysis and try AI-assisted mode ↗</span></a></p>
   </section>
   <figure class="macro-diagram" aria-labelledby="macro-executive">
   <figcaption id="macro-executive"><span data-en="Executive view" data-pt="Visão executiva">Executive view</span></figcaption>
