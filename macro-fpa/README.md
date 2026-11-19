@@ -13,17 +13,31 @@ A monthly report that combines a synthetic cost and budget series with Brazilian
 
 | Provider | Series | Unit | Role |
 | --- | --- | --- | --- |
-| [Banco Central do Brasil, SGS](https://www3.bcb.gov.br/sgspub/) | 3696, USD selling rate, monthly average | BRL per USD | Approximate USD equivalent for monthly costs |
+| [Banco Central do Brasil, SGS](https://www3.bcb.gov.br/sgspub/) | 3698, USD selling rate, monthly average | BRL per USD | Approximate USD equivalent for monthly costs |
 | [IBGE SIDRA](https://sidra.ibge.gov.br/tabela/1737) | Table 1737, variable 63, national IPCA monthly change | Percent | Convert nominal costs to first-month prices |
 
 The input CSV contains one synthetic row per month. Both sources are joined to that month. A month can be over while its IPCA release is still pending. Use a window covered by both providers. Source revisions may change results across live reruns.
+
+## Published example
+
+The [downloadable report](../docs/data/fpa-official-2025-q1.csv) uses synthetic costs and budgets, monthly USD selling-rate averages sourced from [AEPS 47.4, which credits Banco Central do Brasil](https://www.gov.br/previdencia/pt-br/assuntos/previdencia-social/arquivos/copy_of_aeps-2025/secao-xv-indicadores-economicos/capitulo-47-indicadores-economicos/47-3-taxa-de-venda-de-dolar-r), and IPCA from the [IBGE December 2025 bulletin](https://ftp.ibge.gov.br/Precos_Indices_de_Precos_ao_Consumidor/IPCA/Fasciculo_Indicadores_IBGE/ipca-inpc_202512caderno.pdf). The values were transcribed into local JSON in the providers' expected shapes.
+
+| Month | USD selling rate average (BRL/USD) | IPCA monthly (%) |
+| --- | ---: | ---: |
+| 2025-01 | 6.0218 | 0.16 |
+| 2025-02 | 5.7656 | 1.31 |
+| 2025-03 | 5.7468 | 0.56 |
+
+```bash
+python macro-fpa/report.py --costs macro-fpa/example/costs.csv --fixtures macro-fpa/example/official-2025-q1 --output macro-report.csv
+```
 
 ## Technical lineage
 
 ```mermaid
 flowchart TD
     CSV["Synthetic costs CSV"] --> Window["Validate costs and define the request window"]
-    Window --> FX["BCB 3696 or FX fixture"]
+    Window --> FX["BCB 3698 or FX fixture"]
     Window --> IPCA["IBGE 1737/63 or IPCA fixture"]
     FX --> Join["Normalize and match each cost month"]
     IPCA --> Join

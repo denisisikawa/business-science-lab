@@ -15,7 +15,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import urlopen
 
-FX_URL = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.3696/dados"
+FX_URL = "https://api.bcb.gov.br/dados/serie/bcdata.sgs.3698/dados"
 IPCA_URL = "https://apisidra.ibge.gov.br/values/t/1737/n1/all/v/63/p"
 FIELDS = (
     "month", "actual_brl", "budget_brl", "variance_brl", "usd_brl_avg",
@@ -145,7 +145,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--costs", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
-    parser.add_argument("--fixtures", type=Path, help="Directory with mocked fx.json and ipca.json")
+    parser.add_argument("--fixtures", type=Path, help="Directory with local fx.json and ipca.json")
     args = parser.parse_args()
     try:
         if args.costs.resolve() == args.output.resolve():
@@ -169,7 +169,7 @@ def main():
     except (OSError, ValueError, DecimalException, KeyError, TypeError, AttributeError) as error:
         print(f"Report failed: {error}", file=sys.stderr)
         return 1
-    mode = "mocked API fixtures" if args.fixtures else "BCB SGS and IBGE SIDRA"
+    mode = "local JSON inputs" if args.fixtures else "BCB SGS and IBGE SIDRA"
     print(f"Wrote {len(rows)} months to {args.output} ({mode}).")
     return 0
 
