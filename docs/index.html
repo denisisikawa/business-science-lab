@@ -222,13 +222,13 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
 <div class="wrap header-inner">
 <a class="logo" href="#top" aria-label="Denis Isikawa home"><span class="monogram">D<b>.</b></span><small>DENIS<span>ISIKAWA</span></small></a>
 <nav class="nav" aria-label="Primary navigation">
-<a href="#banking-costing"><span data-en="Banking costing" data-pt="Custeio bancário">Banking costing</span></a><a href="#work"><span data-en="Projects" data-pt="Projetos">Projects</span></a><a href="#story"><span data-en="About" data-pt="Sobre">About</span></a><a href="#contact"><span data-en="Contact" data-pt="Contato">Contact</span></a>
+<a href="#work"><span data-en="Projects" data-pt="Projetos">Projects</span></a><a href="#story"><span data-en="About" data-pt="Sobre">About</span></a><a href="#contact"><span data-en="Contact" data-pt="Contato">Contact</span></a>
 </nav>
 <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="pt" aria-pressed="false">PT</button></div>
 <button class="menu" id="menu" type="button" aria-controls="mobile" aria-expanded="false" aria-label="Open navigation">☰</button>
 </div>
 <nav id="mobile" class="mobile-nav" aria-label="Mobile navigation">
-<a href="#banking-costing"><span data-en="Banking costing" data-pt="Custeio bancário">Banking costing</span></a><a href="#work"><span data-en="Projects" data-pt="Projetos">Projects</span></a><a href="#story"><span data-en="About" data-pt="Sobre">About</span></a><a href="#contact"><span data-en="Contact" data-pt="Contato">Contact</span></a>
+<a href="#work"><span data-en="Projects" data-pt="Projetos">Projects</span></a><a href="#story"><span data-en="About" data-pt="Sobre">About</span></a><a href="#contact"><span data-en="Contact" data-pt="Contato">Contact</span></a>
 </nav>
 </header>
 
@@ -495,7 +495,7 @@ menu.addEventListener("click",function(){const open=mobile.classList.toggle("ope
 mobile.querySelectorAll("a").forEach(function(a){a.addEventListener("click",closeMenu)});
 function markCurrentLink(){
  const hash=location.hash;
- const target=hash==="#banking-costing"||hash.startsWith("#banking-")?"#banking-costing":
+ const target=hash==="#banking-costing"||hash.startsWith("#banking-")?"#work":
    hash==="#work"||hash==="#macro-fpa"||hash.startsWith("#macro-")?"#work":
    ["#story","#skills","#approach"].includes(hash)?"#story":hash;
  document.querySelectorAll(".nav a,.mobile-nav a").forEach(function(a){
