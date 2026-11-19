@@ -101,6 +101,19 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
 .tech-diagram .tech-legend{margin:11px 0 0;font-size:.8rem}
 .tech-contract .tech-sample{margin-top:10px;padding:8px 12px;border-left:2px solid #bd7b94;background:#2d1826}
 @media(max-width:760px){.tech-edge{grid-template-columns:1fr}.tech-edge i{display:none}}
+
+.macro-result{margin:0 0 24px;padding:clamp(12px,3vw,28px);background:#26121e;border:1px solid #704457;border-radius:18px}
+.macro-result-header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 24px}
+.macro-result h3{margin:0 0 4px;color:#fff0f5}
+.macro-result p{color:#ead1da;font-size:.9rem;margin:7px 0 0;line-height:1.55}
+.macro-download{display:inline-block;border:1px solid #d0829e;border-radius:8px;padding:8px 12px;color:#fff0f5;font-weight:600;font-size:.875rem}
+.macro-download:hover{background:#432336}
+.macro-result table{width:100%;border-collapse:collapse;margin:14px 0 12px;color:#fff0f5;font-variant-numeric:tabular-nums;font-size:clamp(.72rem,2.5vw,.9rem)}
+.macro-result th,.macro-result td{padding:7px clamp(2px,1.2vw,12px);border-bottom:1px solid #704457;text-align:right}
+.macro-result th:first-child{text-align:left}
+.macro-result thead th{background:#351a29}
+.macro-result .macro-sources{font-size:.8rem}
+.macro-sources a{text-decoration:underline;text-underline-offset:3px}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Denis Isikawa","url":"https://github.com/denisisikawa","sameAs":["https://github.com/denisisikawa","https://www.linkedin.com/in/denisisikawa"],"knowsAbout":["Finance Systems","FP&A","Databricks","Python","PySpark","SQL","Revenue Assurance","Data Architecture"]}</script>
 </head>
@@ -169,6 +182,25 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
 <section id="macro-fpa" class="section wrap">
   <div class="sect-head"><div><h2 data-en="Macroeconomic context for FP&amp;A" data-pt="Contexto macroeconômico para FP&amp;A">Macroeconomic context for FP&amp;A</h2></div>
   <p data-en="A reproducible monthly report that combines public indicators with synthetic costs and budgets." data-pt="Relatório mensal reproduzível que combina indicadores públicos com custos e orçamento simulados.">A reproducible monthly report that combines public indicators with synthetic costs and budgets.</p></div>
+  <section class="macro-result" aria-labelledby="macro-demo-title">
+    <div class="macro-result-header">
+      <div>
+        <h3 id="macro-demo-title"><span data-en="Monthly cost review · Q1 2025" data-pt="Análise mensal de custos · 1º tri de 2025">Monthly cost review · Q1 2025</span></h3>
+        <p data-en="Synthetic costs and budgets, enriched with official FX and IPCA values transcribed from published tables." data-pt="Custos e orçamento simulados, combinados com câmbio e IPCA oficiais transcritos de tabelas publicadas.">Synthetic costs and budgets, enriched with official FX and IPCA values transcribed from published tables.</p>
+      </div>
+      <a class="macro-download" href="data/fpa-official-2025-q1.csv" download><span data-en="Download CSV ↓" data-pt="Baixar CSV ↓">Download CSV ↓</span></a>
+    </div>
+    <table>
+      <thead><tr><th scope="col"><span data-en="Month" data-pt="Mês">Month</span></th><th scope="col"><span data-en="Actual (BRL)" data-pt="Realizado (R$)">Actual (BRL)</span></th><th scope="col"><span data-en="Budget (BRL)" data-pt="Orçamento (R$)">Budget (BRL)</span></th><th scope="col"><span data-en="Variance (BRL)" data-pt="Desvio (R$)">Variance (BRL)</span></th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><span data-en="Jan" data-pt="Jan">Jan</span></th><td><span data-en="100,000" data-pt="100.000">100,000</span></td><td><span data-en="98,000" data-pt="98.000">98,000</span></td><td><span data-en="2,000" data-pt="2.000">2,000</span></td></tr>
+        <tr><th scope="row"><span data-en="Feb" data-pt="Fev">Feb</span></th><td><span data-en="102,000" data-pt="102.000">102,000</span></td><td><span data-en="100,000" data-pt="100.000">100,000</span></td><td><span data-en="2,000" data-pt="2.000">2,000</span></td></tr>
+        <tr><th scope="row"><span data-en="Mar" data-pt="Mar">Mar</span></th><td><span data-en="105,000" data-pt="105.000">105,000</span></td><td><span data-en="106,000" data-pt="106.000">106,000</span></td><td><span data-en="-1,000" data-pt="-1.000">-1,000</span></td></tr>
+      </tbody>
+    </table>
+    <p data-en="March was BRL 1,000 under budget, while the quarter finished BRL 3,000 over. March actuals of BRL 105,000 were equivalent to USD 18,271.04 and BRL 103,065.12 at January prices." data-pt="Março ficou R$ 1.000 abaixo do orçamento, e o trimestre fechou R$ 3.000 acima. Os R$ 105.000 realizados em março equivalem a US$ 18.271,04 e a R$ 103.065,12 a preços de janeiro.">March was BRL 1,000 under budget, while the quarter finished BRL 3,000 over. March actuals of BRL 105,000 were equivalent to USD 18,271.04 and BRL 103,065.12 at January prices.</p>
+    <p class="macro-sources"><span data-en="Official inputs" data-pt="Insumos oficiais">Official inputs</span> <a href="https://www.gov.br/previdencia/pt-br/assuntos/previdencia-social/arquivos/copy_of_aeps-2025/secao-xv-indicadores-economicos/capitulo-47-indicadores-economicos/47-3-taxa-de-venda-de-dolar-r"><span data-en="BCB FX via AEPS" data-pt="Câmbio do BCB via AEPS">BCB FX via AEPS</span></a> <span aria-hidden="true">·</span> <a href="https://ftp.ibge.gov.br/Precos_Indices_de_Precos_ao_Consumidor/IPCA/Fasciculo_Indicadores_IBGE/ipca-inpc_202512caderno.pdf">IBGE IPCA</a></p>
+  </section>
   <figure class="macro-diagram" aria-labelledby="macro-executive">
   <figcaption id="macro-executive"><span data-en="Executive view" data-pt="Visão executiva">Executive view</span></figcaption>
   <ol class="macro-flow">
@@ -188,7 +220,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
         <p data-en="One row per completed calendar month. The first and last months define the API request window." data-pt="Uma linha por mês fechado. O primeiro e o último mês definem o período consultado nas APIs.">One row per completed calendar month. The first and last months define the API request window.</p>
         <p><code>read_costs</code> <span aria-hidden="true">·</span> <span data-en="1–120 consecutive months" data-pt="1–120 meses consecutivos">1–120 consecutive months</span></p>
       </li>
-        <li class="tech-card"><h4><a href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/macro-fpa/report.py#L76"><code>BCB SGS 3696</code></a></h4>
+        <li class="tech-card"><h4><a href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/macro-fpa/report.py#L76"><code>BCB SGS 3698</code></a></h4>
         <span data-en="USD selling rate · monthly average" data-pt="Dólar venda · média mensal">USD selling rate · monthly average</span>
         <p data-en="SGS JSON provides data (DD/MM/YYYY) and valor (BRL per USD)." data-pt="O JSON do SGS retorna data (DD/MM/AAAA) e valor (BRL por USD).">SGS JSON provides data (DD/MM/YYYY) and valor (BRL per USD).</p>
         <p><code>read_fx</code> <span aria-hidden="true">·</span> <span data-en="FX must be greater than zero" data-pt="Câmbio deve ser maior que zero">FX must be greater than zero</span></p>
