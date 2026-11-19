@@ -253,10 +253,11 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
 .project-accordion[open]{grid-column:1/-1}
 .project-accordion{overflow:hidden;border-color:#795269;background:#241625}
 .project-accordion>summary{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:10px 12px;padding:12px;border-radius:13px}
-.project-cover-frame{position:relative;isolation:isolate;display:block;grid-column:1/-1;overflow:hidden;border-radius:8px;border:1px solid #603b50;background:#261624;filter:contrast(1.08) brightness(.97)}
-.project-cover{display:block;width:100%;height:auto;aspect-ratio:640/265;object-fit:cover}
-.project-cover-frame::after{content:"";position:absolute;inset:0;pointer-events:none;background:#713750;mix-blend-mode:color;opacity:.83}
-@media(forced-colors:active){.project-cover-frame{filter:none}.project-cover-frame::after{display:none}}
+.cover-tone-palette{position:absolute;width:0;height:0;pointer-events:none}
+.project-cover-frame{display:block;grid-column:1/-1;overflow:hidden;border-radius:8px;border:1px solid #624050;background:#1e0f1a}
+.project-cover{display:block;width:100%;height:auto;aspect-ratio:640/265;object-fit:cover;filter:url(#cover-tone)}
+
+@media(forced-colors:active){.project-cover{filter:none}}
 .project-summary-copy{grid-column:1/-1;gap:4px;padding:1px 2px}
 .project-summary-action{grid-column:2;justify-self:end;display:inline-flex;align-items:center;gap:7px;font-weight:720;font-size:.8rem;color:#f5d4b1;white-space:nowrap}
 .project-summary-mark{flex:0 0 22px;height:22px;font-size:.88rem}
@@ -320,6 +321,16 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
 <section id="work" class="section wrap portfolio-section">
 <div class="sect-head reveal"><div><h2 data-en="Technical projects" data-pt="Projetos técnicos">Technical projects</h2></div><p data-en="Explore each case for its architecture, data and implementation materials." data-pt="Abra cada case para ver sua arquitetura, dados e materiais de implementação.">Explore each case for its architecture, data and implementation materials.</p></div>
 <div class="filters reveal" role="group" aria-label="Project categories"><button type="button" class="filter" data-filter="all" aria-pressed="true" data-en="All projects" data-pt="Todos">All projects</button><button type="button" class="filter" data-filter="platform" aria-pressed="false" data-en="Data platforms" data-pt="Plataformas de dados">Data platforms</button><button type="button" class="filter" data-filter="finance" aria-pressed="false" data-en="Finance analytics" data-pt="Analytics financeiro">Finance analytics</button><button type="button" class="filter" data-filter="ai" aria-pressed="false" data-en="AI & automation" data-pt="IA e automação">AI & automation</button><span class="count" id="projectCount" aria-live="polite">06 / 06</span></div>
+<svg class="cover-tone-palette" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <filter id="cover-tone" color-interpolation-filters="sRGB">
+    <feColorMatrix type="saturate" values="0"></feColorMatrix>
+    <feComponentTransfer>
+      <feFuncR type="table" tableValues="0.0941 0.1412 0.2314 0.5137 0.7686 0.9098 1.0000"></feFuncR>
+      <feFuncG type="table" tableValues="0.0431 0.0706 0.1294 0.3216 0.5608 0.7529 0.9490"></feFuncG>
+      <feFuncB type="table" tableValues="0.0824 0.1216 0.1922 0.4000 0.3961 0.5255 0.8000"></feFuncB>
+    </feComponentTransfer>
+  </filter>
+</svg>
 <div class="project-accordions">
 <details class="project-accordion" data-category="finance">
   <summary><span class="project-cover-frame"><img class="project-cover" src="assets/projects/banking.png" width="640" height="265" loading="lazy" decoding="async" alt=""></span><span class="project-summary-copy"><strong data-en="Banking cost allocation" data-pt="Custeio bancário">Banking cost allocation</strong><span data-en="Costing design for contracts, infrastructure and operations by banking product, including shared costs and idle capacity." data-pt="Custos de contratos, infraestrutura e operação por produto bancário, com regras para gastos compartilhados e capacidade ociosa.">Costing design for contracts, infrastructure and operations by banking product, including shared costs and idle capacity.</span></span><span class="project-summary-action"><span class="project-action-more" data-en="View details" data-pt="Ver detalhes">View details</span><span class="project-action-less" data-en="Hide details" data-pt="Fechar detalhes">Hide details</span><span class="project-summary-mark" aria-hidden="true"></span></span></summary>
