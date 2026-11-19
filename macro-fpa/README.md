@@ -48,6 +48,8 @@ python macro-fpa/intelligence.py --costs macro-fpa/example/costs.csv --detail ma
 
 The [card dispute costing design (PT-BR)](BANKING_COSTING.md) specifies direct assignment, TDABC, technology allocation, capacity reconciliation and a worked variance bridge. The worked example uses synthetic inputs and describes a proposed extension of the laboratory.
 
+The [synthetic banking dataset (PT-BR)](synthetic-banking/) provides 12 months of budgets, actuals, event volumes, contract terms, shared cost drivers and team capacity to exercise the methodology.
+
 ### AI-assisted commentary
 
 With your own `OPENAI_API_KEY` in the environment, add `--commentary openai` to the command. You can override the default model with `--model`. This opts into an OpenAI Responses API call with the variance summary and category labels. Use synthetic inputs for the public demo. Requests may incur API charges.
