@@ -18,7 +18,7 @@ A monthly report that combines a synthetic cost and budget series with Brazilian
 
 The input CSV contains one synthetic row per month. Both sources are joined to that month. A month can be over while its IPCA release is still pending. Use a window covered by both providers. Source revisions may change results across live reruns.
 
-## Published example · January–March 2025
+## Published example
 
 The [downloadable report](../docs/data/fpa-official-2025-q1.csv) uses synthetic costs and budgets, monthly USD selling-rate averages sourced from [AEPS 47.4, which credits Banco Central do Brasil](https://www.gov.br/previdencia/pt-br/assuntos/previdencia-social/arquivos/copy_of_aeps-2025/secao-xv-indicadores-economicos/capitulo-47-indicadores-economicos/47-3-taxa-de-venda-de-dolar-r), and IPCA from the [IBGE December 2025 bulletin](https://ftp.ibge.gov.br/Precos_Indices_de_Precos_ao_Consumidor/IPCA/Fasciculo_Indicadores_IBGE/ipca-inpc_202512caderno.pdf). The values were transcribed into local JSON in the providers' expected shapes.
 
