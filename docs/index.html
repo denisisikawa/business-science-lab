@@ -120,6 +120,19 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
 .macro-intelligence .macro-abc-scroll table{min-width:520px;margin:0}
 .macro-commentary{padding:12px 14px;margin-top:14px;border-left:2px solid #d0829e;border-radius:0 8px 8px 0;background:#301926}
 .macro-commentary h4{margin:0;color:#fff0f5;font-size:.95rem}
+
+#banking-costing{scroll-margin-top:85px}
+.banking-executive-flow{display:grid;list-style:none;margin:0 0 13px;padding:0;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.banking-executive-flow>li{position:relative;background:#341925;padding:14px;border:1px solid #6e4150;border-radius:12px;min-width:0}
+.banking-executive-flow>li+li::before{content:"";position:absolute;left:-20px;top:calc(50% - 4px);width:8px;height:8px;border-top:2px solid #f198b1;border-right:2px solid #f198b1;transform:rotate(45deg)}
+.banking-executive-flow ul{padding-left:17px;margin:5px 0 0}
+.banking-executive p,.banking-executive-flow li li{margin:5px 0 0;color:#ead1da;font-size:.875rem;line-height:1.5}
+.banking-routes{grid-template-columns:repeat(2,minmax(0,1fr))}
+.banking-links{display:flex;flex-wrap:wrap;gap:14px 24px}
+@media(max-width:760px){
+  .banking-executive-flow,.banking-routes{grid-template-columns:minmax(0,1fr)}
+  .banking-executive-flow>li+li::before{left:calc(50% - 4px);top:-19px;transform:rotate(135deg)}
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Denis Isikawa","url":"https://github.com/denisisikawa","sameAs":["https://github.com/denisisikawa","https://www.linkedin.com/in/denisisikawa"],"knowsAbout":["Finance Systems","FP&A","Databricks","Python","PySpark","SQL","Revenue Assurance","Data Architecture"]}</script>
 </head>
@@ -186,6 +199,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
 </section>
 
 <section id="macro-fpa" class="section wrap">
+  <p class="macro-sources"><a href="#banking-costing"><span data-en="See the banking cost allocation diagrams ↓" data-pt="Ver os diagramas de custeio bancário ↓">See the banking cost allocation diagrams ↓</span></a></p>
   <div class="sect-head"><div><h2 data-en="Macroeconomic context for FP&amp;A" data-pt="Contexto macroeconômico para FP&amp;A">Macroeconomic context for FP&amp;A</h2></div>
   <p data-en="A reproducible monthly report that combines public indicators with synthetic costs and budgets." data-pt="Relatório mensal reproduzível que combina indicadores públicos com custos e orçamento simulados.">A reproducible monthly report that combines public indicators with synthetic costs and budgets.</p></div>
   <section class="macro-result" aria-labelledby="macro-demo-title">
@@ -305,6 +319,67 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
     </details>
   </figure>
   <a class="project-link" href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/macro-fpa"><span data-en="View code and reproduction steps ↗" data-pt="Ver código e instruções para reproduzir ↗">View code and reproduction steps ↗</span></a>
+</section>
+<section id="banking-costing" class="section wrap">
+  <div class="sect-head">
+    <div><h2 data-en="Banking cost allocation" data-pt="Custeio bancário">Banking cost allocation</h2></div>
+    <p data-en="From monthly expenses and transaction volumes to a reconciled view of product costs." data-pt="Da despesa mensal e do volume de transações a uma visão conciliada dos custos por produto.">From monthly expenses and transaction volumes to a reconciled view of product costs.</p>
+  </div>
+  <figure class="macro-diagram banking-executive" aria-labelledby="banking-executive-title">
+    <figcaption id="banking-executive-title"><span data-en="Executive view · Who bears each cost?" data-pt="Visão executiva · Quem absorve cada custo?">Executive view · Who bears each cost?</span></figcaption>
+    <ol class="banking-executive-flow" role="list">
+      <li><strong data-en="Monthly expenses" data-pt="Despesas do mês">Monthly expenses</strong><p data-en="Systems, payroll, rent and telecom." data-pt="Sistemas, folha, aluguel e telecom.">Systems, payroll, rent and telecom.</p></li>
+      <li><strong data-en="Assign by use" data-pt="Atribuir conforme o uso">Assign by use</strong>
+        <ul role="list">
+          <li><span data-en="Dedicated → directly to the product." data-pt="Dedicado → direto ao produto.">Dedicated → directly to the product.</span></li>
+          <li><span data-en="Shared → by consumption or time spent." data-pt="Compartilhado → por consumo ou tempo de trabalho.">Shared → by consumption or time spent.</span></li>
+          <li><span data-en="Corporate → to the corporate cost center." data-pt="Corporativo → ao centro de custo corporativo.">Corporate → to the corporate cost center.</span></li>
+        </ul>
+      </li>
+      <li><strong data-en="Management view" data-pt="Visão gerencial">Management view</strong><p data-en="Costs for Cards, Accounts &amp; Payments and Personal Credit. Corporate expenses and unused capacity appear separately." data-pt="Custos de Cartões, Conta e Pagamentos e Crédito Pessoal. Despesas corporativas e capacidade ociosa ficam visíveis em separado.">Costs for Cards, Accounts &amp; Payments and Personal Credit. Corporate expenses and unused capacity appear separately.</p></li>
+    </ol>
+    <p data-en="Example from the synthetic data · Cards occupies 420 of 1,040 m² and would receive BRL 32,226.92 of July operational rent." data-pt="Exemplo da base fictícia · Cartões ocupa 420 dos 1.040 m² e receberia R$ 32.226,92 do aluguel operacional de julho.">Example from the synthetic data · Cards occupies 420 of 1,040 m² and would receive BRL 32,226.92 of July operational rent.</p>
+  </figure>
+  <figure class="macro-diagram tech-diagram" aria-labelledby="banking-technical-title">
+    <figcaption id="banking-technical-title"><span data-en="Technical view · Banking cost allocation" data-pt="Visão técnica · Alocação de custos bancários">Technical view · Banking cost allocation</span></figcaption>
+    <p data-en="Available inputs are generated by the synthetic dataset. The allocation and reconciliation blocks describe the planned engine." data-pt="Os insumos já são gerados pela base sintética. Os blocos de alocação e conciliação descrevem o motor previsto.">Available inputs are generated by the synthetic dataset. The allocation and reconciliation blocks describe the planned engine.</p>
+    <div class="tech-group tech-inputs">
+      <h4 data-en="Available inputs · budget and actuals" data-pt="Insumos disponíveis · orçamento e realizado">Available inputs · budget and actuals</h4>
+      <ul class="tech-grid tech-sources" role="list"><li class="tech-card"><h4><a href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/macro-fpa/synthetic-banking/example/custos.csv"><code>custos.csv</code></a> · <a href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/macro-fpa/synthetic-banking/example/contratos.csv"><code>contratos.csv</code></a></h4><p data-en="Monthly expense lines and contract terms. The cost ledger supplies fixed, variable and total amounts in BRL." data-pt="Lançamentos mensais e condições contratuais. A base de custos fornece os valores fixos, variáveis e totais em BRL.">Monthly expense lines and contract terms. The cost ledger supplies fixed, variable and total amounts in BRL.</p></li>
+<li class="tech-card"><h4><a href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/macro-fpa/synthetic-banking/example/volumetria.csv"><code>volumetria.csv</code></a> · <a href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/macro-fpa/synthetic-banking/example/direcionadores.csv"><code>direcionadores.csv</code></a></h4><p data-en="Events by product and channel. Drivers provide compute hours, license seats, active links, occupied area and work minutes." data-pt="Eventos por produto e canal. Os direcionadores trazem horas de computação, licenças, links ativos, área ocupada e minutos de trabalho.">Events by product and channel. Drivers provide compute hours, license seats, active links, occupied area and work minutes.</p></li>
+<li class="tech-card"><h4><a href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/macro-fpa/synthetic-banking/example/capacidade.csv"><code>capacidade.csv</code></a> · <a href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/macro-fpa/synthetic-banking/example/produtos.csv"><code>produtos.csv</code></a> · <a href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/macro-fpa/synthetic-banking/example/areas.csv"><code>areas.csv</code></a></h4><p data-en="Practical and consumed minutes for the dispute team, plus the product and cost-owner directories." data-pt="Capacidade prática e minutos consumidos pela equipe de contestação, além dos cadastros de produtos e áreas responsáveis.">Practical and consumed minutes for the dispute team, plus the product and cost-owner directories.</p></li></ul>
+    </div>
+    <div class="tech-edge"><i aria-hidden="true"></i><span data-en="Monthly CSV inputs → planned costing engine" data-pt="CSVs mensais → motor de custeio previsto">Monthly CSV inputs → planned costing engine</span><i aria-hidden="true"></i></div>
+    <div class="tech-runtime">
+      <p class="tech-boundary" data-en="Planned engine boundary" data-pt="Limite do motor previsto">Planned engine boundary</p>
+      <div class="tech-group tech-join">
+        <h4 data-en="Validate and classify" data-pt="Validar e classificar">Validate and classify</h4>
+        <p data-en="Use month × scenario × cost item as the ledger key. Check uniqueness, contract validity, product and area references, and fixed + variable = total. Route each line once by cost nature and driver." data-pt="Usa mês × cenário × item de custo como chave do lançamento. Valida unicidade, vigência do contrato, referências de produto e área, e fixo + variável = total. Encaminha cada lançamento uma única vez por natureza e direcionador.">Use month × scenario × cost item as the ledger key. Check uniqueness, contract validity, product and area references, and fixed + variable = total. Route each line once by cost nature and driver.</p>
+      </div>
+      <div class="tech-edge"><i aria-hidden="true"></i><span data-en="Validated cost line → one treatment" data-pt="Lançamento validado → um tratamento">Validated cost line → one treatment</span><i aria-hidden="true"></i></div>
+      <div class="tech-group">
+        <h4 data-en="Allocation rules" data-pt="Regras de alocação">Allocation rules</h4>
+        <ul class="tech-grid banking-routes" role="list"><li class="tech-card"><h4><span data-en="Direct · assign the full line" data-pt="Direto · apropriar o valor integral">Direct · assign the full line</span></h4><p data-en="Post the amount to produto_direto_id. For metered contracts, validate the charge against monthly billable events × contracted unit price." data-pt="Atribui o valor ao produto_direto_id. Em contratos por volume, confere a cobrança com eventos faturáveis do mês × tarifa contratada.">Post the amount to produto_direto_id. For metered contracts, validate the charge against monthly billable events × contracted unit price.</p><p data-en="Example: card processor and dedicated telecom." data-pt="Exemplo: processador de cartões e telecom dedicado.">Example: card processor and dedicated telecom.</p></li>
+<li class="tech-card"><h4><span data-en="Indirect · allocate by usage" data-pt="Indireto · ratear pelo consumo">Indirect · allocate by usage</span></h4><p data-en="Join month, scenario and driver. Multiply the expense by product usage ÷ total usage of that driver." data-pt="Cruza mês, cenário e direcionador. Multiplica a despesa pelo consumo do produto ÷ consumo total do direcionador.">Join month, scenario and driver. Multiply the expense by product usage ÷ total usage of that driver.</p><p data-en="Rent by m², WAN by active links and cloud by compute hours." data-pt="Aluguel por m², WAN por links ativos e cloud por horas de computação.">Rent by m², WAN by active links and cloud by compute hours.</p></li>
+<li class="tech-card"><h4><span data-en="TDABC · assign by time" data-pt="TDABC · atribuir pelo tempo">TDABC · assign by time</span></h4><p data-en="Rate = team expense ÷ practical minutes. Apply it to volume × active minutes by activity. Record unused capacity in its own destination." data-pt="Taxa = custo da equipe ÷ minutos de capacidade prática. Aplica a taxa a volume × tempo ativo por atividade. Registra a capacidade ociosa em destino próprio.">Rate = team expense ÷ practical minutes. Apply it to volume × active minutes by activity. Record unused capacity in its own destination.</p><p data-en="Example: simple and complex card disputes." data-pt="Exemplo: contestações simples e complexas.">Example: simple and complex card disputes.</p></li>
+<li class="tech-card"><h4><span data-en="Corporate · retain by owner" data-pt="Corporativo · manter na área dona">Corporate · retain by owner</span></h4><p data-en="Keep the full expense at its owning cost center in the management view." data-pt="Mantém a despesa integral no centro de custo responsável na visão gerencial.">Keep the full expense at its owning cost center in the management view.</p><p data-en="Example: head-office rent and management payroll." data-pt="Exemplo: aluguel da sede e folha da diretoria.">Example: head-office rent and management payroll.</p></li></ul>
+      </div>
+      <div class="tech-edge"><i aria-hidden="true"></i><span data-en="Calculated amounts → reconciliation" data-pt="Valores calculados → conciliação">Calculated amounts → reconciliation</span><i aria-hidden="true"></i></div>
+      <div class="tech-group">
+        <h4 data-en="Reconcile before publishing" data-pt="Conciliar antes de publicar">Reconcile before publishing</h4>
+        <p data-en="By month, scenario and source cost line, reconcile allocated + corporate + unused capacity + pending amounts to the source. Preserve the original cost ID, driver and weights. Distribute rounding differences to the cent." data-pt="Por mês, cenário e item de origem, concilia valores alocados + corporativos + capacidade ociosa + pendências com a despesa de origem. Preserva o identificador do custo, o direcionador e os pesos. Trata diferenças de arredondamento até o centavo.">By month, scenario and source cost line, reconcile allocated + corporate + unused capacity + pending amounts to the source. Preserve the original cost ID, driver and weights. Distribute rounding differences to the cent.</p>
+      </div>
+      <div class="tech-edge"><i aria-hidden="true"></i><span data-en="Control result → output or exception" data-pt="Resultado do controle → saída ou exceção">Control result → output or exception</span><i aria-hidden="true"></i></div>
+      <ul class="tech-grid banking-routes" role="list">
+        <li class="tech-card"><h4><span data-en="Reconciled → management output" data-pt="Conciliado → visão gerencial">Reconciled → management output</span></h4><p data-en="Monthly product costs by category and nature, unit costs by activity and a bridge from budget to actuals." data-pt="Custos mensais por produto, categoria e natureza, custo unitário por atividade e ponte de orçamento versus realizado.">Monthly product costs by category and nature, unit costs by activity and a bridge from budget to actuals.</p></li>
+        <li class="tech-card"><h4><span data-en="Exception → review queue" data-pt="Exceção → fila de revisão">Exception → review queue</span></h4><p data-en="Flag missing or zero driver totals and capacity overruns. Keep the traceable amount pending and block release of any unreconciled close." data-pt="Sinaliza direcionador ausente ou com total zero e consumo acima da capacidade. Mantém o valor rastreável como pendente e bloqueia a publicação de fechamentos sem conciliação.">Flag missing or zero driver totals and capacity overruns. Keep the traceable amount pending and block release of any unreconciled close.</p></li>
+      </ul>
+    </div>
+  </figure>
+  <div class="banking-links">
+    <a class="project-link" href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/macro-fpa/synthetic-banking"><span data-en="Explore synthetic data ↗" data-pt="Explorar a base sintética ↗">Explore synthetic data ↗</span></a>
+    <a class="project-link" href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/macro-fpa/BANKING_COSTING.md"><span data-en="Read the costing methodology ↗" data-pt="Ler a metodologia de custeio ↗">Read the costing methodology ↗</span></a>
+  </div>
 </section>
 <section class="section philosophy" id="approach"><div class="wrap">
 <div class="sect-head reveal"><div><div class="section-index"><b>02 /</b><span data-en="ENGINEERING APPROACH" data-pt="ABORDAGEM TÉCNICA">ENGINEERING APPROACH</span></div><h2 data-en="Data architecture and quality" data-pt="Arquitetura e qualidade de dados">Data architecture and quality</h2></div><p data-en="A practical focus on financial definitions, data ownership, reproducible pipelines, automated tests and documentation." data-pt="Foco em definições financeiras, responsabilidade pelas fontes, pipelines reproduzíveis, testes automatizados e documentação.">A practical focus on financial definitions, data ownership, reproducible pipelines, automated tests and documentation.</p></div>
