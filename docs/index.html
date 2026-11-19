@@ -212,6 +212,41 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
 .more-lineage summary:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
 .cost-branches-four .route-drop{position:absolute;top:100%;left:50%;height:10px;border-left:1px solid var(--rail)}
 @media(max-width:700px){.cost-branches-four .route-drop{display:none}}
+
+.professional-profile{min-width:0;border:1px solid #795164;border-radius:20px;padding:clamp(18px,3vw,34px);background:radial-gradient(ellipse at top right,#573046,transparent 65%),#251522}
+.professional-profile h2{font:750 1.35rem/1.2 var(--display);margin:0 0 10px;color:#ffe5ef}
+.professional-profile dl{margin:0}
+.professional-profile dl>div{display:grid;grid-template-columns:minmax(95px,.34fr) 1fr;gap:12px;padding:12px 0;border-top:1px solid #ffffff25}
+.professional-profile dt{color:#f1cca3;font-weight:750;font-size:.9rem}
+.professional-profile dd{margin:0;line-height:1.55;color:#eed8e4;font-size:.88rem}
+.project-accordions{display:grid;gap:10px}
+.project-accordion{min-width:0;border:1px solid #6f485d;border-radius:14px;background:#211522;scroll-margin-top:95px}
+.project-accordion>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:clamp(13px,2vw,20px);border-radius:13px}
+.project-accordion>summary::-webkit-details-marker{display:none}
+.project-accordion>summary:hover,.project-accordion[open]>summary{background:#362136}
+.project-accordion>summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.project-summary-copy{display:grid;gap:5px}
+.project-summary-copy strong{font:750 clamp(16px,1.6vw,21px)/1.3 var(--display);color:#fff0f7}
+.project-summary-copy>span{font-size:.875rem;color:#e5ccd9;line-height:1.5}
+.project-summary-mark{flex:0 0 27px;height:27px;border:1px solid #b17c96;border-radius:50%;display:grid;place-items:center;color:#f5d4b1;font-size:1.05rem}
+.project-summary-mark::before{content:"+"}
+.project-accordion[open]>summary .project-summary-mark::before{content:"−"}
+.project-expanded{border-top:1px solid #6f485d;padding:clamp(10px,2vw,20px);min-width:0}
+.project-expanded .case-content,.project-expanded [id]{scroll-margin-top:95px}
+.project-expanded .cost-map:last-child{margin-bottom:0}
+.compact-project{display:grid;grid-template-columns:minmax(170px,.4fr) 1fr;align-items:stretch}
+.compact-project:hover{transform:none}
+.compact-project .art{height:auto;min-height:155px}
+.compact-project .project-content{padding:clamp(12px,2vw,22px)}
+.compact-project .chips{margin-bottom:8px}
+.case-output{margin:3px 0 10px;padding-left:19px;font-size:.9rem;color:#eed8e4;line-height:1.7}
+.case-resources{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.85rem;color:#f1cca3}
+.case-resources a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:620px){
+ .professional-profile dl>div{grid-template-columns:1fr;gap:3px;padding:8px 0}
+ .compact-project{grid-template-columns:1fr}
+ .compact-project .art{min-height:130px}
+}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Denis Isikawa","url":"https://github.com/denisisikawa","sameAs":["https://github.com/denisisikawa","https://www.linkedin.com/in/denisisikawa"],"knowsAbout":["Finance Systems","FP&A","Databricks","Python","PySpark","SQL","Revenue Assurance","Data Architecture"]}</script>
 </head>
@@ -237,27 +272,33 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
 <div class="hero-text">
 <div class="eyebrow" data-en="FINANCE TECHNOLOGY / DATA ARCHITECTURE" data-pt="TECNOLOGIA FINANCEIRA / ARQUITETURA DE DADOS">FINANCE TECHNOLOGY / DATA ARCHITECTURE</div>
 <p class="hello" data-en="FP&A Data & Analytics | Technical Lead" data-pt="FP&A Data & Analytics | Liderança técnica">FP&A Data & Analytics | Technical Lead</p>
-<h1><span data-en="Data architecture" data-pt="Arquitetura de dados">Data architecture</span><br><span class="hero-special" data-en="for finance systems." data-pt="para finanças.">for finance systems.</span></h1>
-<p class="hero-lead" data-en="I work on financial data platforms, management close automation, data quality and integration between finance and technology teams, building on FP&A and revenue systems experience." data-pt="Atuo em plataformas de dados financeiros, automação do fechamento gerencial, qualidade de dados e integração entre finanças e TI, com experiência em FP&A e sistemas de receita.">I work on financial data platforms, management close automation, data quality and integration between finance and technology teams, building on FP&A and revenue systems experience.</p>
+<h1><span data-en="Data and AI" data-pt="Dados e IA">Data and AI</span><br><span class="hero-special" data-en="for Finance" data-pt="para Finanças">for Finance</span></h1>
+<p class="hero-lead" data-en="I work across FP&amp;A, financial systems and data engineering. My focus is automating the management close and building reliable data products for Finance." data-pt="Atuo na interseção de FP&amp;A, sistemas financeiros e engenharia de dados. Meu foco é automatizar o fechamento gerencial e construir produtos de dados confiáveis para Finanças.">I work across FP&amp;A, financial systems and data engineering. My focus is automating the management close and building reliable data products for Finance.</p>
 <div class="buttons"><a href="#work" class="btn btn-gold"><span data-en="View projects" data-pt="Explorar projetos">View projects</span><span>↗</span></a><a href="https://www.linkedin.com/in/denisisikawa" target="_blank" rel="noopener noreferrer" class="btn btn-outline"><span data-en="Let's connect" data-pt="Vamos conversar">Let's connect</span><span>↗</span></a></div>
 </div>
-<aside class="featured-case" aria-labelledby="featured-case-title">
-  <p data-en="FEATURED CASE" data-pt="CASE EM DESTAQUE">FEATURED CASE</p>
-  <h2 id="featured-case-title"><span data-en="Cost to serve in banking" data-pt="Custo de servir no banco">Cost to serve in banking</span></h2>
-  <p data-en="From contracts and transaction volumes to costs by product, including shared infrastructure and dispute operations." data-pt="Dos contratos e volumes transacionais ao custo por produto, incluindo infraestrutura compartilhada e operação de contestação.">From contracts and transaction volumes to costs by product, including shared infrastructure and dispute operations.</p>
-  <div class="featured-facts"><div><strong>12</strong><span data-en="months" data-pt="meses">months</span></div><div><strong>9</strong><span data-en="contracts" data-pt="contratos">contracts</span></div><div><strong>3</strong><span data-en="products" data-pt="produtos">products</span></div></div>
-  <a href="#banking-costing" class="project-link"><span data-en="Explore the banking case ↓" data-pt="Explorar o case bancário ↓">Explore the banking case ↓</span></a>
+<aside class="professional-profile" aria-labelledby="professional-profile-title">
+  <h2 id="professional-profile-title"><span data-en="How I work" data-pt="Como atuo">How I work</span></h2>
+  <dl>
+    <div><dt>AI-first</dt><dd data-en="I look for opportunities to use AI to speed up analysis, explain variances and answer questions in natural language, with human review and traceable sources." data-pt="Busco aplicar IA para acelerar análises, explicar desvios e responder perguntas em linguagem natural, com revisão humana e fontes rastreáveis.">I look for opportunities to use AI to speed up analysis, explain variances and answer questions in natural language, with human review and traceable sources.</dd></div>
+    <div><dt>Data-first</dt><dd data-en="I define metrics, data ownership and quality checks before building reports or automating decisions." data-pt="Defino métricas, responsáveis e controles de qualidade antes de criar relatórios ou automatizar decisões.">I define metrics, data ownership and quality checks before building reports or automating decisions.</dd></div>
+    <div><dt><span data-en="Technical leadership" data-pt="Liderança técnica">Technical leadership</span></dt><dd data-en="I translate Finance priorities into architecture, align decisions with technology teams and guide a team of eight." data-pt="Traduzo prioridades de Finanças em arquitetura, alinho decisões com TI e oriento tecnicamente um time de oito pessoas.">I translate Finance priorities into architecture, align decisions with technology teams and guide a team of eight.</dd></div>
+  </dl>
 </aside>
 </section>
 
 <section id="metrics" class="metrics"><div class="wrap metric-grid">
 <div class="metric"><strong>17+</strong><small data-en="Years across data, finance and revenue systems" data-pt="Anos entre dados, finanças e sistemas de receita">Years across data, finance and revenue systems</small></div>
 <div class="metric"><strong>08</strong><small data-en="People in the team receiving technical direction" data-pt="Pessoas no time sob orientação técnica">People in the team receiving technical direction</small></div>
-<div class="metric"><strong>04</strong><small data-en="Core portfolio projects" data-pt="Projetos principais do portfólio">Core portfolio projects</small></div>
+<div class="metric"><strong>6</strong><small data-en="Portfolio projects" data-pt="Projetos no portfólio">Portfolio projects</small></div>
 </div></section>
 
-<section id="banking-costing" class="section wrap portfolio-section">
-  <div class="sect-head"><div><h2 data-en="Banking cost allocation" data-pt="Custeio bancário">Banking cost allocation</h2></div><p data-en="How transaction volumes, contracts and operating expenses inform the cost of each product." data-pt="Como volumes transacionais, contratos e despesas operacionais compõem o custo de cada produto.">How transaction volumes, contracts and operating expenses inform the cost of each product.</p></div>
+<section id="work" class="section wrap portfolio-section">
+<div class="sect-head reveal"><div><h2 data-en="Technical projects" data-pt="Projetos técnicos">Technical projects</h2></div><p data-en="Explore each case for its architecture, data and implementation materials." data-pt="Abra cada case para ver sua arquitetura, dados e materiais de implementação.">Explore each case for its architecture, data and implementation materials.</p></div>
+<div class="filters reveal" role="group" aria-label="Project categories"><button type="button" class="filter" data-filter="all" aria-pressed="true" data-en="All projects" data-pt="Todos">All projects</button><button type="button" class="filter" data-filter="platform" aria-pressed="false" data-en="Data platforms" data-pt="Plataformas de dados">Data platforms</button><button type="button" class="filter" data-filter="finance" aria-pressed="false" data-en="Finance analytics" data-pt="Analytics financeiro">Finance analytics</button><button type="button" class="filter" data-filter="ai" aria-pressed="false" data-en="AI & automation" data-pt="IA e automação">AI & automation</button><span class="count" id="projectCount" aria-live="polite">06 / 06</span></div>
+<div class="project-accordions">
+<details class="project-accordion" data-category="finance">
+  <summary><span class="project-summary-copy"><strong data-en="Banking cost allocation" data-pt="Custeio bancário">Banking cost allocation</strong><span data-en="Costing design for contracts, infrastructure and operations by banking product, including shared costs and idle capacity." data-pt="Custos de contratos, infraestrutura e operação por produto bancário, com regras para gastos compartilhados e capacidade ociosa.">Costing design for contracts, infrastructure and operations by banking product, including shared costs and idle capacity.</span></span><span class="project-summary-mark" aria-hidden="true"></span></summary>
+  <div class="project-expanded"><section id="banking-costing" class="case-content">
   <div class="section-jumps">
     <a href="#banking-executive-title"><span data-en="Executive view" data-pt="Visão executiva">Executive view</span></a>
     <a href="#banking-technical-title"><span data-en="Technical architecture" data-pt="Arquitetura técnica">Technical architecture</span></a>
@@ -303,21 +344,12 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
     </div>
   </figure>
 </section>
-<section id="work" class="section wrap portfolio-section">
-<div class="sect-head reveal"><div><h2 data-en="Technical projects" data-pt="Projetos técnicos">Technical projects</h2></div><p data-en="Four projects covering financial data modeling, lakehouse patterns, forecasting and AI query workflows. Each links to code and documentation." data-pt="Quatro projetos de modelagem financeira, lakehouse, previsão de custos e consultas com IA. Todos com código e documentação disponíveis.">Four projects covering financial data modeling, lakehouse patterns, forecasting and AI query workflows. Each links to code and documentation.</p></div>
-<div class="section-jumps portfolio-index"><a href="#banking-costing"><span data-en="Banking cost case ↑" data-pt="Case de custeio bancário ↑">Banking cost case ↑</span></a><a href="#macro-fpa"><span data-en="FP&amp;A macro and ABC case ↓" data-pt="Case de FP&amp;A, macro e ABC ↓">FP&amp;A macro and ABC case ↓</span></a></div>
-<div class="filters reveal" role="group" aria-label="Project categories"><button type="button" class="filter" data-filter="all" aria-pressed="true" data-en="All projects" data-pt="Todos">All projects</button><button type="button" class="filter" data-filter="platform" aria-pressed="false" data-en="Data platforms" data-pt="Plataformas de dados">Data platforms</button><button type="button" class="filter" data-filter="finance" aria-pressed="false" data-en="Finance analytics" data-pt="Analytics financeiro">Finance analytics</button><button type="button" class="filter" data-filter="ai" aria-pressed="false" data-en="AI & automation" data-pt="IA e automação">AI & automation</button><span class="count" id="projectCount" aria-live="polite">04 / 04</span></div>
-<div class="projects">
-<article class="project reveal" data-category="platform finance"><div class="art art-dbt" aria-hidden="true"><span class="big">dbt<span>.</span></span><div class="mini-flow"><span>SEED</span><i></i><span>STAGE</span><i></i><span>MART</span></div><small>SQL · TESTS · QUALITY</small></div><div class="project-content"><div class="project-meta"><span>01 / ANALYTICS ENGINEERING</span><span data-en="LEARNING LAB" data-pt="LABORATÓRIO">LEARNING LAB</span></div><h3 data-en="Finance Analytics Engineering" data-pt="Engenharia de Analytics Financeiro">Finance Analytics Engineering</h3><p data-en="Synthetic cost models with dbt, typed staging, a monthly finance mart and automated business-rule checks." data-pt="Modelos sintéticos de custos com dbt, staging tipado, mart financeiro mensal e testes de regras de negócio.">Synthetic cost models with dbt, typed staging, a monthly finance mart and automated business-rule checks.</p><div class="chips"><span>dbt</span><span>DuckDB</span><span>SQL</span><span>CI</span></div><a class="project-link" href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/dbt-finance-lab" target="_blank" rel="noopener noreferrer"><span data-en="View project and code" data-pt="Ver projeto e código">View project and code</span><b>↗</b></a></div></article>
-<article class="project reveal" data-category="platform finance"><div class="art art-lake" aria-hidden="true"><div class="layers"><span>BRONZE</span><span>SILVER</span><span>GOLD</span></div><small>DELTA · PYSPARK</small></div><div class="project-content"><div class="project-meta"><span>02 / LAKEHOUSE</span><span data-en="ARCHITECTURE DEMO" data-pt="DEMO DE ARQUITETURA">ARCHITECTURE DEMO</span></div><h3 data-en="Financial Data Pipeline" data-pt="Pipeline de Dados Financeiros">Financial Data Pipeline</h3><p data-en="Bronze / Silver / Gold processing patterns for cost ingestion, standardization and reporting-ready aggregates." data-pt="Padrões Bronze / Silver / Gold para ingestão, padronização e agregações prontas para análise.">Bronze / Silver / Gold processing patterns for cost ingestion, standardization and reporting-ready aggregates.</p><div class="chips"><span>Databricks</span><span>PySpark</span><span>Delta Lake</span></div><a class="project-link" href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/databricks-pipeline-template" target="_blank" rel="noopener noreferrer"><span data-en="View project and code" data-pt="Ver projeto e código">View project and code</span><b>↗</b></a></div></article>
-<article class="project reveal" data-category="finance"><div class="art art-forecast" aria-hidden="true"><div class="bars"><span style="height:30%"></span><span style="height:44%"></span><span style="height:39%"></span><span style="height:59%"></span><span style="height:72%"></span><span style="height:65%"></span><span style="height:92%"></span></div><small>MODEL · VALIDATE · EXPLAIN</small></div><div class="project-content"><div class="project-meta"><span>03 / FP&amp;A</span><span data-en="EXECUTABLE DEMO" data-pt="DEMO EXECUTÁVEL">EXECUTABLE DEMO</span></div><h3 data-en="IT Cost Forecasting" data-pt="Previsão de Custos de TI">IT Cost Forecasting</h3><p data-en="A reproducible forecasting and validation workflow using fictional IT expense histories and local Python." data-pt="Fluxo reproduzível de previsão e validação com despesas fictícias de TI e Python local.">A reproducible forecasting and validation workflow using fictional IT expense histories and local Python.</p><div class="chips"><span>Python</span><span>pandas</span><span>scikit-learn</span></div><a class="project-link" href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/fp-cost-forecast" target="_blank" rel="noopener noreferrer"><span data-en="View project and code" data-pt="Ver projeto e código">View project and code</span><b>↗</b></a></div></article>
-<article class="project reveal" data-category="finance ai"><div class="art art-ai" aria-hidden="true"><div class="bubble one"><i></i><i></i><i></i></div><span class="ai-star">✦</span><div class="bubble two"><i></i><i></i></div><small>GUARDRAILS · API DESIGN</small></div><div class="project-content"><div class="project-meta"><span>04 / APPLIED AI</span><span data-en="PATTERN DEMO" data-pt="DEMO DE PADRÃO">PATTERN DEMO</span></div><h3 data-en="AI-Assisted FP&A Queries" data-pt="Consultas Financeiras com IA">AI-Assisted FP&A Queries</h3><p data-en="Controlled financial query handling, auditability patterns and an offline synthetic fallback for safe exploration." data-pt="Consultas financeiras controladas, padrões de auditoria e modo offline sintético para exploração segura.">Controlled financial query handling, auditability patterns and an offline synthetic fallback for safe exploration.</p><div class="chips"><span>Python</span><span>SQL</span><span>API</span><span>Genie patterns</span></div><a class="project-link" href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/ai-agent-fpa-query" target="_blank" rel="noopener noreferrer"><span data-en="View project and code" data-pt="Ver projeto e código">View project and code</span><b>↗</b></a></div></article>
-</div><p class="disclaimer reveal" data-en="Financial records are synthetic. The macro lab supports public economic indicators." data-pt="Os dados financeiros são sintéticos. O laboratório macro usa indicadores econômicos públicos.">✦ All projects use synthetic data and are not presented as employer production deployments.</p>
-</section>
-
-<section id="macro-fpa" class="section wrap portfolio-section">
-    <div class="sect-head"><div><h2 data-en="Macroeconomic context for FP&amp;A" data-pt="Contexto macroeconômico para FP&amp;A">Macroeconomic context for FP&amp;A</h2></div>
-  <p data-en="A reproducible monthly report that combines public indicators with synthetic costs and budgets." data-pt="Relatório mensal reproduzível que combina indicadores públicos com custos e orçamento simulados.">A reproducible monthly report that combines public indicators with synthetic costs and budgets.</p></div>
+</div>
+</details>
+<details class="project-accordion" data-category="finance ai">
+  <summary><span class="project-summary-copy"><strong data-en="FP&amp;A macro and cost intelligence" data-pt="FP&amp;A macro e inteligência de custos">FP&amp;A macro and cost intelligence</strong><span data-en="Budget versus actuals, official FX and inflation, ABC analysis and automated variance commentary." data-pt="Orçamento versus realizado, câmbio e inflação oficiais, curva ABC e comentários automáticos de desvio.">Budget versus actuals, official FX and inflation, ABC analysis and automated variance commentary.</span></span><span class="project-summary-mark" aria-hidden="true"></span></summary>
+  <div class="project-expanded"><section id="macro-fpa" class="case-content">
+    <p data-en="A reproducible monthly report that combines public indicators with synthetic costs and budgets." data-pt="Relatório mensal reproduzível que combina indicadores públicos com custos e orçamento simulados.">A reproducible monthly report that combines public indicators with synthetic costs and budgets.</p></div>
   <section class="macro-result" aria-labelledby="macro-demo-title">
     <div class="macro-result-header">
       <div>
@@ -364,7 +396,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
     </div>
     <p class="macro-sources"><a href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/macro-fpa#cost-intelligence"><span data-en="Reproduce the analysis and try AI-assisted mode ↗" data-pt="Reproduzir a análise e testar o modo assistido por IA ↗">Reproduce the analysis and try AI-assisted mode ↗</span></a></p>
   </section>
-  <details class="more-lineage">
+  <details class="more-lineage" open>
     <summary><span data-en="Macro FP&amp;A diagrams and output contract" data-pt="Diagramas e contrato de saída do FP&amp;A macro">Macro FP&amp;A diagrams and output contract</span></summary>
   <figure class="macro-diagram" aria-labelledby="macro-executive">
   <figcaption id="macro-executive"><span data-en="Executive view" data-pt="Visão executiva">Executive view</span></figcaption>
@@ -421,7 +453,7 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
     </div>
     </div>
     <p class="tech-legend"><span data-en="Solid cards show processing or data. The dashed boundary marks the local runtime. Arrows show data handoffs and execution outcomes." data-pt="Os blocos mostram processos ou dados. A borda tracejada delimita a execução local. As setas mostram a passagem dos dados e os resultados da execução.">Solid cards show processing or data. The dashed boundary marks the local runtime. Arrows show data handoffs and execution outcomes.</span></p>
-    <details class="tech-contract">
+    <details class="tech-contract" open>
       <summary><span data-en="Output contract · 8 CSV columns" data-pt="Contrato da saída · 8 colunas no CSV">Output contract · 8 CSV columns</span></summary>
       <dl>
       <div><dt><code>month</code></dt><dd data-en="Unique key formatted as YYYY-MM" data-pt="Chave única no formato AAAA-MM">Unique key formatted as YYYY-MM</dd></div>
@@ -438,6 +470,27 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
   </figure>
   </details>
   <a class="project-link" href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/macro-fpa"><span data-en="View code and reproduction steps ↗" data-pt="Ver código e instruções para reproduzir ↗">View code and reproduction steps ↗</span></a>
+</section>
+</div>
+</details>
+<details class="project-accordion" data-category="platform finance" id="project-dbt">
+  <summary><span class="project-summary-copy"><strong data-en="Finance modeling with dbt" data-pt="Modelagem financeira com dbt">Finance modeling with dbt</strong><span data-en="Typed staging, a monthly finance mart and automated tests in dbt and DuckDB." data-pt="Staging tipado, mart financeiro mensal e testes automatizados com dbt e DuckDB.">Typed staging, a monthly finance mart and automated tests in dbt and DuckDB.</span></span><span class="project-summary-mark" aria-hidden="true"></span></summary>
+  <div class="project-expanded"><div class="project compact-project"><div class="art art-dbt" aria-hidden="true"><span class="big">dbt<span>.</span></span><div class="mini-flow"><span>SEED</span><i></i><span>STAGE</span><i></i><span>MART</span></div><small>SQL · TESTS · QUALITY</small></div><div class="project-content"><div class="chips"><span>dbt</span><span>DuckDB</span><span>SQL</span><span>CI</span></div><ul class="case-output"><li data-en="Synthetic costs become a typed staging view and a monthly mart in DuckDB." data-pt="Os custos sintéticos passam por uma view de staging tipada e chegam a um mart mensal no DuckDB.">Synthetic costs become a typed staging view and a monthly mart in DuckDB.</li><li data-en="Model grain is month, cost center and category. Tests cover uniqueness, required values, categories and positive monthly cost." data-pt="O grão é mês, centro de custo e categoria. Os testes cobrem unicidade, campos obrigatórios, categorias e custo mensal positivo.">Model grain is month, cost center and category. Tests cover uniqueness, required values, categories and positive monthly cost.</li></ul><div class="case-resources"><a href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/dbt-finance-lab"><span data-en="Code and documentation ↗" data-pt="Código e documentação ↗">Code and documentation ↗</span></a></div></div></div></div>
+</details>
+<details class="project-accordion" data-category="platform finance" id="project-lakehouse">
+  <summary><span class="project-summary-copy"><strong data-en="Financial data pipeline" data-pt="Pipeline de dados financeiros">Financial data pipeline</strong><span data-en="A Databricks template for Bronze, Silver and Gold cost processing." data-pt="Template Databricks com camadas Bronze, Silver e Gold para processar custos.">A Databricks template for Bronze, Silver and Gold cost processing.</span></span><span class="project-summary-mark" aria-hidden="true"></span></summary>
+  <div class="project-expanded"><div class="project compact-project"><div class="art art-lake" aria-hidden="true"><div class="layers"><span>BRONZE</span><span>SILVER</span><span>GOLD</span></div><small>DELTA · PYSPARK</small></div><div class="project-content"><div class="chips"><span>Databricks</span><span>PySpark</span><span>Delta Lake</span></div><ul class="case-output"><li data-en="Bronze ingests source records, Silver standardizes schemas and removes duplicates, and Gold creates finance aggregates." data-pt="Bronze ingere os registros, Silver padroniza schemas e trata duplicidades, e Gold gera agregados financeiros.">Bronze ingests source records, Silver standardizes schemas and removes duplicates, and Gold creates finance aggregates.</li><li data-en="Includes a notebook template, synthetic inputs and examples of export for management reporting." data-pt="Inclui template em notebook, insumos sintéticos e exemplos de exportação para relatórios gerenciais.">Includes a notebook template, synthetic inputs and examples of export for management reporting.</li></ul><div class="case-resources"><a href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/databricks-pipeline-template"><span data-en="Code and documentation ↗" data-pt="Código e documentação ↗">Code and documentation ↗</span></a><a href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/databricks-pipeline-template/notebooks/cost_pipeline_bronze_silver_gold.ipynb"><span data-en="Open notebook ↗" data-pt="Abrir notebook ↗">Open notebook ↗</span></a></div></div></div></div>
+</details>
+<details class="project-accordion" data-category="finance" id="project-forecast">
+  <summary><span class="project-summary-copy"><strong data-en="IT cost forecasting" data-pt="Previsão de custos de TI">IT cost forecasting</strong><span data-en="Forecast and validate fictional IT spend with Python and scikit-learn." data-pt="Previsão e validação de gastos fictícios de TI com Python e scikit-learn.">Forecast and validate fictional IT spend with Python and scikit-learn.</span></span><span class="project-summary-mark" aria-hidden="true"></span></summary>
+  <div class="project-expanded"><div class="project compact-project"><div class="art art-forecast" aria-hidden="true"><div class="bars"><span style="height:30%"></span><span style="height:44%"></span><span style="height:39%"></span><span style="height:59%"></span><span style="height:72%"></span><span style="height:65%"></span><span style="height:92%"></span></div><small>MODEL · VALIDATE · EXPLAIN</small></div><div class="project-content"><div class="chips"><span>Python</span><span>pandas</span><span>scikit-learn</span></div><ul class="case-output"><li data-en="The demo aggregates monthly IT spend by cost center and forecasts with linear regression using 12 months of history." data-pt="A demonstração agrega gastos mensais de TI por centro de custo e usa regressão linear com 12 meses de histórico.">The demo aggregates monthly IT spend by cost center and forecasts with linear regression using 12 months of history.</li><li data-en="It generates forecast and validation CSVs, including forecast error for review." data-pt="Gera CSVs de previsão e validação, com o erro de previsão para análise.">It generates forecast and validation CSVs, including forecast error for review.</li></ul><div class="case-resources"><a href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/fp-cost-forecast"><span data-en="Code and documentation ↗" data-pt="Código e documentação ↗">Code and documentation ↗</span></a><a href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/fp-cost-forecast/notebooks/it_cost_forecast.ipynb"><span data-en="Open notebook ↗" data-pt="Abrir notebook ↗">Open notebook ↗</span></a></div></div></div></div>
+</details>
+<details class="project-accordion" data-category="finance ai" id="project-ai">
+  <summary><span class="project-summary-copy"><strong data-en="AI-assisted FP&amp;A queries" data-pt="Consultas de FP&amp;A com IA">AI-assisted FP&amp;A queries</strong><span data-en="Natural-language questions about spend, with audit logging and a local synthetic demo." data-pt="Perguntas sobre gastos em linguagem natural, com trilha de auditoria e demonstração local sintética.">Natural-language questions about spend, with audit logging and a local synthetic demo.</span></span><span class="project-summary-mark" aria-hidden="true"></span></summary>
+  <div class="project-expanded"><div class="project compact-project"><div class="art art-ai" aria-hidden="true"><div class="bubble one"><i></i><i></i><i></i></div><span class="ai-star">✦</span><div class="bubble two"><i></i><i></i></div><small>GUARDRAILS · API DESIGN</small></div><div class="project-content"><div class="chips"><span>Python</span><span>SQL</span><span>API</span><span>Genie patterns</span></div><ul class="case-output"><li data-en="The handler illustrates a natural-language query sent through a Genie API wrapper and logged for audit." data-pt="O handler demonstra consultas em linguagem natural por um wrapper da API Genie e registra as consultas para auditoria.">The handler illustrates a natural-language query sent through a Genie API wrapper and logged for audit.</li><li data-en="The local demo uses synthetic responses. The project includes guidance for validating answers." data-pt="A demonstração local utiliza respostas sintéticas. O projeto inclui orientações para validar as respostas.">The local demo uses synthetic responses. The project includes guidance for validating answers.</li></ul><div class="case-resources"><a href="https://github.com/denisisikawa/denis-isikawa-databricks/tree/main/ai-agent-fpa-query"><span data-en="Code and documentation ↗" data-pt="Código e documentação ↗">Code and documentation ↗</span></a><a href="https://github.com/denisisikawa/denis-isikawa-databricks/blob/main/ai-agent-fpa-query/notebooks/genie_query_handler.ipynb"><span data-en="Open notebook ↗" data-pt="Abrir notebook ↗">Open notebook ↗</span></a></div></div></div></div>
+</details>
+</div>
+<p class="disclaimer" data-en="Financial records are synthetic. The macro case also uses public economic indicators." data-pt="Os dados financeiros são sintéticos. O case macro também utiliza indicadores econômicos públicos.">Financial records are synthetic. The macro case also uses public economic indicators.</p>
 </section>
 <section id="story" class="section wrap portfolio-section">
 <div class="sect-head reveal"><div><h2 data-en="Professional experience" data-pt="Experiência profissional">Professional experience</h2></div><p data-en="Experience in FP&A analytics, revenue assurance, billing, systems integration and data transformation." data-pt="Experiência em FP&A, Revenue Assurance, faturamento, integração de sistemas e transformação de dados.">Experience in FP&A analytics, revenue assurance, billing, systems integration and data transformation.</p></div>
@@ -496,7 +549,7 @@ mobile.querySelectorAll("a").forEach(function(a){a.addEventListener("click",clos
 function markCurrentLink(){
  const hash=location.hash;
  const target=hash==="#banking-costing"||hash.startsWith("#banking-")?"#work":
-   hash==="#work"||hash==="#macro-fpa"||hash.startsWith("#macro-")?"#work":
+   hash==="#work"||hash==="#macro-fpa"||hash.startsWith("#macro-")||hash.startsWith("#project-")?"#work":
    ["#story","#skills","#approach"].includes(hash)?"#story":hash;
  document.querySelectorAll(".nav a,.mobile-nav a").forEach(function(a){
    if(a.hash===target)a.setAttribute("aria-current","location");else a.removeAttribute("aria-current");
@@ -505,8 +558,18 @@ function markCurrentLink(){
 window.addEventListener("hashchange",markCurrentLink);
 markCurrentLink();
 document.addEventListener("keydown",function(e){if(e.key==="Escape"&&mobile.classList.contains("open")){closeMenu();menu.focus()}});
-const cards=Array.from(document.querySelectorAll(".project"));
+const cards=Array.from(document.querySelectorAll(".project-accordion"));
 document.querySelectorAll("[data-filter]").forEach(function(b){b.addEventListener("click",function(){const type=b.dataset.filter;let n=0;cards.forEach(function(card){const show=type==="all"||card.dataset.category.split(" ").includes(type);card.hidden=!show;if(show)n++});document.querySelectorAll("[data-filter]").forEach(function(x){x.setAttribute("aria-pressed",String(x===b))});document.getElementById("projectCount").textContent=String(n).padStart(2,"0")+" / "+String(cards.length).padStart(2,"0")})});
+function revealLinkedProject(){
+ const target=document.getElementById(location.hash.slice(1));
+ if(!target||!target.closest(".project-accordion"))return;
+ const project=target.closest(".project-accordion");
+ if(project.hidden)document.querySelector('[data-filter="all"]').click();
+ for(let details=target.closest("details");details;details=details.parentElement.closest("details"))details.open=true;
+ requestAnimationFrame(function(){target.scrollIntoView({block:"start"})});
+}
+window.addEventListener("hashchange",revealLinkedProject);
+revealLinkedProject();
 let scheduled=false;window.addEventListener("scroll",function(){if(scheduled)return;scheduled=true;requestAnimationFrame(function(){const total=document.documentElement.scrollHeight-innerHeight;document.getElementById("progress").style.width=(total>0?Math.min(100,scrollY/total*100):0)+"%";scheduled=false})},{passive:true});
 const reveals=document.querySelectorAll(".reveal"),reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;if(!reduced&&"IntersectionObserver"in window){const io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target)}})},{threshold:.06});reveals.forEach(function(el){io.observe(el)})}else reveals.forEach(function(el){el.classList.add("visible")});
 document.getElementById("year").textContent=String(new Date().getFullYear());
