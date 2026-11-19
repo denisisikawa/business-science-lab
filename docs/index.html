@@ -253,10 +253,10 @@ a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}a:focus-
 .project-accordion[open]{grid-column:1/-1}
 .project-accordion{overflow:hidden;border-color:#795269;background:#241625}
 .project-accordion>summary{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:start;gap:10px 12px;padding:12px;border-radius:13px}
-.project-cover-frame{position:relative;isolation:isolate;display:block;grid-column:1/-1;overflow:hidden;border-radius:8px;border:1px solid #6b445a;background:#261624}
+.project-cover-frame{position:relative;isolation:isolate;display:block;grid-column:1/-1;overflow:hidden;border-radius:8px;border:1px solid #603b50;background:#261624;filter:contrast(1.08) brightness(.97)}
 .project-cover{display:block;width:100%;height:auto;aspect-ratio:640/265;object-fit:cover}
 .project-cover-frame::after{content:"";position:absolute;inset:0;pointer-events:none;background:#713750;mix-blend-mode:color;opacity:.83}
-@media(forced-colors:active){.project-cover-frame::after{display:none}}
+@media(forced-colors:active){.project-cover-frame{filter:none}.project-cover-frame::after{display:none}}
 .project-summary-copy{grid-column:1/-1;gap:4px;padding:1px 2px}
 .project-summary-action{grid-column:2;justify-self:end;display:inline-flex;align-items:center;gap:7px;font-weight:720;font-size:.8rem;color:#f5d4b1;white-space:nowrap}
 .project-summary-mark{flex:0 0 22px;height:22px;font-size:.88rem}
