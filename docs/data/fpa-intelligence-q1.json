@@ -1,0 +1,67 @@
+{
+  "period": [
+    "2025-01",
+    "2025-02",
+    "2025-03"
+  ],
+  "actual": "307000",
+  "budget": "304000",
+  "variance": "3000",
+  "variance_pct": "0.9868421052631578947368421053",
+  "overruns": "14000",
+  "offsets": "-11000",
+  "categories": [
+    {
+      "category": "Cloud",
+      "actual": "141000",
+      "budget": "130000",
+      "variance": "11000",
+      "class": "A",
+      "share": "45.92833876221498371335504886",
+      "cumulative_share": "45.92833876221498371335504886"
+    },
+    {
+      "category": "Licenças",
+      "actual": "81000",
+      "budget": "81000",
+      "variance": "0",
+      "class": "A",
+      "share": "26.38436482084690553745928339",
+      "cumulative_share": "72.31270358306188925081433225"
+    },
+    {
+      "category": "Serviços",
+      "actual": "53000",
+      "budget": "64000",
+      "variance": "-11000",
+      "class": "A",
+      "share": "17.26384364820846905537459283",
+      "cumulative_share": "89.57654723127035830618892508"
+    },
+    {
+      "category": "Conectividade",
+      "actual": "23000",
+      "budget": "20000",
+      "variance": "3000",
+      "class": "B",
+      "share": "7.491856677524429967426710098",
+      "cumulative_share": "97.06840390879478827361563518"
+    },
+    {
+      "category": "Outros",
+      "actual": "9000",
+      "budget": "9000",
+      "variance": "0",
+      "class": "C",
+      "share": "2.931596091205211726384364821",
+      "cumulative_share": "100"
+    }
+  ],
+  "commentary": {
+    "source": "rules",
+    "text": {
+      "en": "BRL 3,000.00 above budget. Overruns of BRL 14,000.00 were offset by BRL 11,000.00 in favorable variances. Cloud had the largest overrun at BRL 11,000.00. Serviços was furthest below budget at BRL 11,000.00. Class A accounts for 89.6% of actual costs. Cloud — Compare billed units and unit rates with the budget assumptions. The available data identifies the variance contribution; the operational cause requires evidence.",
+      "pt": "R$ 3.000,00 acima do orçamento. Desvios desfavoráveis de R$ 14.000,00 foram compensados por R$ 11.000,00 abaixo do orçamento. Cloud teve o maior desvio desfavorável, de R$ 11.000,00. Serviços foi a categoria mais abaixo do orçamento, em R$ 11.000,00. A classe A concentra 89,6% dos custos realizados. Cloud — Compare o volume faturado e os preços unitários com as premissas do orçamento. Os dados identificam a contribuição para o desvio. A causa operacional requer evidência."
+    }
+  }
+}
