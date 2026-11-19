@@ -23,7 +23,7 @@ class Reader(HTMLParser):
             assert "data-en" in attributes and "data-pt" in attributes, "Missing a locale counterpart"
             assert attributes["data-en"] and attributes["data-pt"], "Empty translation"
             self.translations += 1
-        if "class" in attributes and tag == "article" and "project" in attributes["class"].split():
+        if "class" in attributes and tag == "details" and "project-accordion" in attributes["class"].split():
             self.cards += 1
         if attributes.get("href", "").startswith("http"):
             self.outgoing.append(attributes["href"])
@@ -32,7 +32,7 @@ reader = Reader()
 reader.feed(page)
 assert len(reader.ids) == len(set(reader.ids)), "Duplicate IDs"
 assert all(x in reader.ids for x in reader.fragments), "Broken in-page navigation link"
-assert reader.cards == 4, "Expected four featured projects"
+assert reader.cards == 6, "Expected six expandable projects"
 assert reader.translations >= 90, "Locale coverage decreased"
 assert "prefers-reduced-motion:reduce" in page, "Reduced-motion support missing"
 assert 'name="viewport"' in page, "Viewport missing"
