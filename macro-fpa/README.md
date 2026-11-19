@@ -44,6 +44,10 @@ python macro-fpa/intelligence.py --costs macro-fpa/example/costs.csv --detail ma
 - **Variance bridge** reports actual minus budget, total unfavorable and favorable contributions, and percentage variance when the budget is positive. The drivers are arithmetic contributions. Evidence such as invoice lines, service usage, rates and accrual timing is needed to verify an operational cause.
 - **Commentary** produces English and Portuguese from the same calculated facts. The portfolio [JSON example](../docs/data/fpa-intelligence-q1.json) uses the default rules mode.
 
+### Banking cost-to-serve methodology
+
+The [card dispute costing design (PT-BR)](BANKING_COSTING.md) specifies direct assignment, TDABC, technology allocation, capacity reconciliation and a worked variance bridge. The worked example uses synthetic inputs and describes a proposed extension of the laboratory.
+
 ### AI-assisted commentary
 
 With your own `OPENAI_API_KEY` in the environment, add `--commentary openai` to the command. You can override the default model with `--model`. This opts into an OpenAI Responses API call with the variance summary and category labels. Use synthetic inputs for the public demo. Requests may incur API charges.
