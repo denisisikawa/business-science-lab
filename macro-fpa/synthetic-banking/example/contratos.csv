@@ -1,0 +1,10 @@
+contrato_id,objeto,fornecedor,area_dona_id,categoria,inicio,fim,mensalidade_base_brl,tarifa_unitaria_brl,evento_faturavel
+C01,Processador de cartoes,Fornecedor Ficticio C01,A01,sistemas,2025-01,2025-12,48000,0.055,AUTORIZACAO_CARTAO
+C02,Motor de pagamentos instantaneos,Fornecedor Ficticio C02,A02,sistemas,2025-01,2025-12,36000,0.028,PIX_ENVIADO
+C03,Motor de credito,Fornecedor Ficticio C03,A03,sistemas,2025-01,2025-12,42000,0.410,ANALISE_PROPOSTA
+C04,Infraestrutura cloud compartilhada,Fornecedor Ficticio C04,A04,cloud,2025-01,2025-12,54000,0,
+C05,Suite interna de produtividade,Fornecedor Ficticio C05,A04,licencas,2025-01,2025-12,17500,0,
+C06,Links WAN compartilhados,Fornecedor Ficticio C06,A05,telecom,2025-01,2025-12,28500,0,
+C07,Espaco das operacoes bancarias,Fornecedor Ficticio C07,A06,aluguel,2025-01,2025-12,76000,0,
+C08,Tronco dedicado a Cartoes,Fornecedor Ficticio C08,A01,telecom,2025-01,2025-12,6300,0,
+C09,Escritorio corporativo,Fornecedor Ficticio C09,A07,aluguel,2025-01,2025-12,31000,0,
