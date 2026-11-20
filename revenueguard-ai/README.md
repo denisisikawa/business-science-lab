@@ -1,7 +1,7 @@
 # RevenueGuard AI
 ## Enterprise Finance Data Simulator & Revenue Assurance Lab
 
-**Status: v0.1 — development / foundation.** Independent synthetic-data project. No employer data, infrastructure, claims of realized savings, or production deployment.
+**Status: v0.1 — experimental sandbox.** Independent synthetic-data project. No employer data, infrastructure, claims of realized savings, or production deployment.
 
 ### Business problem
 A fictional B2B technology provider sells recurring software licenses, managed support, and consumption-based cloud services. CRM, contracts, service fulfillment, billing and general ledger systems can disagree. Revenue assurance reconciles independent evidence and prioritizes exceptions for investigation.
@@ -45,6 +45,11 @@ python -m unittest discover -s tests -v
 ```
 
 The generator writes data locally. Do not commit generated datasets or credentials. The full-scale target is 10,000 customers, 12,000 contracts, 25,000 items and approximately one million total rows; this is a roadmap target, not a measured result. The initial generator uses two items per contract and one contract per customer.
+
+### External testing
+- [Browser sandbox (GitHub Pages)](https://denisisikawa.github.io/denis-isikawa-databricks/revenueguard-sandbox/) — standalone Python-in-browser demonstration; public, unlinked from the portfolio landing page.
+- [Deployment and acceptance tests](docs/external-testing.md) — optional Streamlit Community Cloud deployment and local testing.
+- Deterministic financial controls now compare expected charges and invoice items, rank exceptions and evaluate against restricted synthetic labels. No AI inference is included yet.
 
 ### Technical documentation
 - [Data contract and financial rules](docs/data-model.md)
