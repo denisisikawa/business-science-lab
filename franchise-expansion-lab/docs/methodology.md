@@ -31,6 +31,7 @@ Prospect: identify decision-maker and verify company profile. Qualified: check r
 - V0.2 per-partner staffing, monthly capacity and radius overrides; future work: historical events, cohorts, aging, retail opportunity funnel and richer overlap diagnostics.
 - V0.3 optional governed public market data, road access / travel-time analysis, CRM integration, contract workflow and unit economics.
 - V0.4 evidence-based decision support, cost monitoring and human-reviewed AI recommendations.
+- Planned cross-cutting work: sales incentives and gamification, partner-engagement scorecards, improvement plans, customer-continuity safeguards and incremental territory-reallocation ROI. See [franchise network governance](franchise-network-governance.md).
 
 ## Acceptance criteria
 Deterministic seed; no double count in exclusive allocation; assigned leads ≤ filtered leads; assigned ticket sum ≤ total ticket sum; zero radius yields zero coverage for this generated scenario; lost partners excluded; weighted and signed projected revenue separated. User controls are scenario assumptions. Validate browser behavior before public portfolio release.
