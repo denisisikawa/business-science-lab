@@ -30,4 +30,7 @@ The browser-only demo uses a seeded synthetic population with approximate geogra
 - Forecast: explicit per-partner headcount, sales FTE, radius, productivity and conversion; expected sales limited by territorial demand and monthly capacity; end-horizon MRR and open probability-weighted pipeline separated.
 - Kanban: stage changes in memory during current session only. Signed and lost are terminal states in the demo; users may reclassify for scenario testing.
 
+## Planned extension: franchise network governance
+A mature network needs sales campaigns and gamification, capacity-adjusted performance monitoring, and structured improvement plans for partners showing persistent commercial disengagement. Evaluate the incremental ROI of transferring new-sales responsibility or, where necessary, customer support to another qualified regional partner, with stronger measurable commercial commitments and safeguards for existing customers. See [franchise network governance and territory reallocation](docs/franchise-network-governance.md) for requirements, contract considerations and the proposed ROI model. This extension is not yet implemented.
+
 See [methodology](docs/methodology.md). A legal Brazilian franchise model, distribution agreement, licensing terms and commercial due diligence require separate review. This demo does not establish an actual franchise relationship.
