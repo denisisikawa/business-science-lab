@@ -49,3 +49,7 @@ python macro-fpa/synthetic-banking/generate.py --year 2025 --seed 42 --output da
 ```
 
 A semente controla os volumes realizados. O gerador produz as tabelas de entrada para exercícios de custeio. A aplicação das regras de rateio aos valores mensais é uma etapa posterior.
+
+## Sandbox interativo
+
+[Banking Cost Intelligence — Cost Impact Explorer](https://denisisikawa.github.io/denis-isikawa-databricks/banking-cost-sandbox/) aplica as regras desta massa sintética, apresenta a ponte de variação por dimensão e permite investigar origens, testar premissas e conferir a conciliação. [Documentação e testes](COST_IMPACT_EXPLORER.md).
