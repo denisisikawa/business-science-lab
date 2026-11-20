@@ -1,0 +1,21 @@
+name: RevenueGuard Sandbox CI
+on:
+  push:
+    paths:
+      - 'revenueguard-ai/**'
+      - 'docs/revenueguard-sandbox/**'
+      - '.github/workflows/revenueguard-ci.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m unittest discover -s tests -v
+        working-directory: revenueguard-ai
+      - run: python -m compileall -q revenueguard-ai
