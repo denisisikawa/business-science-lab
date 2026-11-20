@@ -14,9 +14,12 @@ PRODUCTS = [
 ]
 
 
-def generate(output: Path, customers: int = 100, months: int = 12, seed: int = 42):
+def generate(output: Path, customers: int = 100, months: int = 12, seed: int = 42, anomaly_rate: float = 0.035):
     if customers < 1 or not 1 <= months <= 120:
         raise ValueError("customers must be positive; months must be 1..120")
+    if not 0 <= anomaly_rate <= 1:
+        raise ValueError('anomaly_rate must be between 0 and 1')
+    scale = anomaly_rate / .035
     rng = random.Random(seed)
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
@@ -64,11 +67,11 @@ def generate(output: Path, customers: int = 100, months: int = 12, seed: int = 4
                     expected = price * delivered
                     draw = rng.random()
                     defect, actual = None, expected
-                    if draw < .01:
+                    if draw < .01 * scale:
                         defect, actual = "MISSING_BILLING", 0
-                    elif draw < .03:
+                    elif draw < .03 * scale:
                         defect, actual = "UNDERBILLING", expected * 80 // 100
-                    elif draw < .035:
+                    elif draw < .035 * scale:
                         defect, actual = "OVERBILLING", expected * 125 // 100
                     key = f"{item_id}-{period}"
                     if defect != "MISSING_BILLING":
@@ -76,7 +79,7 @@ def generate(output: Path, customers: int = 100, months: int = 12, seed: int = 4
                         emit("journal_entries", f"J-{key}", f"I-{key}", period, actual)
                     if defect:
                         emit("evaluation/ground_truth", f"A-{key}", item_id, period, defect, expected, actual, expected - actual)
-    manifest = {"version": "0.1", "seed": seed, "customers": customers, "months": months, "currency": "USD", "amount_unit": "cent", "row_counts": counts}
+    manifest = {"version": "0.1", "seed": seed, "customers": customers, "months": months, "currency": "USD", "amount_unit": "cent", "anomaly_rate": anomaly_rate, "row_counts": counts}
     (output / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
     return manifest
 
