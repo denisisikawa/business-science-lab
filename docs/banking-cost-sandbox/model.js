@@ -10,7 +10,7 @@ function compareBank(d,base,current){
  function add(id,dest,channel,event,baseValue,currentValue,changes,evidence){
    const x=a[id];const all=Object.fromEntries(effects.map(e=>[e,changes[e]||0]));const delta=currentValue-baseValue;
    if(sum(Object.values(all))!==delta)throw Error("Bridge mismatch "+id+" "+dest);
-   rows.push({id,product:dest,area:x.area_dona_id,category:x.categoria,nature:x.natureza,contract:x.contrato_id||id,driver:x.direcionador,channel,event,description:x.descricao,base:baseValue,current:currentValue,delta,effects:all,evidence});
+   rows.push({id,product:dest,area:x.area_dona_id,category:x.categoria,nature:x.natureza,contract:x.contrato_id||id,supplier:d.contratos.find(c=>c.contrato_id===x.contrato_id)?.fornecedor||"INTERNAL",driver:x.direcionador,channel,event,description:x.descricao,base:baseValue,current:currentValue,delta,effects:all,evidence});
  }
  function alloc(total,weights){
    const denom=sum(weights);if(denom<=0)throw Error("Missing or zero allocation driver");
@@ -80,15 +80,19 @@ function simulateBank(d,selection,params){
  const money=x=>(Math.round(x*100)/100).toFixed(2);
  const cost=clone.custos.find(r=>chosen(r)&&r.custo_id===params.id);
  if(!cost)throw Error("Unknown scenario cost");const clamp=(v,min,max)=>Math.min(max,Math.max(min,Number(v)||0));
- const fixed=clamp(params.fixed,-100,200)/100, variable=clamp(params.variable,-100,200)/100, driver=clamp(params.driver,-100,200)/100, practical=clamp(params.practical,-90,200)/100, time=clamp(params.time,-100,200)/100;
+ const volume=clamp(params.volume,-100,200)/100, fixed=clamp(params.fixed,-100,200)/100, variable=clamp(params.variable,-100,200)/100, driver=clamp(params.driver,-100,200)/100, practical=clamp(params.practical,-90,200)/100, time=clamp(params.time,-100,200)/100;
  cost.valor_fixo_brl=money(Number(cost.valor_fixo_brl)*(1+fixed));cost.valor_variavel_brl=money(Number(cost.valor_variavel_brl)*(1+variable));cost.valor_total_brl=money(Number(cost.valor_fixo_brl)+Number(cost.valor_variavel_brl));
  if(cost.direcionador==="minutos_tdabc"){
    const cap=clone.capacidade.find(r=>chosen(r)&&r.custo_id===cost.custo_id);
    const records=clone.volumetria.filter(r=>chosen(r)&&r.evento.startsWith("CONTESTACAO")&&r.minutos_ativos_por_caso!=="");
+   for(const r of records)r.volume=String(Math.max(0,Math.round(Number(r.volume)*(1+volume))));
    for(const r of records)r.minutos_ativos_por_caso=String(Math.round(Number(r.minutos_ativos_por_caso)*(1+time)*10000)/10000);
    const used=records.reduce((s,r)=>s+Number(r.volume)*Number(r.minutos_ativos_por_caso),0);
    cap.capacidade_pratica_minutos=String(Math.max(1,Math.round(Number(cap.capacidade_pratica_minutos)*(1+practical))));cap.minutos_consumidos=String(used);
    const drv=clone.direcionadores.find(r=>chosen(r)&&r.direcionador==="minutos_tdabc"&&r.produto_id==="P01");if(drv)drv.quantidade=String(used);
+ } else if(cost.natureza==="direto") {
+   const ref=clone.contratos.find(r=>r.contrato_id===cost.contrato_id);
+   if(ref?.evento_faturavel){const priorQ=Number(cost.quantidade_faturavel), priorCharge=Number(d.custos.find(r=>pick(r)&&r.custo_id===cost.custo_id).valor_variavel_brl);const records=clone.volumetria.filter(r=>chosen(r)&&r.produto_id===cost.produto_direto_id&&r.evento===ref.evento_faturavel);for(const r of records)r.volume=String(Math.max(0,Math.round(Number(r.volume)*(1+volume))));const q=records.reduce((s,r)=>s+Number(r.volume),0),rate=priorQ>0?priorCharge/priorQ:Number(ref.tarifa_unitaria_brl);cost.quantidade_faturavel=String(q);cost.valor_variavel_brl=money(q*rate*(1+variable));cost.valor_total_brl=money(Number(cost.valor_fixo_brl)+Number(cost.valor_variavel_brl));}
  } else if(cost.natureza==="indireto") {
    const drv=clone.direcionadores.find(r=>chosen(r)&&r.direcionador===cost.direcionador&&r.produto_id===params.product);
    if(drv)drv.quantidade=String(Number(drv.quantidade)*(1+driver));
