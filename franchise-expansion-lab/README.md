@@ -19,7 +19,7 @@ flowchart LR
 ```
 
 ## Demo
-[Open interactive sandbox](https://denisisikawa.github.io/denis-isikawa-databricks/franchise-expansion-sandbox/)
+[Open interactive sandbox](https://denisisikawa.github.io/business-science-lab/franchise-expansion-sandbox/)
 
 The browser-only demo uses a seeded synthetic population with approximate geographic anchors across Greater São Paulo, straight-line distance calculations, territory coverage, opportunity allocation, an editable partner Kanban, per-partner staffing and coverage parameters, capacity bottlenecks and indicative revenue projections. No map API, credentials, server or paid hosting required. The coordinate plot is schematic, not a road or administrative boundary map.
 

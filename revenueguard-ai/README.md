@@ -47,7 +47,7 @@ python -m unittest discover -s tests -v
 The generator writes data locally. Do not commit generated datasets or credentials. The full-scale target is 10,000 customers, 12,000 contracts, 25,000 items and approximately one million total rows; this is a roadmap target, not a measured result. The initial generator uses two items per contract and one contract per customer.
 
 ### External testing
-- [Browser sandbox (GitHub Pages)](https://denisisikawa.github.io/denis-isikawa-databricks/revenueguard-sandbox/) — standalone Python-in-browser demonstration; public, unlinked from the portfolio landing page.
+- [Browser sandbox (GitHub Pages)](https://denisisikawa.github.io/business-science-lab/revenueguard-sandbox/) — standalone Python-in-browser demonstration; public, unlinked from the portfolio landing page.
 - [Deployment and acceptance tests](docs/external-testing.md) — optional Streamlit Community Cloud deployment and local testing.
 - Deterministic financial controls now compare expected charges and invoice items, rank exceptions and evaluate against restricted synthetic labels. No AI inference is included yet.
 

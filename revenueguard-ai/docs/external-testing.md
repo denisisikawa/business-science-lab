@@ -1,13 +1,13 @@
 # External testing
 
 ## Browser sandbox
-https://denisisikawa.github.io/denis-isikawa-databricks/revenueguard-sandbox/
+https://denisisikawa.github.io/business-science-lab/revenueguard-sandbox/
 
 The standalone GitHub Pages experiment runs the Python generator and reconciliation engine via Pyodide 0.27.7. It is deliberately unlinked from the portfolio landing page and uses a noindex directive (not access control). Requires network access to jsDelivr on initial load. The HTML embeds snapshots of simulator.py and sandbox_engine.py; regenerate those definitions whenever the engine changes. Browser memory and CPU constrain the largest runs; choose 100 or 1,000 customers on mobile. No backend or LLM is used.
 
 ## Optional Streamlit deployment
 Visit https://share.streamlit.io/ and sign in with GitHub. Create a public app from:
-- Repository: denisisikawa/denis-isikawa-databricks
+- Repository: denisisikawa/business-science-lab
 - Branch: main
 - Main file: revenueguard-ai/app.py
 

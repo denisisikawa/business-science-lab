@@ -1,6 +1,6 @@
 # Banking Cost Intelligence — Cost Impact Explorer v0.1
 
-[Open the browser sandbox](https://denisisikawa.github.io/denis-isikawa-databricks/banking-cost-sandbox/)
+[Open the browser sandbox](https://denisisikawa.github.io/business-science-lab/banking-cost-sandbox/)
 
 ## Objective and boundaries
 Explain increases and decreases in management costs by dimension, trace the amounts back to original synthetic source records, and reconcile the allocation and variance bridge to integer BRL cents. This is an independent fictional representation of banking scenarios; no employer data or financial outcomes are used. It extends [Banking costing methodology](../BANKING_COSTING.md) and uses the existing [synthetic banking tables](README.md). No paid service, API or generative AI is required.

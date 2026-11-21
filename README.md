@@ -8,12 +8,12 @@
 
 I use data and AI to explain cost variances, identify revenue leakage, and support financial planning decisions.
 
-[**Explore the work ↓**](#featured-projects) &nbsp;·&nbsp; [**Architecture ↓**](https://denisisikawa.github.io/denis-isikawa-databricks/#macro-fpa) &nbsp;·&nbsp; [**Connect on LinkedIn ↗**](https://www.linkedin.com/in/denisisikawa)
+[**Explore the work ↓**](#featured-projects) &nbsp;·&nbsp; [**Architecture ↓**](https://denisisikawa.github.io/business-science-lab/#macro-fpa) &nbsp;·&nbsp; [**Connect on LinkedIn ↗**](https://www.linkedin.com/in/denisisikawa)
 
 <br/>
 
-[![Python CI](https://github.com/denisisikawa/denis-isikawa-databricks/actions/workflows/python-ci.yml/badge.svg)](https://github.com/denisisikawa/denis-isikawa-databricks/actions/workflows/python-ci.yml)
-[![dbt Finance CI](https://github.com/denisisikawa/denis-isikawa-databricks/actions/workflows/dbt-finance-ci.yml/badge.svg)](https://github.com/denisisikawa/denis-isikawa-databricks/actions/workflows/dbt-finance-ci.yml)
+[![Python CI](https://github.com/denisisikawa/business-science-lab/actions/workflows/python-ci.yml/badge.svg)](https://github.com/denisisikawa/business-science-lab/actions/workflows/python-ci.yml)
+[![dbt Finance CI](https://github.com/denisisikawa/business-science-lab/actions/workflows/dbt-finance-ci.yml/badge.svg)](https://github.com/denisisikawa/business-science-lab/actions/workflows/dbt-finance-ci.yml)
 [![Portfolio data scope](https://img.shields.io/badge/Data-Synthetic%20%2B%20public-56DCC5?style=flat-square&labelColor=122235)](#data-ethics--scope)
 
 </div>
@@ -87,7 +87,7 @@ Four core projects use **synthetic financial records** and run independently of 
 
 ## Macro context for FP&A
 
-The [macro FP&A lab](macro-fpa/README.md) enriches synthetic cost and budget data with monthly USD/BRL from BCB SGS and IPCA from IBGE SIDRA. The report shows budget variance, indicative USD costs and costs in constant BRL. The portfolio includes [executive and technical architecture views](https://denisisikawa.github.io/denis-isikawa-databricks/#macro-fpa).
+The [macro FP&A lab](macro-fpa/README.md) enriches synthetic cost and budget data with monthly USD/BRL from BCB SGS and IPCA from IBGE SIDRA. The report shows budget variance, indicative USD costs and costs in constant BRL. The portfolio includes [executive and technical architecture views](https://denisisikawa.github.io/business-science-lab/#macro-fpa).
 
 ---
 

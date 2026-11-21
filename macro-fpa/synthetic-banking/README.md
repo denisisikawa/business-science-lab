@@ -52,4 +52,4 @@ A semente controla os volumes realizados. O gerador produz as tabelas de entrada
 
 ## Sandbox interativo
 
-[Banking Cost Intelligence — Cost Impact Explorer](https://denisisikawa.github.io/denis-isikawa-databricks/banking-cost-sandbox/) aplica as regras desta massa sintética, apresenta a ponte de variação por dimensão e permite investigar origens, testar premissas e conferir a conciliação. [Documentação e testes](COST_IMPACT_EXPLORER.md).
+[Banking Cost Intelligence — Cost Impact Explorer](https://denisisikawa.github.io/business-science-lab/banking-cost-sandbox/) aplica as regras desta massa sintética, apresenta a ponte de variação por dimensão e permite investigar origens, testar premissas e conferir a conciliação. [Documentação e testes](COST_IMPACT_EXPLORER.md).
