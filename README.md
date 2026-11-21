@@ -4,9 +4,9 @@
 
 <br/>
 
-**FINANCE TECHNOLOGY · DATA ARCHITECTURE · ANALYTICS ENGINEERING**
+**Business Science Lab · Business Science with Data & AI**
 
-I connect financial processes, data platforms and automation — turning complex inputs into reliable decision systems.
+I use data and AI to explain cost variances, identify revenue leakage, and support financial planning decisions.
 
 [**Explore the work ↓**](#featured-projects) &nbsp;·&nbsp; [**Architecture ↓**](https://denisisikawa.github.io/denis-isikawa-databricks/#macro-fpa) &nbsp;·&nbsp; [**Connect on LinkedIn ↗**](https://www.linkedin.com/in/denisisikawa)
 

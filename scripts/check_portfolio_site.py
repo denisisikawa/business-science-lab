@@ -32,7 +32,7 @@ reader = Reader()
 reader.feed(page)
 assert len(reader.ids) == len(set(reader.ids)), "Duplicate IDs"
 assert all(x in reader.ids for x in reader.fragments), "Broken in-page navigation link"
-assert reader.cards == 6, "Expected six expandable projects"
+assert reader.cards == 8, "Expected eight expandable projects"
 assert reader.translations >= 90, "Locale coverage decreased"
 assert "prefers-reduced-motion:reduce" in page, "Reduced-motion support missing"
 assert 'name="viewport"' in page, "Viewport missing"
