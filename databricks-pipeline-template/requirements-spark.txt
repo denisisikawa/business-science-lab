@@ -1,0 +1,3 @@
+# Local Spark transformation checks require Java 17. Databricks supplies its own runtime.
+pyspark>=3.5,<3.6
+pytest>=8
