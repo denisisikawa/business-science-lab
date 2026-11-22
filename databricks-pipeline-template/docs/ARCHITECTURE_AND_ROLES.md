@@ -10,9 +10,11 @@ Esta é uma **arquitetura de referência proposta**, com dados fictícios, indep
 
 Setas contínuas mostram dados ou etapas de entrega; pontilhadas mostram interação e orientação. As interfaces indicadas são pontos de acesso funcionais, não URLs de serviços já disponibilizados.
 
+**Legenda visual:** cápsulas com 👤 representam pessoas/perfis; 👥 representa um grupo de especialistas. Retângulos representam sistemas, artefatos ou atividades; cilindros representam dados e losangos representam decisões. Vários perfis podem ser exercidos pela mesma pessoa, respeitando os limites de acesso e a revisão independente definidos neste documento.
+
 ```mermaid
 flowchart TB
-    A[Analista integrado de negocio, FP&A e dados]
+    A(["👤 Analista integrado<br/>Negocio, FP&A e dados"])
     subgraph UI[Interfaces de consumo propostas]
         PBI[Power BI - relatorios e modelo semantico]
         GEN[Genie - perguntas sobre dados aprovados]
@@ -24,8 +26,8 @@ flowchart TB
         OPS[Jobs e logs - operacao autorizada]
     end
     subgraph RULES[Conhecimento especializado versionado]
-        BUS[Especialista de negocio - politicas financeiras]
-        DATA[Especialista de dados - contratos e engenharia]
+        BUS(["👤 Especialista de negocio<br/>Politicas financeiras"])
+        DATA(["👤 Especialista de dados<br/>Contratos e engenharia"])
         SK[Skills revisadas e versionadas]
         BUS --> SK
         DATA --> SK
@@ -71,15 +73,15 @@ O desenho abaixo é uma proposta de organização e capacitação, **não uma pr
 
 ```mermaid
 flowchart TD
-    N[Analista de negocio - dominio e indicadores]
-    D[Analista de dados - SQL, modelos e qualidade]
+    N(["👤 Analista de negocio<br/>Dominio e indicadores"])
+    D(["👤 Analista de dados<br/>SQL, modelos e qualidade"])
     F[Formacao em FP&A - planejamento, custos e resultado]
-    N --> H[Analista integrado - negocio, FP&A e dados]
+    N --> H(["👤 Analista integrado<br/>Negocio, FP&A e dados"])
     D --> H
     F --> H
     AI[Genie analitico e Genie Code] -. apoio .-> H
-    EB[Especialista de negocio - regras, casos e criterios de aceite]
-    ED[Especialista de dados - contratos, testes e operacao]
+    EB(["👤 Especialista de negocio<br/>Regras, casos e criterios de aceite"])
+    ED(["👤 Especialista de dados<br/>Contratos, testes e operacao"])
     EB --> SB[Skills e exemplos financeiros]
     ED --> SD[Skills e padroes de engenharia]
     SB --> V[Revisao, testes e versionamento das skills]

@@ -32,7 +32,8 @@ Procedimento baseado na [documentação oficial de skills do Genie Code](https:/
 
 ```mermaid
 flowchart TD
-    A[Profissional descreve a necessidade] --> B[Genie Code consulta a skill e o código]
+    P(["👤 Profissional"]) --> A[Descrever a necessidade]
+    A --> B[Genie Code consulta a skill e o código]
     B --> C[Explicitar regra e impacto]
     C --> D[Alterar código e testes em desenvolvimento]
     D --> E[Executar testes e reconciliações]
@@ -41,6 +42,8 @@ flowchart TD
     F -->|Sim| G[Revisão humana e PR]
     G --> H[Esteira autorizada de implantação]
 ```
+
+**Legenda:** a cápsula com 👤 identifica a pessoa; os retângulos identificam as atividades do fluxo.
 
 ## Solicitações reproduzíveis
 

@@ -15,10 +15,10 @@ enforce boundaries.
 
 ```mermaid
 flowchart LR
-    A[Integrated analyst - business, FP&A and data]
+    A(["👤 Integrated analyst<br/>Business, FP&A and data"])
     A --> U[Power BI and analytical Genie - consumption]
     A --> D[Genie Code and notebooks - development]
-    S[Business and data specialists] --> K[Versioned skills]
+    S(["👥 Business and data specialists"]) --> K[Versioned skills]
     K -. guides .-> D
     D --> R[Tests, reconciliation and independent review]
     R --> E[Authorized delivery workflow]
@@ -26,6 +26,9 @@ flowchart LR
     P --> W[SQL Warehouse]
     W --> U
 ```
+
+**Legend:** rounded capsules with 👤/👥 identify people or professional profiles;
+rectangles identify tools, artifacts and process steps.
 
 See the [interface, roles and guardrails architecture](docs/ARCHITECTURE_AND_ROLES.md)
 for user/developer entry points, two specialist tracks, learning paths and the
