@@ -1,0 +1,33 @@
+{
+  "data_scope": "synthetic",
+  "evaluation": "rolling_origin_one_step",
+  "error_sign": "prediction_minus_actual",
+  "metrics": [
+    {
+      "model": "last_value",
+      "evaluated_months": 6,
+      "available_months": 6,
+      "mae_brl": 53220.5483333333,
+      "bias_brl": 14790.961666666632,
+      "wape_pct": 3.2275167708663113
+    },
+    {
+      "model": "linear_regression",
+      "evaluated_months": 6,
+      "available_months": 6,
+      "mae_brl": 161857.49275252523,
+      "bias_brl": 138775.25628787882,
+      "wape_pct": 9.815715709602289
+    },
+    {
+      "model": "seasonal_naive",
+      "evaluated_months": 6,
+      "available_months": 6,
+      "mae_brl": 93183.82833333344,
+      "bias_brl": -93183.82833333344,
+      "wape_pct": 5.651057310339523
+    }
+  ],
+  "future_horizon": 6,
+  "limitations": "Future multi-step forecasts have no measured multi-step accuracy."
+}

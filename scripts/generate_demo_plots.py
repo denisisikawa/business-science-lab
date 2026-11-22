@@ -35,11 +35,11 @@ validation_csv = IMAGES / "forecast_validation.csv"
 if forecast_csv.exists():
     df = pd.read_csv(forecast_csv, parse_dates=["month"])
     actual = df[df["type"] == "actual"].set_index("month")
-    forecast = df[df["type"] == "forecast"].set_index("month")
 
     plt.figure(figsize=(10, 5))
     plt.plot(actual.index, actual["cost"], label="Actual")
-    plt.plot(forecast.index, forecast["cost"], label="Forecast", linestyle="--")
+    for name, group in df[df['type'] == 'forecast'].groupby('model'):
+        plt.plot(group['month'], group['cost'], label=name, linestyle='--')
     plt.title("IT Cost: Actual vs Forecast (demo)")
     plt.xlabel("Month")
     plt.ylabel("Cost (BRL)")
@@ -55,8 +55,10 @@ else:
 if validation_csv.exists():
     vdf = pd.read_csv(validation_csv, parse_dates=["month"])
     plt.figure(figsize=(8, 4))
-    plt.bar(vdf["month"].astype(str), vdf["error_pct"].abs())
-    plt.title("Forecast absolute error % (last periods)")
+    for name, group in vdf.groupby('model'):
+        plt.plot(group['month'], group['error_pct'].abs(), marker='o', label=name)
+    plt.legend()
+    plt.title("Synthetic costs: out-of-sample one-step absolute error")
     plt.xlabel("Month")
     plt.ylabel("Absolute error (%)")
     plt.xticks(rotation=45)
