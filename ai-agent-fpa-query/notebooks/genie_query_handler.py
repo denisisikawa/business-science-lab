@@ -1,206 +1,204 @@
-# AI Agent for FP&A — Query Handler Example
-# ===========================================
-# Purpose: Shows the approach for deploying AI agents
-#          (Databricks Genie, Copilot) as natural-language
-#          interfaces to financial data.
-# NOTE: This is pseudocode/structure — actual Genie setup
-#       is done in the Databricks UI and API, not notebook code.
-# Data: Synthetic / does not contain Bradesco data
-# Stack: Python, SQL (Databricks Genie API)
+"""Scoped finance query demo and opt-in, unverified live Genie adapter.
 
-# ──────────────────────────────────────────────
-# CONTEXT — How this fits in the workflow
-# ──────────────────────────────────────────────
-
+Default local mode uses fixed query templates and synthetic SQLite data.
+No arbitrary generated SQL is executed locally.
 """
-The goal: an FP&A analyst asks a question in plain English
-and gets an answer from the data — without opening a ticket.
-
-Before AI Agent:
-  Analyst → Slack to Data Team → Wait 2-3 days → Get Excel → Done
-
-After AI Agent:
-  Analyst → Ask Genie → Get answer in seconds
-
-My setup:
-  - Gold layer tables are registered as Genie spaces
-  - Each space covers a domain (IT Cost, Headcount, Vendor Spend)
-  - Analysts get read-only access to Genie
-  - Genie answers from Delta Lake gold tables
-"""
-
-# ──────────────────────────────────────────────
-# EXAMPLE — Python script that wraps Genie API calls
-# This is how I'd build a custom interface on top of Genie
-# ──────────────────────────────────────────────
-
-import requests
+import argparse
+import csv
+from datetime import datetime, timezone, date
+from decimal import Decimal
+import hashlib
+import json
 import os
-import logging
-from typing import Dict, Any, Optional
-import pandas as pd
+from pathlib import Path
+import re
+import sqlite3
+import time
+import unicodedata
+from urllib.parse import urlparse, quote
 
-# Databricks workspace configuration (optional when running locally)
-DATABRICKS_HOST = os.getenv("DATABRICKS_HOST")
-DATABRICKS_TOKEN = os.getenv("DATABRICKS_TOKEN")
-GENIE_SPACE_ID = os.getenv("GENIE_SPACE_ID")  # created in Databricks UI
-
-HEADERS = {
-    "Authorization": f"Bearer {DATABRICKS_TOKEN}" if DATABRICKS_TOKEN else "",
-    "Content-Type": "application/json"
+REPORT_DIR = Path(__file__).resolve().parents[2] / "reports"
+CATEGORIES = ("SOFTWARE", "HARDWARE", "CLOUD", "CONSULTING")
+SQL = {
+    "total": "SELECT SUM(amount_cents) AS amount_cents FROM costs WHERE month = ?",
+    "category": "SELECT category, SUM(amount_cents) AS amount_cents FROM costs WHERE month = ? GROUP BY category ORDER BY category"
 }
 
-# Logging setup
-logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
-logger = logging.getLogger("genie_query_handler")
+class GenieError(RuntimeError):
+    pass
 
+def normalize_question(question):
+    if not isinstance(question, str) or not question.strip() or len(question) > 500:
+        raise ValueError("Question must contain 1–500 characters")
+    return " ".join(unicodedata.normalize("NFKD", question.casefold()).encode("ascii", "ignore").decode().split()).rstrip("?.")
 
-def ask_genie(question: str, space_id: str) -> dict:
-    """
-    Sends a question to Databricks Genie space and returns the answer.
-    Genie reads the gold layer tables and generates a SQL query
-    internally, then returns a natural-language answer.
-    """
-    url = f"{DATABRICKS_HOST}/api/2.0/genie/spaces/{space_id}/messages"
-    
-    payload = {
-        "question": question,
-        "generation_config": {
-            "max_tokens": 500,
-            "temperature": 0.1  # low temp = factual, not creative
-        }
+def parse_question(question):
+    normalized = normalize_question(question)
+    patterns = {
+        "total": r"(?:what was the |show |qual (?:foi |e )?o )?(?:total (?:it )?cost(?: for| in)?|custo total(?: de ti)?(?: em| de)?) (\d{4}-\d{2})",
+        "category": r"(?:show |mostre )?(?:costs? by category(?: for| in)?|custos por categoria(?: em| de)?) (\d{4}-\d{2})"
     }
-    
-    if not DATABRICKS_HOST or not DATABRICKS_TOKEN:
-        # Running locally without Databricks — return a synthetic response
-        logger.info("Databricks credentials not found — returning synthetic response")
-        synthetic = {
-            "question": question,
-            "answer": "Synthetic answer: total IT cost for May 2025 was BRL 1,234,567.89",
-            "sql_query": "SELECT SUM(amount) FROM gold.monthly_total WHERE month = '2025-05-01'",
-            "sources": ["gold.monthly_total"]
-        }
-        return synthetic
+    for intent, pattern in patterns.items():
+        match = re.fullmatch(pattern, normalized)
+        if match:
+            month = match.group(1)
+            try:
+                date.fromisoformat(month + "-01")
+            except ValueError:
+                return {"status": "invalid_period"}
+            return {"status": "supported", "intent": intent, "month": month}
+    if not re.search(r"\d{4}-\d{2}", normalized) and any(w in normalized for w in ("cost", "custo")):
+        return {"status": "needs_clarification"}
+    return {"status": "unsupported"}
 
-    response = requests.post(url, json=payload, headers=HEADERS)
-    response.raise_for_status()
-
-    result = response.json()
-    return {
-        "question": question,
-        "answer": result.get("answer"),
-        "sql_query": result.get("generated_sql"),  # useful for validation
-        "sources": result.get("used_data_sources")
-    }
-
-
-# ──────────────────────────────────────────────
-# EXAMPLE — Typical FP&A questions we route to Genie
-# ──────────────────────────────────────────────
-
-if __name__ == "__main__":
-    # These would be real calls to Databricks API
-    # Using example responses to show the pattern
-    
-    example_questions = [
-        "What was the total IT cost for May 2025?",
-        "Show me month-over-month variance for cost center CC-03",
-        "Which vendors had the highest spend in Q1 2025?",
-        "Compare headcount costs vs software licensing costs in 2024",
-    ]
-    
-    for q in example_questions:
-        print(f"Q: {q}")
-        print(f"→ Genie generates SQL → queries gold layer → returns answer\n")
-
-
-# ──────────────────────────────────────────────
-# PROMPT ENGINEERING — How I tune Genie responses
-# ──────────────────────────────────────────────
-
-GENIE_SYSTEM_PROMPT = """
-You are a financial data assistant for the IT Cost Analytics team.
-You ONLY answer questions about IT costs, headcount, and vendor spend.
-You ONLY read from the approved Delta Lake tables in the gold layer.
-
-Rules:
-- Always include the SQL query you used in your response
-- If the question is ambiguous, ask for clarification before answering
-- If data is not available, say so — do not make up numbers
-- Use BRL currency format in answers
-- Limit responses to 200 words unless asked for detail
-""".strip()
-
-"""
-How I apply this in Databricks:
-1. Create Genie space in UI
-2. Attach gold layer tables as data sources
-3. Set the system prompt above in the space settings
-4. Give FP&A analysts viewer access to the space
-5. Optionally build a simple Slack bot or web app on top via API
-"""
-
-
-# ──────────────────────────────────────────────
-# LOGGING — Track questions for team review
-# ──────────────────────────────────────────────
-
-def log_query(question: str, answer: str, sql: str, analyst: str):
-    """
-    Logs every Genie query to a Delta table for audit and improvement.
-    The data team reviews this weekly to:
-    - Catch incorrect answers
-    - Identify data quality issues
-    - Prioritize new gold layer tables
-    """
-    log_entry = {
-        "timestamp": pd.Timestamp.now(),
-        "question": question,
-        "answer": answer,
-        "sql_generated": sql,
-        "analyst": analyst,
-        "validated": False  # team marks true after review
-    }
-
-    # For local runs we append to a CSV audit log for easy review
-    audit_path = os.path.join(os.path.dirname(__file__), "..", "..", "reports", "genie_query_audit.csv")
-    os.makedirs(os.path.dirname(audit_path), exist_ok=True)
-    df = pd.DataFrame([log_entry])
-    if not os.path.exists(audit_path):
-        df.to_csv(audit_path, index=False)
-    else:
-        df.to_csv(audit_path, mode="a", header=False, index=False)
-
-    logger.info("Query logged for review: %s", question)
-
-
-def generate_sample_report() -> pd.DataFrame:
-    """
-    Generates a small synthetic report summarizing IT cost by category and month.
-    Returns a pandas DataFrame intended for demo/visualization purposes.
-    """
-    months = pd.date_range(start="2024-06-01", periods=12, freq='MS')
-    categories = ["SOFTWARE", "HARDWARE", "CLOUD", "CONSULTING"]
+def synthetic_rows():
     rows = []
-    for m in months:
-        for c in categories:
-            rows.append({
-                "month": m.strftime("%Y-%m-%d"),
-                "category": c,
-                "amount_brl": round(100000 * (1 + 0.1 * (categories.index(c))) * (1 + 0.02 * (months.get_loc(m))), 2)
-            })
-    df = pd.DataFrame(rows)
-    report_path = os.path.join(os.path.dirname(__file__), "..", "..", "reports", "genie_sample_report.csv")
-    os.makedirs(os.path.dirname(report_path), exist_ok=True)
-    df.to_csv(report_path, index=False)
-    logger.info("Synthetic Genie report written to %s", report_path)
-    return df
+    for index in range(12):
+        year, month = divmod(2024 * 12 + 5 + index, 12)
+        for category_index, category in enumerate(CATEGORIES):
+            # Exact integer cents; June 2024 through May 2025.
+            rows.append({"month": f"{year:04d}-{month+1:02d}", "category": category,
+                         "amount_cents": 10_000_000 + category_index * 1_000_000 + index * 200_000})
+    return rows
 
+def local_query(question):
+    request = parse_question(question)
+    base = {"mode": "local", "data_scope": "synthetic", "question": question,
+            "verified": False, "status": request["status"], "answer": None,
+            "sql_query": None, "sources": [], "rows": []}
+    if request["status"] != "supported":
+        return base
+    records = synthetic_rows()
+    fingerprint = hashlib.sha256(json.dumps(records, sort_keys=True).encode()).hexdigest()
+    with sqlite3.connect(":memory:") as connection:
+        connection.execute("CREATE TABLE costs(month TEXT, category TEXT, amount_cents INTEGER, PRIMARY KEY(month,category))")
+        connection.executemany("INSERT INTO costs VALUES(:month,:category,:amount_cents)", records)
+        connection.execute("PRAGMA query_only = ON")
+        connection.row_factory = sqlite3.Row
+        results = [dict(r) for r in connection.execute(SQL[request["intent"]], (request["month"],))]
+    if not results or results[0]["amount_cents"] is None:
+        return {**base, "status": "no_data", "period": request["month"], "dataset_sha256": fingerprint}
+    return {**base, "status": "completed", "verified": True, "period": request["month"],
+            "answer": "Calculated from the synthetic local dataset; amounts are BRL cents.",
+            "sql_query": SQL[request["intent"]], "parameters": [request["month"]],
+            "sources": ["synthetic.costs"], "rows": results, "dataset_sha256": fingerprint}
+
+def _identifier(value):
+    if not isinstance(value, str) or not re.fullmatch(r"[A-Za-z0-9_-]{1,128}", value):
+        raise GenieError("Invalid Genie resource identifier")
+    return quote(value, safe="")
+
+def ask_genie(question, space_id=None, *, mode="local", session=None,
+              host=None, token=None, max_polls=30, timeout=15, poll_interval=1):
+    request = parse_question(question)
+    if mode == "local":
+        return local_query(question)
+    if mode != "genie":
+        raise ValueError("mode must be local or genie")
+    if request["status"] != "supported":
+        return {"mode": "genie", "status": request["status"], "verified": False,
+                "answer": None, "rows": [], "sources": []}
+    import requests
+    host, token = host or os.getenv("DATABRICKS_HOST"), token or os.getenv("DATABRICKS_TOKEN")
+    space_id = space_id or os.getenv("GENIE_SPACE_ID")
+    parsed = urlparse(host or "")
+    if (parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password
+            or parsed.path not in ("", "/") or parsed.query or parsed.fragment):
+        raise GenieError("Configure an HTTPS Databricks workspace origin")
+    if not token or not space_id:
+        raise GenieError("Live mode requires DATABRICKS_TOKEN and GENIE_SPACE_ID; no synthetic fallback")
+    if not isinstance(max_polls, int) or not 1 <= max_polls <= 60 or not 0 < timeout <= 60 or not 0 <= poll_interval <= 5:
+        raise ValueError("Invalid request timeout or polling limits")
+    client = session or requests.Session()
+    root = host.rstrip("/") + "/api/2.0/genie/spaces/" + _identifier(space_id)
+    def call(method, url, **kwargs):
+        try:
+            response = client.request(method, url, headers={"Authorization": "Bearer " + token},
+                                      timeout=timeout, allow_redirects=False, **kwargs)
+            if not 200 <= response.status_code < 300:
+                raise GenieError(f"Genie HTTP {response.status_code}; response body withheld")
+            payload = response.json()
+            if not isinstance(payload, dict):
+                raise GenieError("Unexpected Genie response shape")
+            return payload
+        except (requests.RequestException, ValueError) as error:
+            raise GenieError("Genie request failed or returned invalid JSON") from None
+    started = call("POST", root + "/start-conversation", json={"content": question})
+    message = started.get("message") or {}
+    if not isinstance(message, dict):
+        raise GenieError("Invalid initial message")
+    conversation = _identifier(started.get("conversation_id") or message.get("conversation_id"))
+    message_id = _identifier(started.get("message_id") or message.get("message_id") or message.get("id"))
+    url = root + "/conversations/" + conversation + "/messages/" + message_id
+    for _ in range(max_polls):
+        message = call("GET", url)
+        status = message.get("status")
+        if status in ("FAILED", "CANCELLED", "QUERY_RESULT_EXPIRED"):
+            raise GenieError("Genie message ended with status " + status)
+        if status == "COMPLETED":
+            attachments = message.get("attachments", [])
+            if not isinstance(attachments, list):
+                raise GenieError("Invalid attachment list")
+            texts, queries, results = [], [], []
+            for attachment in attachments:
+                if not isinstance(attachment, dict):
+                    raise GenieError("Invalid attachment")
+                text, query = attachment.get("text") or {}, attachment.get("query") or {}
+                if not isinstance(text, dict) or not isinstance(query, dict):
+                    raise GenieError("Invalid attachment shape")
+                if text.get("content"):
+                    texts.append(text["content"])
+                if query.get("query"):
+                    queries.append(query["query"])
+                    attachment_id = _identifier(attachment.get("attachment_id"))
+                    results.append(call("GET", url + "/attachments/" + attachment_id + "/query-result"))
+            return {"mode": "genie", "status": "completed_unverified", "verified": False,
+                    "answer": "\n".join(texts) or None, "sql_query": queries,
+                    "provider_results": results, "sources": ["configured_genie_space"],
+                    "conversation_id": conversation, "message_id": message_id}
+        if poll_interval:
+            time.sleep(poll_interval)
+    raise GenieError("Genie polling limit reached; no synthetic fallback")
+
+def log_query(question, result, analyst="local_user", path=None):
+    """JSON Lines: metadata only by default, excluding prompts, SQL and answers."""
+    path = Path(path) if path else REPORT_DIR / "genie_query_audit.jsonl"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    entry = {"timestamp": datetime.now(timezone.utc).isoformat(), "analyst": analyst,
+             "question_sha256": hashlib.sha256(question.encode()).hexdigest(),
+             "mode": result["mode"], "status": result["status"],
+             "verified": result.get("verified", False),
+             "dataset_sha256": result.get("dataset_sha256")}
+    with path.open("a", encoding="utf-8") as stream:
+        stream.write(json.dumps(entry, ensure_ascii=False) + "\n")
+
+def generate_sample_report(output_dir=None):
+    output = Path(output_dir) if output_dir else REPORT_DIR
+    output.mkdir(parents=True, exist_ok=True)
+    path = output / "genie_sample_report.csv"
+    rows = synthetic_rows()
+    with path.open("w", encoding="utf-8", newline="") as stream:
+        writer = csv.DictWriter(stream, fieldnames=["month", "category", "amount_cents"])
+        writer.writeheader()
+        writer.writerows(rows)
+    return rows
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--mode", choices=["local", "genie"], default="local")
+    parser.add_argument("--question", default="total IT cost for 2025-05")
+    parser.add_argument("--output-dir", type=Path, default=REPORT_DIR)
+    args = parser.parse_args(argv)
+    try:
+        result = ask_genie(args.question, mode=args.mode)
+    except GenieError as error:
+        result = {"mode": args.mode, "status": "error", "verified": False}
+        log_query(args.question, result, path=args.output_dir / "genie_query_audit.jsonl")
+        parser.exit(1, str(error) + "\n")
+    log_query(args.question, result, path=args.output_dir / "genie_query_audit.jsonl")
+    if args.mode == "local":
+        generate_sample_report(args.output_dir)
+    print(json.dumps(result, indent=2, ensure_ascii=False))
 
 if __name__ == "__main__":
-    # Demo flow when running the script directly
-    q = "What was the total IT cost for May 2025?"
-    res = ask_genie(q, GENIE_SPACE_ID or "demo_space")
-    print("Answer:", res.get("answer"))
-    log_query(res.get("question"), res.get("answer"), res.get("sql_query"), analyst="local_user")
-    generate_sample_report()
+    main()
