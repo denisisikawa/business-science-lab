@@ -1,5 +1,7 @@
 # Arquitetura de interfaces, guardrails e evolução dos papéis
 
+**Comece pela história:** [Do número à decisão](FINANCE_EVOLUTION_STORY.md) apresenta os personagens fictícios, a passagem do tempo, os erros de aprendizagem e a mudança de papéis que motivam esta arquitetura.
+
 ## Visão e estado da proposta
 
 **Um mesmo profissional pode combinar análise de negócio, FP&A e dados conforme desenvolve competência demonstrável e recebe acessos compatíveis.** IA apoia essa evolução; guardrails executáveis, evidências e revisão delimitam sua autonomia. Não se trata de atribuir todos os privilégios a uma pessoa.

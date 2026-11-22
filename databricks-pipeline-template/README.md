@@ -1,9 +1,28 @@
-# Databricks Pipeline Template
+# Finance Evolution Lab · Native Databricks Pipeline
 
 **Financial pipeline engineering with versioned Genie Code maintenance skills.**
 This synthetic-data template combines Bronze/Silver/Gold processing with reusable
 guidance for the next professional to evolve business rules and maintain code.
 It uses native Python/PySpark patterns, without dbt.
+
+## Start with the story: from numbers to decisions
+
+Clara knows FP&A. Rafael knows data. A cost variance brings them together; a
+convincing but incorrect AI suggestion teaches them to demand evidence. With
+practice, reviewed skills and explicit guardrails, they explore an integrated
+analyst role while business and data specialists deepen the shared knowledge.
+
+![Four illustrated acts in a fictional finance team's learning journey](assets/finance-journey.svg)
+
+**[Read the illustrated story and learning journey (PT-BR)](docs/FINANCE_EVOLUTION_STORY.md)**
+— four acts, an illustrative timeline, a conceptual learning curve, changing roles
+and practical competency gates. This is an independent fictional scenario, not an
+employer implementation or a measured organizational outcome. The time ranges
+are planning examples, not promises of proficiency or access.
+
+The existing `databricks-pipeline-template` directory and runnable code paths are
+preserved. The broader framing connects engineering artifacts to a proposed
+financial operating model; it does not claim a deployed framework.
 
 ## Interface architecture and the integrated analyst
 

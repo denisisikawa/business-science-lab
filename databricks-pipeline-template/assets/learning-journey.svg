@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+<title id="title">Curva conceitual de aprendizagem e autonomia condicionada</title>
+<desc id="desc">Trajetória qualitativa sem escala ou dados medidos. A capacidade demonstrada cresce com prática, passa por uma correção e retoma. Tempo ilustrativo não concede acessos. Quatro etapas: fundamentos, análise assistida, mudanças revisadas e atuação no escopo autorizado.</desc>
+<rect width="1200" height="650" rx="18" fill="#0b070d"/>
+<g font-family="Arial,sans-serif" fill="#f9efed">
+<text x="38" y="52" font-size="30" font-weight="700">Aprender inclui avançar, pausar e corrigir</text>
+<text x="38" y="88" font-size="19" fill="#e1bf88">Curva conceitual · sem escala numérica · não representa desempenho medido</text>
+<text x="38" y="126" font-size="19" fill="#baabb5">Eixo vertical: capacidade demonstrada de explicar, desenvolver e validar uma mudança.</text>
+<path d="M105 155V453H1130" stroke="#baabb5" stroke-width="2" fill="none"/>
+<path d="M105 416C190 416 217 397 285 359S430 264 490 276S563 343 622 321S736 221 809 196S992 179 1112 166" stroke="#e1bf88" stroke-width="5" fill="none"/>
+<g fill="#c3536c" stroke="#0b070d" stroke-width="3"><circle cx="105" cy="416" r="8"/><circle cx="285" cy="359" r="8"/><circle cx="490" cy="276" r="8"/><circle cx="622" cy="321" r="8"/><circle cx="809" cy="196" r="8"/><circle cx="1112" cy="166" r="8"/></g>
+<text x="129" y="432" font-size="19">Prática conjunta</text>
+<text x="310" y="237" font-size="19">Apoio da IA + revisão</text>
+<path d="M487 244V260" stroke="#baabb5"/>
+<text x="543" y="383" font-size="19">Pausa: impacto histórico sem plano</text>
+<path d="M622 335V359" stroke="#baabb5"/>
+<text x="830" y="248" font-size="19">Autonomia no escopo aprovado</text>
+<text x="830" y="278" font-size="18" fill="#baabb5">Especialistas e revisão continuam.</text>
+<g font-size="18" fill="#e1bf88">
+<text x="105" y="489">Semanas 1–4</text><text x="345" y="489">Meses 2–3</text><text x="631" y="489">Meses 4–6</text><text x="923" y="489">Após o piloto</text>
+</g>
+<g font-size="18" fill="#baabb5"><text x="105" y="520">Fundamentos</text><text x="345" y="520">Análise assistida</text><text x="631" y="520">Mudanças revisadas</text><text x="923" y="520">Avaliação contínua</text></g>
+<text x="38" y="580" font-size="21">Tempo de curso não libera acesso. Evidência de competência orienta a progressão.</text>
+<text x="38" y="615" font-size="18" fill="#baabb5">Roteiro ilustrativo: a duração, as pausas e o percurso real variam por pessoa, equipe e risco.</text>
+</g></svg>

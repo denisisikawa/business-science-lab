@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="920" viewBox="0 0 1200 920" role="img" aria-labelledby="title desc">
+<title id="title">Do número à decisão: quatro atos de uma evolução financeira</title>
+<desc id="desc">História fictícia. Clara, de FP&amp;A, e Rafael, de dados, aprendem juntos, contestam uma sugestão de IA e ganham autonomia condicionada. Especialistas de negócio e dados mantêm skills revisadas. Prazos ilustrativos.</desc>
+<defs><style>text{font-family:Arial,sans-serif;fill:#f9efed}.title{font-size:35px;font-weight:700}.sub{font-size:19px;fill:#baabb5}.act{font-size:19px;fill:#e1bf88;font-weight:700}.head{font-size:25px;font-weight:700}.body{font-size:20px}.small{font-size:18px;fill:#baabb5}.name{font-size:19px;fill:#e1bf88}.human{fill:none;stroke:#e1bf88;stroke-width:3;stroke-linecap:round}.line{stroke:#c3536c;stroke-width:2;fill:none}</style>
+<g id="person"><circle cy="-24" r="12"/><path d="M-22 19v-12a22 22 0 0 1 44 0v12M0-12v31"/></g></defs>
+<rect width="1200" height="920" rx="18" fill="#0b070d"/>
+<text x="42" y="57" class="title">Do número à decisão</text>
+<text x="42" y="91" class="sub">Um laboratório de trabalho financeiro com dados e IA · Denis Isikawa</text>
+<text x="42" y="124" class="act">HISTÓRIA FICTÍCIA · TEMPOS ILUSTRATIVOS · SEM RESULTADOS MEDIDOS</text>
+<rect x="32" y="153" width="554" height="318" rx="16" fill="#170e17"/>
+<rect x="614" y="153" width="554" height="318" rx="16" fill="#170e17"/>
+<rect x="32" y="495" width="554" height="318" rx="16" fill="#170e17"/>
+<rect x="614" y="495" width="554" height="318" rx="16" fill="#170e17"/>
+<text x="56" y="186" class="act">01 · SEMANAS 1–4</text>
+<text x="56" y="222" class="head">Duas linguagens. Uma pergunta.</text>
+<use href="#person" x="112" y="284" class="human"/>
+<use href="#person" x="470" y="284" class="human"/>
+<path d="M155 268H422" class="line"/>
+<text x="174" y="260" class="body">“Por que subiu?”</text>
+<text x="64" y="331" class="name">Clara · FP&amp;A</text>
+<text x="385" y="331" class="name">Rafael · Dados</text>
+<text x="56" y="376" class="body">Ela conhece a regra. Ele conhece a carga.</text>
+<text x="56" y="407" class="body">Juntos definem chave, versão e total.</text>
+<text x="56" y="446" class="small">Passagem: explicar o mesmo lançamento.</text>
+<text x="638" y="186" class="act">02 · MESES 2–3</text>
+<text x="638" y="222" class="head">A IA propõe. A dupla contesta.</text>
+<rect x="643" y="249" width="493" height="62" rx="8" fill="#25121e"/>
+<text x="663" y="276" class="body">Sugestão: deduplicar por fornecedor.</text>
+<text x="663" y="300" class="small">Parece simples. Apaga despesas legítimas.</text>
+<text x="638" y="349" class="name">Clara + Rafael + contraexemplo</text>
+<text x="638" y="384" class="body">O teste revela o erro antes da entrega.</text>
+<text x="638" y="415" class="body">A lição vira conhecimento versionado.</text>
+<text x="638" y="446" class="small">Passagem: provar por que a resposta falha.</text>
+<text x="56" y="529" class="act">03 · MESES 4–6</text>
+<text x="56" y="565" class="head">As competências se aproximam.</text>
+<use href="#person" x="103" y="622" class="human"/>
+<use href="#person" x="461" y="622" class="human"/>
+<text x="151" y="607" class="body">Negócio ↔ Dados</text>
+<text x="151" y="638" class="small">Genie Code + skills</text>
+<text x="56" y="684" class="body">Clara propõe uma regra com testes.</text>
+<text x="56" y="715" class="body">Rafael interpreta o impacto financeiro.</text>
+<text x="56" y="754" class="small">Uma migração sem plano faz a equipe voltar.</text>
+<text x="56" y="785" class="small">Passagem: PR revisado e reconciliação.</text>
+<text x="638" y="529" class="act">04 · APÓS AVALIAÇÃO DO PILOTO</text>
+<text x="638" y="565" class="head">Autonomia com responsabilidade.</text>
+<text x="638" y="611" class="name">Analista integrado · negócio + FP&amp;A + dados</text>
+<path d="M641 633H1135" class="line"/>
+<text x="638" y="669" class="body">Helena especializa as skills de negócio.</text>
+<text x="638" y="700" class="body">Diego especializa as skills de dados.</text>
+<text x="638" y="748" class="small">Mais capacidade não dá acesso irrestrito.</text>
+<text x="638" y="779" class="small">Mudança crítica pede revisão independente.</text>
+<text x="42" y="857" class="body">A história não termina com um cargo novo: continua com conhecimento compartilhado.</text>
+<text x="42" y="892" class="small">Proposta independente de empregadores · Interfaces e operação remota ainda não implantadas</text>
+</svg>
