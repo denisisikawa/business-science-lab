@@ -20,14 +20,15 @@ def test_spark_typed_contract_matches_reference():
     rows = [base, base.copy(), base | {'transaction_id': '2'},
             base | {'transaction_id': '3', 'amount': '-20.25'},
             base | {'transaction_id': '4', 'amount': 'NaN'},
+            base | {'transaction_id': '5', 'currency': 'USD'},
             base | {'updated_at': '2025-01-01T00:00:00Z', 'amount': '90.00'}]
     spark = SparkSession.builder.master('local[2]').appName('financial-contract-test').getOrCreate()
     try:
         accepted, rejected, discarded, report = module.transform_spark(spark, spark.createDataFrame(rows))
-        assert report == dict(input_rows=6, accepted_rows=3, rejected_rows=1, duplicate_or_superseded_rows=2)
+        assert report == dict(input_rows=7, accepted_rows=3, rejected_rows=2, duplicate_or_superseded_rows=2)
         assert str(accepted.schema['amount'].dataType) == 'DecimalType(18,2)'
         reference = transform_records(rows)
         assert sum(r.amount for r in accepted.collect()) * 100 == reference['report']['accepted_cents']
-        assert rejected.count() == 1 and discarded.count() == 2
+        assert rejected.count() == 2 and discarded.count() == 2
     finally:
         spark.stop()

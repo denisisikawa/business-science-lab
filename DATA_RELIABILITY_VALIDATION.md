@@ -28,8 +28,9 @@ outputs are in images/forecast_metrics.json; no accuracy benefit is asserted.
 
 `python -m pytest tests/test_pipeline_contract.py`: 13 tests passed locally.
 The local CSV example produces 5 input rows: 3 accepted, 1 rejected (unsupported
-currency), 1 duplicate. Known input amounts reconcile as 31,975 = 18,975 + 3,000 +
-10,000 cents. Repeating the same command returns replayed=true without duplicating
+currency), 1 duplicate. Known BRL input amounts reconcile as 28,975 = 18,975 +
+10,000 cents; the USD row is retained but excluded from BRL sums and marked as an
+unknown BRL amount. Repeating the same command returns replayed=true without duplicating
 current facts. Tests cover credits, late versions, source identity, conflicts and
 atomic rollback. SQLite validates the small reference contract, not Delta I/O.
 

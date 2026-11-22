@@ -54,6 +54,10 @@ def normalize(row):
         result['amount'] = format(amount, '.2f')
     except (KeyError, ValueError):
         errors.append('invalid_amount')
+    # An unsupported currency has no BRL equivalent in this contract. Keep the
+    # original row, but never sum its numeric value into BRL reconciliation.
+    if result.get('currency') != 'BRL':
+        amount = None
     if errors:
         return None, sorted(set(errors)), amount
     result['row_hash'] = hashlib.sha256(json.dumps(

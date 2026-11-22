@@ -25,8 +25,9 @@ A collision against persisted Silver fails the local transaction.
 
 Every input row has a disposition and original record. Counts and known monetary
 amounts reconcile across accepted, rejected, duplicate and superseded records.
-Malformed monetary values remain explicit and are counted as unknown amounts;
-no complete monetary reconciliation is claimed for unknown values. Stored lineage
+Malformed monetary values and unsupported currencies remain explicit and are
+counted as unknown BRL amounts, excluded from all BRL sums. No currency conversion
+or complete monetary reconciliation is claimed for those rows. Stored lineage
 includes batch ID and source row. Reusing a batch ID with changed input fails.
 SQLite raw/audit/current-fact writes are atomic. Replaying or receiving an older
 version does not duplicate or roll back current facts. Deletions are not modeled.

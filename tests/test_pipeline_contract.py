@@ -24,7 +24,9 @@ def test_grain_deduplication_and_cent_reconciliation():
     assert result['report']['accepted_cents'] == 18975
     assert result['report']['duplicates_rows'] == 1
     assert result['report']['superseded_rows'] == 1
-    assert result['report']['unknown_amount_rows'] == 1
+    assert result['report']['unknown_amount_rows'] == 2
+    assert result['report']['rejected_cents'] == 0
+    assert result['report']['known_input_cents'] == 36975
     assert result['report']['input_rows'] == 7
     assert {e['source_row'] for e in result['rejected']} == {5, 6}
     assert result['accepted'][0]['row']['cost_center'] == 'CC01'
