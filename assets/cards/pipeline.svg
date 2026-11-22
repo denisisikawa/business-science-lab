@@ -1,11 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="640" height="265" viewBox="0 0 640 265" role="img" aria-label="Finance Evolution Lab">
-<defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#170e17"/><stop offset="1" stop-color="#25121e"/></linearGradient><pattern id="g" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#B5CFE2" stroke-opacity=".05"/></pattern></defs>
-<rect width="640" height="265" rx="16" fill="url(#b)"/><rect width="640" height="265" rx="16" fill="url(#g)"/>
-<rect x="29" y="31" width="6" height="23" rx="3" fill="#e1bf88"/>
-<text x="50" y="50" fill="#e1bf88" font-family="Segoe UI,Arial,sans-serif" font-size="11" font-weight="700" letter-spacing=".3">AI-ENABLED FINANCE OPERATING MODEL</text>
-<text x="32" y="114" fill="#f9efed" font-family="Segoe UI,Arial,sans-serif" font-size="27" font-weight="750">Finance Evolution Lab</text>
-<text x="33" y="147" fill="#baabb5" font-family="Segoe UI,Arial,sans-serif" font-size="17">Databricks · PySpark · Skills</text>
-<path d="M30 205H338" stroke="#FFFFFF" stroke-opacity=".15"/>
-<text x="33" y="231" fill="#baabb5" font-family="Segoe UI,Arial,sans-serif" font-size="13" letter-spacing=".6">PROPOSED OPERATING MODEL</text><rect x="394" y="65" width="60" height="61" rx="13" fill="#e1bf88" fill-opacity=".22" stroke="#e1bf88" stroke-width="2"/><rect x="491" y="114" width="60" height="61" rx="13" fill="#e1bf88" fill-opacity=".22" stroke="#e1bf88" stroke-width="2"/><rect x="394" y="163" width="60" height="61" rx="13" fill="#e1bf88" fill-opacity=".22" stroke="#e1bf88" stroke-width="2"/><path d="M454 96H522V114M491 146H423V163" fill="none" stroke="#e1bf88" stroke-width="3" stroke-linecap="round"/><circle cx="522" cy="114" r="5" fill="#e1bf88"/><circle cx="423" cy="163" r="5" fill="#e1bf88"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="400" viewBox="0 0 960 400" role="img" aria-labelledby="title desc">
+<title id="title">Finance Evolution Lab — pessoas, dados e IA</title>
+<desc id="desc">Modelo operacional financeiro com IA. Pessoas conectadas por conhecimento compartilhado, skills e guardrails. Proposta independente com dados fictícios.</desc>
+<defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#e1bf88" stroke-opacity=".045"/></pattern></defs>
+<rect width="960" height="400" rx="22" fill="#170e17"/><rect width="960" height="400" rx="22" fill="url(#grid)"/>
+<path d="M40 40h45" stroke="#c3536c" stroke-width="5" stroke-linecap="round"/>
+<g font-family="Arial,sans-serif">
+<text x="40" y="77" fill="#e1bf88" font-size="17" font-weight="700" letter-spacing="1">FINANCE EVOLUTION LAB</text>
+<text x="40" y="140" fill="#f9efed" font-size="43" font-weight="700">Finanças + Dados + IA</text>
+<text x="40" y="185" fill="#f9efed" font-size="27">Pessoas evoluem.</text>
+<text x="40" y="223" fill="#e1bf88" font-size="27">O conhecimento se conecta.</text>
+<text x="40" y="267" fill="#baabb5" font-size="18">Modelo Operacional Financeiro com IA</text>
+<text x="40" y="323" fill="#f9efed" font-size="17" font-weight="700">DATABRICKS · PYSPARK · SKILLS</text>
+<text x="40" y="368" fill="#baabb5" font-size="14">PROPOSTA INDEPENDENTE · DADOS FICTÍCIOS</text>
+</g>
+<g transform="translate(565 26)">
+<circle cx="180" cy="165" r="120" fill="#25121e" stroke="#8c2548" stroke-width="2"/>
+<path d="M85 150 180 87 275 150 180 244Z" fill="none" stroke="#c3536c" stroke-width="2" stroke-dasharray="5 6"/>
+<g fill="#170e17" stroke="#e1bf88" stroke-width="2.5"><circle cx="85" cy="150" r="36"/><circle cx="275" cy="150" r="36"/><circle cx="180" cy="87" r="36"/></g>
+<g stroke="#f9efed" stroke-width="2.5" stroke-linecap="round" fill="none"><circle cx="85" cy="142" r="9"/><path d="M69 168v-4a16 16 0 0 1 32 0v4"/><circle cx="275" cy="142" r="9"/><path d="M259 168v-4a16 16 0 0 1 32 0v4"/><circle cx="180" cy="79" r="9"/><path d="M164 105v-4a16 16 0 0 1 32 0v4"/></g>
+<path d="M180 153 204 162v24c0 20-24 33-24 33s-24-13-24-33v-24Z" fill="#8c2548" stroke="#e1bf88" stroke-width="2"/>
+<path d="m168 184 8 8 17-20" fill="none" stroke="#f9efed" stroke-width="3"/>
+<g font-family="Arial,sans-serif" font-size="14" text-anchor="middle" fill="#e1bf88"><text x="180" y="34">IA + SKILLS</text><text x="80" y="208">FINANÇAS</text><text x="280" y="208">DADOS</text><text x="180" y="272">GUARDRAILS</text></g>
+<text x="180" y="324" text-anchor="middle" fill="#baabb5" font-family="Arial,sans-serif" font-size="16">Aprender · Colaborar · Validar</text>
+</g></svg>
