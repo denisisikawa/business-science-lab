@@ -5,6 +5,34 @@ This synthetic-data template combines Bronze/Silver/Gold processing with reusabl
 guidance for the next professional to evolve business rules and maintain code.
 It uses native Python/PySpark patterns, without dbt.
 
+## Interface architecture and the integrated analyst
+
+The proposed operating model combines business, FP&A and data skills in one
+analyst, supported by Genie and by specialists who curate financial and data
+engineering skills. Competency-based access and independent review of material
+changes preserve accountability. Skills guide AI; platform and CI policies must
+enforce boundaries.
+
+```mermaid
+flowchart LR
+    A[Integrated analyst - business, FP&A and data]
+    A --> U[Power BI and analytical Genie - consumption]
+    A --> D[Genie Code and notebooks - development]
+    S[Business and data specialists] --> K[Versioned skills]
+    K -. guides .-> D
+    D --> R[Tests, reconciliation and independent review]
+    R --> E[Authorized delivery workflow]
+    E --> P[Native Bronze, Silver and Gold pipeline]
+    P --> W[SQL Warehouse]
+    W --> U
+```
+
+See the [interface, roles and guardrails architecture](docs/ARCHITECTURE_AND_ROLES.md)
+for user/developer entry points, two specialist tracks, learning paths and the
+distinction between guidance and executable controls. This diagram is a reference
+design: remote interfaces, access policies and deployment gates are not deployed
+or validated by the local demo.
+
 ## AI-assisted engineering and professional handover
 
 Three repository-owned skills support **Genie Code**, the Databricks coding

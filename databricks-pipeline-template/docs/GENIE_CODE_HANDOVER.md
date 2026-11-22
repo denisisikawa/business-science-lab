@@ -2,6 +2,8 @@
 
 Este template entrega código de pipeline e conhecimento de manutenção versionado para o próximo profissional. Três skills orientam alterações de regras, correções e revisão. Elas não substituem controles executáveis, revisão humana ou a esteira adotada pela organização.
 
+Veja também a [arquitetura de interfaces, papéis e guardrails](ARCHITECTURE_AND_ROLES.md): o analista integrado pode combinar negócio, FP&A e dados, com especialistas mantendo as skills financeiras e técnicas e revisão independente nas mudanças críticas.
+
 **Estado:** skills e guia disponíveis no repositório; uso em Genie Code/workspace ainda não validado. Nenhuma skill foi instalada globalmente nem registrada em um workspace nesta entrega. O laboratório usa dados fictícios e não reproduz sistemas internos de empregadores.
 
 ## Qual Genie?
