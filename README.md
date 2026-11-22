@@ -58,7 +58,7 @@ Four core projects use **synthetic financial records** and run independently of 
   <a href="databricks-pipeline-template/README.md"><img width="100%" src="assets/cards/pipeline.svg" alt="Delta Lake Pipeline project art"></a>
   <h3>02 — Lakehouse Finance Pipeline</h3>
   <p><b>Databricks · PySpark · Delta Lake</b></p>
-  <p>A financial ingestion contract with a tested local SQLite acceptance backend and a Spark/Delta adapter for typed, traceable cost processing.</p>
+  <p>A financial ingestion contract with a tested local SQLite acceptance backend, a Spark/Delta adapter, and versioned Genie Code skills for business-rule evolution, maintenance and release review.</p>
   <p><b>Scope:</b> reference architecture / demonstration, not a production deployment.</p>
   <p><a href="databricks-pipeline-template/README.md"><b>Explore project →</b></a></p>
 </td>

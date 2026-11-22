@@ -1,5 +1,34 @@
 # Databricks Pipeline Template
 
+**Financial pipeline engineering with versioned Genie Code maintenance skills.**
+This synthetic-data template combines Bronze/Silver/Gold processing with reusable
+guidance for the next professional to evolve business rules and maintain code.
+It uses native Python/PySpark patterns, without dbt.
+
+## AI-assisted engineering and professional handover
+
+Three repository-owned skills support **Genie Code**, the Databricks coding
+assistant. They capture the financial invariants, implementation entry points,
+regression checks and evidence expected from a change:
+
+| Skill | Purpose |
+| --- | --- |
+| [finance-business-rules](skills/finance-business-rules/SKILL.md) | Evolve financial rules with explicit contracts and reconciliation |
+| [finance-pipeline-maintenance](skills/finance-pipeline-maintenance/SKILL.md) | Diagnose bugs and refactor without breaking versions, replay or totals |
+| [finance-release-review](skills/finance-release-review/SKILL.md) | Review changes, test evidence and operational limits before delivery |
+
+**The differentiator is maintainable engineering knowledge alongside code:** a
+new professional can inspect the rules, ask Genie Code for a scoped change, and
+review its tests and financial impact. Skills guide the assistant; executable
+controls remain in the pipeline and its tests. Human review and the authorized
+deployment workflow remain necessary.
+
+See the [Genie Code onboarding and maintenance guide](docs/GENIE_CODE_HANDOVER.md)
+for registration, example requests and validation steps. These are source skills,
+not a deployed Genie integration: **workspace use has not been verified**. No
+global installation or workspace registration is performed by this repository.
+Genie Spaces for analytical questions are a separate capability.
+
 ## Verified local acceptance path
 
 The dependency-free reference backend is SQLite, used to exercise ingestion
