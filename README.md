@@ -58,7 +58,7 @@ Four core projects use **synthetic financial records** and run independently of 
   <a href="databricks-pipeline-template/README.md"><img width="100%" src="assets/cards/pipeline.svg" alt="Delta Lake Pipeline project art"></a>
   <h3>02 — Lakehouse Finance Pipeline</h3>
   <p><b>Databricks · PySpark · Delta Lake</b></p>
-  <p>A notebook-style example of Bronze / Silver / Gold patterns for ingesting, standardizing and aggregating IT-cost data.</p>
+  <p>A financial ingestion contract with a tested local SQLite acceptance backend and a Spark/Delta adapter for typed, traceable cost processing.</p>
   <p><b>Scope:</b> reference architecture / demonstration, not a production deployment.</p>
   <p><a href="databricks-pipeline-template/README.md"><b>Explore project →</b></a></p>
 </td>
@@ -68,7 +68,7 @@ Four core projects use **synthetic financial records** and run independently of 
   <a href="fp-cost-forecast/README.md"><img width="100%" src="assets/cards/forecast.svg" alt="FP&A Forecasting project art"></a>
   <h3>03 — Predictive Cost Forecasting</h3>
   <p><b>Python · pandas · scikit-learn</b></p>
-  <p>Generates fictional monthly IT-cost histories and explores forecasts, validation and explainable reporting outputs for FP&A.</p>
+  <p>Evaluates synthetic cost forecasts outside training periods against simple baselines, reporting MAE, WAPE, bias and coverage.</p>
   <p><b>Evidence:</b> executable local demo with tests and sample visuals.</p>
   <p><a href="fp-cost-forecast/README.md"><b>Explore project →</b></a></p>
 </td>
@@ -76,7 +76,7 @@ Four core projects use **synthetic financial records** and run independently of 
   <a href="ai-agent-fpa-query/README.md"><img width="100%" src="assets/cards/agent.svg" alt="Finance Query AI project art"></a>
   <h3>04 — AI-Assisted Finance Queries</h3>
   <p><b>Python · APIs · SQL · Genie patterns</b></p>
-  <p>A self-service query handler exploring request validation, auditability and a synthetic offline fallback for finance analytics.</p>
+  <p>A scoped local query handler with calculated synthetic answers and source evidence; the separate live Genie adapter is opt-in and mock-tested.</p>
   <p><b>Scope:</b> demonstration of integration patterns, not an autonomous production agent.</p>
   <p><a href="ai-agent-fpa-query/README.md"><b>Explore project →</b></a></p>
 </td>
@@ -111,9 +111,9 @@ The portfolio is not just a collection of technology names. Every featured proje
 | Project | What to inspect | Execution |
 | :-- | :-- | :-- |
 | [dbt Finance Lab](dbt-finance-lab/README.md) | SQL models, YAML tests, synthetic seed, CI, [learning roadmap](dbt-finance-lab/CERTIFICATION_ROADMAP.md) | Local dbt + DuckDB |
-| [Lakehouse Pipeline](databricks-pipeline-template/README.md) | Bronze / Silver / Gold notebook, transformation logic | Databricks-oriented template |
+| [Lakehouse Pipeline](databricks-pipeline-template/README.md) | Schema contract, quarantine, transaction versions and replay tests | SQLite acceptance backend; Spark/Delta adapter |
 | [Cost Forecasting](fp-cost-forecast/README.md) | Forecast notebook, generated charts, Python tests | Local Python |
-| [Finance Query AI](ai-agent-fpa-query/README.md) | API handler, safety checks, synthetic fallback | Local Python demo |
+| [Finance Query AI](ai-agent-fpa-query/README.md) | Scoped SQL templates, audit metadata and mocked API checks | Local Python demo |
 
 <details>
 <summary><b>See sample forecasting outputs</b></summary>

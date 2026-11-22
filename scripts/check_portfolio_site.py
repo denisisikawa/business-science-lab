@@ -1,6 +1,7 @@
 from html.parser import HTMLParser
 from pathlib import Path
 import re
+import tempfile
 
 ROOT = Path(__file__).resolve().parent.parent
 page = (ROOT / "docs" / "index.html").read_text(encoding="utf-8")
@@ -41,5 +42,5 @@ assert (ROOT / "docs" / "favicon.svg").is_file(), "Favicon missing"
 assert all("github.com/denisisikawa/" in x or "linkedin.com/in/denisisikawa" in x or "fonts.googleapis.com" in x or "fonts.gstatic.com" in x or x == "https://github.com/denisisikawa" for x in reader.outgoing), "Unexpected external link"
 scripts = re.findall(r"<script(?:\s[^>]*)?>([\s\S]*?)</script>", page)
 assert scripts, "No embedded script"
-Path("/tmp/denis-portfolio-check.js").write_text(scripts[-1], encoding="utf-8")
+(Path(tempfile.gettempdir()) / "denis-portfolio-check.js").write_text(scripts[-1], encoding="utf-8")
 print(f"Portfolio HTML valid: {reader.cards} cards, {reader.translations} translated elements, {len(reader.fragments)} internal anchors.")
