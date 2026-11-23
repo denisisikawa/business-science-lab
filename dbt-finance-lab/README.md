@@ -37,6 +37,27 @@ The local `profiles.yml` is ignored by Git. The build should seed synthetic rows
 - `models/schema.yml`: uniqueness, non-null and accepted category tests
 - `tests/assert_monthly_costs_positive.sql`: financial quality constraint
 
+### FP&A control: staging-to-mart reconciliation
+
+`tests/assert_monthly_costs_reconcile.sql` compares exact decimal BRL totals and
+transaction counts at month × cost center × category grain. A full outer join
+rejects missing/unexpected groups, changed amounts/counts and null measures.
+Checking each grain also detects offsetting errors hidden by an unchanged grand
+total. This control does not validate whether source transactions are economically
+correct, nor does it replace the existing uniqueness and required-value tests.
+
+After `dbt build --profiles-dir .`, run:
+
+```bash
+python scripts/check_reconciliation_mutations.py
+```
+
+The check executes the dbt-compiled reconciliation against isolated in-memory
+copies of the built models and deliberately corrupts seven cases. The original
+DuckDB database is attached read-only. CI runs both the normal dbt build and this
+negative-path verification. This FP&A extension remains independent of RevenueGuard;
+it adds no cloud deployment or employer data.
+
 ### Databricks extension (planned, not yet implemented)
 1. Learn the official `dbt-databricks` adapter and authentication model.
 2. Prepare a private Databricks profile via environment variables (never publish tokens, hostnames or workspace paths).

@@ -31,3 +31,6 @@ jobs:
         run: |
           dbt debug --profiles-dir .
           dbt build --profiles-dir .
+
+      - name: Verify reconciliation detects corrupted reporting groups
+        run: python scripts/check_reconciliation_mutations.py

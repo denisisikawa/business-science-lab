@@ -63,3 +63,26 @@ Local validation environment: Python 3.11, pandas 3.1.1, NumPy 2.4.6,
 scikit-learn 1.9.1, requests 2.34.2 and pytest 9.2.0. Dependency ranges remain in
 requirements.txt; the version list records this run rather than promising every
 possible dependency combination was tested.
+
+## dbt FP&A reconciliation — 2026-11-23
+
+A new singular test reconciles staging to the monthly mart at month × cost center
+× category grain using exact Decimal BRL sums and transaction counts. Full outer
+join coverage detects missing and unexpected groups as well as mismatched or null
+measures. Existing uniqueness/required-value tests remain complementary.
+
+Local validation with Python 3.11, dbt-core 1.12.7, dbt-duckdb 1.11.1 and DuckDB
+2.0.1: `dbt build --profiles-dir .` completed 18 nodes (one seed, two models and
+15 data tests), with no errors or skips. The input remains 18 synthetic rows.
+`python scripts/check_reconciliation_mutations.py` from dbt-finance-lab passed:
+the unmodified build reconciled, all seven injected corruptions were detected,
+and the baseline remained unchanged. Cases: missing group, unexpected group,
+one-cent difference, wrong count, null amount, null count and offsetting errors
+with unchanged grand total. Mutations run in isolated in-memory tables; the
+original DuckDB file is attached read-only.
+
+Root regression: 72 pytest tests passed, one optional Spark test skipped locally;
+`node macro-fpa/synthetic-banking/test-cost-impact.cjs` passed 576 comparisons and
+simulation checks. CI now runs the mutation check after dbt build; consult the
+workflow result for this revision separately. No Databricks, JDBC, Genie or Power
+BI execution is implied. RevenueGuard is not incorporated into this dbt project.
