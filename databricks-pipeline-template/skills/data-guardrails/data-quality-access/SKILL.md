@@ -27,3 +27,12 @@ Matriz regra → severidade → responsável → implementação → evidência,
 ## Caso de avaliação
 
 Totais 40 mil/60 mil substituídos por 50 mil/50 mil mantêm 100 mil, mas falham por centro. Se ambos os lados já contêm a mesma classificação errada, esta reconciliação não detecta: procure referência independente.
+
+## Defaults, modelos e verificações incorporadas
+
+- Use controles existentes e classifique cada um como validação de dados, aviso ou bloqueio real de fluxo; não anuncie enforcement só por documentá-lo.
+- Quantidade, valor conhecido e desconhecido têm métricas separadas. Qualidade percentual precisa de população e denominador explícitos.
+- Consulta, desenvolvimento e publicação são escopos distintos; default do laboratório é sem escrita produtiva pelo assistente.
+- Entregue responsável/ação para alerta; não invente SLA ou limiar de materialidade.
+
+Leia [o padrão de trabalho e os exemplos](references/working-patterns.md) para a saída esperada, contraprovas e critérios de aceite. Em implementação, consulte `databricks-pipeline-template/docs/ENGINEERING_STANDARDS.md` se disponível; padrões existentes prevalecem e ausência do checkout não autoriza inventar sua estrutura.

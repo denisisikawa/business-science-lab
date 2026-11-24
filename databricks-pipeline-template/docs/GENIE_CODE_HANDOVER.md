@@ -1,6 +1,6 @@
 # Evolução assistida com Genie Code
 
-Este template entrega código de pipeline e conhecimento de manutenção versionado para o próximo profissional. Três skills transversais orientam alterações de regras, correções e revisão; seis especializações adicionais separam guardrails de dados e conhecimento de FP&A. Elas não substituem controles executáveis, revisão humana ou a esteira adotada pela organização.
+Este template entrega código de pipeline e conhecimento de manutenção versionado para o próximo profissional. Três skills transversais orientam alterações de regras, correções e revisão; 13 especializações adicionais separam engenharia, guardrails de dados e conhecimento de FP&A. Elas não substituem controles executáveis, revisão humana ou a esteira adotada pela organização.
 
 Veja também a [arquitetura de interfaces, papéis e guardrails](ARCHITECTURE_AND_ROLES.md): o analista integrado pode combinar negócio, FP&A e dados, com especialistas mantendo as skills financeiras e técnicas e revisão independente nas mudanças críticas.
 
@@ -13,7 +13,7 @@ Veja também a [arquitetura de interfaces, papéis e guardrails](ARCHITECTURE_AN
 ## Preparar no Databricks
 
 1. Disponibilize o checkout em uma Databricks Git folder e confira a revisão usada.
-2. No Genie Code, abra **Customizations → Skills → New → Add from workspace folder** e selecione a pasta pai `databricks-pipeline-template/skills`, para as três entradas transversais. Registre também `skills/data-guardrails` e `skills/fpa-business`, cada qual contendo três skills especializadas. Não presuma descoberta recursiva. Não selecione um `SKILL.md` isolado. Essa configuração registra as skills para o usuário; não as publica para todos.
+2. No Genie Code, abra **Customizations → Skills → New → Add from workspace folder** e selecione a pasta pai `databricks-pipeline-template/skills`, para as três entradas transversais. Registre também `skills/data-guardrails` e `skills/fpa-business`, cada qual contendo três skills especializadas, e `skills/engineering`, com sete. Não presuma descoberta recursiva. Não selecione um `SKILL.md` isolado. Essa configuração registra as skills para o usuário; não as publica para todos.
 3. Alternativamente, use **Upload from computer** com as pastas das skills. Skills de workspace devem ser disponibilizadas pelo administrador conforme os controles da organização. Não substitua uma skill compartilhada de mesmo nome sem revisar o impacto.
 4. Confira se as skills aparecem e faça referência com `@` no chat. Deixe o código e os testes acessíveis ao assistente; a skill não contém uma cópia deles.
 5. Teste primeiro em ambiente de desenvolvimento com entradas fictícias. Após editar uma skill, abra um novo chat para carregar a revisão.
@@ -83,3 +83,14 @@ No Bash, use `RUN_SPARK_TESTS=1 python -m pytest tests/test_pipeline_contract.py
 O workflow `.github/workflows/data-reliability.yml` configura esse teste de transformação; ele não comprova JDBC, MERGE Delta, permissões ou implantação em Databricks. A validação dessas integrações exige ambiente próprio e autorização para execução. Não trate geração de código como execução bem-sucedida.
 
 No handover registre revisão Git, regra solicitada, arquivos alterados, exemplos esperados, comandos e resultados, verificações não realizadas, efeito histórico e recuperação. Anexe evidência de runtime quando existir. Não exponha segredos nem conteúdo de clientes/empregadores ao assistente ou ao repositório público.
+
+## Solicitação com padrões já incorporados
+
+> Use @engineering-medallion-design e @engineering-naming-catalog para desenhar uma nova saída mensal deste laboratório. Reutilize contrato e padrões existentes; não renomeie objetos nem implante nada. Gere um plano de design, valide-o com o helper local e liste somente decisões financeiras materiais ainda ausentes.
+
+Para uma análise de variação sem código, use a skill de FP&A apropriada; não
+precisa carregar todo o grupo de engenharia. Para implementação, combine só os
+domínios afetados e use os [padrões de engenharia](ENGINEERING_STANDARDS.md).
+
+O verificador do blueprint pode ser executado sem Databricks; sucesso nele não
+valida credenciais, DDL remoto, dados, idempotência real ou aprovação de negócio.

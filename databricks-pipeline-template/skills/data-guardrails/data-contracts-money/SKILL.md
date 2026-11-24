@@ -24,3 +24,12 @@ Contrato antes/depois, exemplos independentes, decisões pendentes, classificaç
 ## Caso de avaliação
 
 Entrada `1.001` no contrato de duas casas deve ser rejeitada, não virar `1.00`. Crédito `-10.25` deve permanecer válido. Uma nova moeda sem taxa não pode entrar em uma soma BRL.
+
+## Defaults, modelos e verificações incorporadas
+
+- Default vigente: campos em FIELDS, BRL, month no primeiro dia e updated_at com fuso; precisão já escolhida no contrato.
+- Dinheiro inválido não recebe fallback zero; sinal negativo não implica rejeição automática.
+- Em adição de campo, classifique nullable/compatibilidade e necessidade de migração; não habilite mergeSchema global por conveniência.
+- Formato da resposta: contrato, exemplos, verificação executável e impacto nos consumidores.
+
+Leia [o padrão de trabalho e os exemplos](references/working-patterns.md) para a saída esperada, contraprovas e critérios de aceite. Em implementação, consulte `databricks-pipeline-template/docs/ENGINEERING_STANDARDS.md` se disponível; padrões existentes prevalecem e ausência do checkout não autoriza inventar sua estrutura.

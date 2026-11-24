@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "catalog_prefix": "finance_lab",
+  "environments": [
+    "dev",
+    "test",
+    "prod"
+  ],
+  "schemas": [
+    "bronze",
+    "silver",
+    "gold",
+    "ops"
+  ],
+  "identifier_pattern": "^[a-z][a-z0-9]*(?:_[a-z0-9]+)*$",
+  "directory_roots": [
+    "notebooks",
+    "src",
+    "tests",
+    "config",
+    "contracts",
+    "resources",
+    "docs",
+    "skills",
+    "standards",
+    "scripts"
+  ],
+  "required_columns": {
+    "bronze": [
+      "_batch_id",
+      "_source_table",
+      "_ingested_at"
+    ],
+    "silver": [
+      "source_system",
+      "transaction_id",
+      "updated_at",
+      "month",
+      "currency",
+      "amount"
+    ],
+    "gold": [
+      "month",
+      "cost_center",
+      "category",
+      "total_amount",
+      "transaction_count"
+    ],
+    "ops": []
+  },
+  "silver_key": [
+    "source_system",
+    "transaction_id"
+  ],
+  "gold_grain": [
+    "month",
+    "cost_center",
+    "category"
+  ],
+  "money_type": "decimal(18,2)",
+  "currency": "BRL",
+  "column_pattern": "^_?[a-z][a-z0-9]*(?:_[a-z0-9]+)*$",
+  "required_types": {
+    "bronze": {
+      "_batch_id": "string",
+      "_source_table": "string",
+      "_ingested_at": "timestamp"
+    },
+    "silver": {
+      "source_system": "string",
+      "transaction_id": "string",
+      "updated_at": "timestamp",
+      "month": "date",
+      "currency": "string",
+      "amount": "decimal(18,2)"
+    },
+    "gold": {
+      "month": "date",
+      "cost_center": "string",
+      "category": "string",
+      "total_amount": "decimal(18,2)",
+      "transaction_count": "bigint"
+    },
+    "ops": {}
+  }
+}

@@ -37,3 +37,12 @@ Entregue causa, correção, reprodução, resultados, risco e recuperação prop
 Para bugs e refatoração, selecione contratos/precisão, qualidade/acesso ou replay/entrega conforme o defeito. Se a correção alterar significado financeiro, formalize a regra de FP&A antes de ajustar o comportamento.
 
 No checkout, consulte `databricks-pipeline-template/docs/SKILL_CATALOG.md` para selecionar apenas as referências necessárias. Se as especializações não estiverem disponíveis no assistente, use o catálogo como orientação e não alegue ter executado outra skill.
+
+## Defaults, modelos e verificações incorporadas
+
+- Comece por reprodução mínima e backend afetado; não reescreva a arquitetura em uma correção pontual.
+- Preserve contrato e resultados em refatoração. Reuse os comandos de teste existentes em vez de pedir ao analista para desenhar outra suíte.
+- Para código novo, aplique padrões de engenharia já definidos no checkout; migração de diretório/objeto só com impacto verificado.
+- Separe causa técnica, regra financeira e efeito operacional. Não declare resolvida uma falha que não conseguiu reproduzir/verificar.
+
+Leia [o padrão de trabalho e os exemplos](references/working-patterns.md) para a saída esperada, contraprovas e critérios de aceite. Em implementação, consulte `databricks-pipeline-template/docs/ENGINEERING_STANDARDS.md` se disponível; padrões existentes prevalecem e ausência do checkout não autoriza inventar sua estrutura.

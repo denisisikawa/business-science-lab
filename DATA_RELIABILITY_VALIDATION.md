@@ -86,3 +86,28 @@ Root regression: 72 pytest tests passed, one optional Spark test skipped locally
 simulation checks. CI now runs the mutation check after dbt build; consult the
 workflow result for this revision separately. No Databricks, JDBC, Genie or Power
 BI execution is implied. RevenueGuard is not incorporated into this dbt project.
+
+## Skills and engineering blueprint — 2026-11-23
+
+The native Finance Evolution Lab library now has 16 SKILL.md entries: seven
+engineering, three data guardrails, three FP&A and three transversal workflows.
+All entries passed the skill-creator structural validator. The largest entry has
+48 lines; details are bundled in references. Local reference checks covered 44
+Markdown documents. These are structural checks, not a Genie behavior benchmark.
+
+Engineering standards v1.0 choose local defaults for medallion responsibilities,
+names, directories, transforms, jobs and evidence. Existing pipeline paths and
+runtime behavior were not migrated. Unity Catalog names and future directories
+are an explicitly proposed blueprint.
+
+The new standard-library design-plan checker validates declarations against a
+versioned local policy. Its 27 tests passed, including incompatible catalogs,
+schemas, names, money types, null/key/grain rules, unsafe paths, missing fields,
+duplicate objects/tasks, cycles and retry declarations. The example plan passed
+with three objects and three tasks. No objects were created, no IAM was checked,
+and no declaration of idempotence was accepted as runtime proof. The Data
+Reliability workflow now runs the plan checker and these negative cases.
+
+Root regression: 99 passed, one optional Spark test skipped locally. No live
+Databricks, JDBC, Delta writes or Genie Code behavior was tested in this change.
+There is no measured reduction of analyst time, token usage, cost or study needs.

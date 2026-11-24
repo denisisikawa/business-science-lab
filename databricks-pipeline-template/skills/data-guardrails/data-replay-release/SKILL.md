@@ -26,3 +26,12 @@ Cenários de retry, atraso, conflito e falha parcial; testes/ambiente/revisão; 
 ## Caso de avaliação
 
 Versão de 120,00 já persistida recebe versão antiga de 100,00: total atual deve permanecer 120,00. Repetir o lote não duplica fatos. Reutilizar batch ID com conteúdo alterado deve falhar no backend local.
+
+## Defaults, modelos e verificações incorporadas
+
+- Reuse a identidade imutável de lote e a ordenação de updated_at atuais; não troque por horário de ingestão para simplificar.
+- Retry é zero no blueprint de job até idempotência demonstrada. Isso não modifica automaticamente a configuração de nenhum job real.
+- Diferencie reexecução técnica, correção de dado e mudança de regra; cada uma pode exigir versão e histórico diferentes.
+- Plano de recuperação precisa de pré/pós-estado e consumidores; nunca supor transação global multi-tabela.
+
+Leia [o padrão de trabalho e os exemplos](references/working-patterns.md) para a saída esperada, contraprovas e critérios de aceite. Em implementação, consulte `databricks-pipeline-template/docs/ENGINEERING_STANDARDS.md` se disponível; padrões existentes prevalecem e ausência do checkout não autoriza inventar sua estrutura.

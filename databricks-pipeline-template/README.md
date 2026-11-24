@@ -55,20 +55,24 @@ distinction between guidance and executable controls. This diagram is a referenc
 design: remote interfaces, access policies and deployment gates are not deployed
 or validated by the local demo.
 
-## Two knowledge domains: data guardrails and FP&A
+## Engineering, data guardrails and FP&A knowledge
 
-The repository now separates six focused skills into two domain groups, while
-preserving the three original implementation/maintenance/review entry points:
+The repository now offers 16 focused skills: seven engineering, three data
+guardrails, three FP&A, and three transversal implementation/maintenance/review
+entry points. Each carries task-specific defaults, examples, checks and exceptions:
 
 | Domain | Specialized skills |
 | --- | --- |
+| Engineering | Medallion; naming; project layout; PySpark/SQL; jobs/config; performance/cost; testing/observability |
 | Data guardrails | Contracts and money precision; quality and access; replay and release |
 | FP&A business knowledge | Planning and versions; variance and drivers; allocation and capacity |
 
-Read the [skill catalog and evaluation cases](docs/SKILL_CATALOG.md) for the nine
+Read the [skill catalog and evaluation cases](docs/SKILL_CATALOG.md) for the 16
 entry points, bundled references, registration paths and the business-to-data
 handover contract. Short `SKILL.md` files load detail only when needed. These are
-knowledge assets, not newly deployed financial features or access controls.
+knowledge assets, not newly deployed financial features or access controls. See the [versioned engineering standards](docs/ENGINEERING_STANDARDS.md)
+and [example design plan](standards/example-plan.json). A local checker verifies
+plan declarations and dependency safety; it does not deploy or prove runtime behavior.
 
 ## AI-assisted engineering and professional handover
 

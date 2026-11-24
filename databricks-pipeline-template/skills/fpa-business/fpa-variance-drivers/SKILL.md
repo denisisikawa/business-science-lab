@@ -5,7 +5,7 @@ description: Analisar variações de FP&A com convenção de sinais, denominador
 
 # Variações, drivers e narrativa financeira
 
-Localize o checkout do Finance Evolution Lab e confira o README, o contrato em `databricks-pipeline-template/notebooks/pipeline_contract.py`, o adaptador adjacente e os testes na raiz. Não presuma que uma regra documentada já está implementada. Use dados fictícios; não introduza dbt neste pipeline nativo. A skill orienta o trabalho, não concede acesso nem aprovação de negócio.
+Para análise de negócio, use as definições e dados fornecidos; não exija o checkout inteiro. Se a tarefa envolver código, localize o Finance Evolution Lab e confira README, contrato, adaptador e testes afetados. Não presuma que uma regra documentada já está implementada. Use dados fictícios; não introduza dbt neste pipeline nativo. A skill orienta o trabalho, não concede acesso nem aprovação de negócio.
 
 ## Aplicar
 
@@ -26,3 +26,12 @@ Tabela com base, realizado, diferença, percentual quando definido e favorabilid
 ## Caso de avaliação
 
 Despesa 120 versus orçamento 100: +20 e +20%, normalmente desfavorável conforme política. Receita com os mesmos valores pode ser favorável. Orçamento zero não produz 0% nem infinito como explicação de negócio.
+
+## Defaults, modelos e verificações incorporadas
+
+- Para o exemplo do laboratório, diferença = realizado − referência; base positiva permite diferença/base. Preserve outra convenção explicitamente aprovada.
+- Base zero/ausente não recebe percentual inventado. Não determine favorabilidade só pelo sinal sem saber se é custo, receita e contexto.
+- Sem evidência de volume/preço, entregue contribuição por grupo e hipótese a investigar, sem ponte causal fabricada.
+- Modelo: comparação identificada, cálculo, interpretação, evidência e ação de investigação.
+
+Leia [o padrão de trabalho e os exemplos](references/working-patterns.md) para a saída esperada, contraprovas e critérios de aceite. Em implementação, consulte `databricks-pipeline-template/docs/ENGINEERING_STANDARDS.md` se disponível; padrões existentes prevalecem e ausência do checkout não autoriza inventar sua estrutura.

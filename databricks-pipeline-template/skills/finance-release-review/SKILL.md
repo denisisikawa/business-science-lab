@@ -24,3 +24,12 @@ Exemplo: “Revise este diff de deduplicação. Verifique risco de regressão fi
 Revise separadamente o aceite de negócio e a evidência técnica. Confirme grão, cenário/corte, sinais e exceções com a especialização de FP&A; depois confira controles e runtime com o domínio de dados. Dois prompts não substituem revisão independente.
 
 No checkout, consulte `databricks-pipeline-template/docs/SKILL_CATALOG.md` para selecionar apenas as referências necessárias. Se as especializações não estiverem disponíveis no assistente, use o catálogo como orientação e não alegue ter executado outra skill.
+
+## Defaults, modelos e verificações incorporadas
+
+- Classifique risco pela mudança real, não por linhas do diff. Chave, moeda, histórico, alocação e acesso são materiais.
+- Use contrato, padrões e evidências da revisão atual; não exija uma nova preferência técnica já resolvida pelo repositório.
+- Resultado é achado, evidência e pendência; checklist não concede aprovação nem transforma o autor em revisor independente.
+- Falta de aprovação financeira e falta de runtime são fatos diferentes e devem aparecer separadamente.
+
+Leia [o padrão de trabalho e os exemplos](references/working-patterns.md) para a saída esperada, contraprovas e critérios de aceite. Em implementação, consulte `databricks-pipeline-template/docs/ENGINEERING_STANDARDS.md` se disponível; padrões existentes prevalecem e ausência do checkout não autoriza inventar sua estrutura.

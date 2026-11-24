@@ -5,7 +5,7 @@ description: Formalizar regras de FP&A para realizado, orçamento, forecast, com
 
 # Planejamento, competência e versões
 
-Localize o checkout do Finance Evolution Lab e confira o README, o contrato em `databricks-pipeline-template/notebooks/pipeline_contract.py`, o adaptador adjacente e os testes na raiz. Não presuma que uma regra documentada já está implementada. Use dados fictícios; não introduza dbt neste pipeline nativo. A skill orienta o trabalho, não concede acesso nem aprovação de negócio.
+Para análise de negócio, use as definições e dados fornecidos; não exija o checkout inteiro. Se a tarefa envolver código, localize o Finance Evolution Lab e confira README, contrato, adaptador e testes afetados. Não presuma que uma regra documentada já está implementada. Use dados fictícios; não introduza dbt neste pipeline nativo. A skill orienta o trabalho, não concede acesso nem aprovação de negócio.
 
 ## Aplicar
 
@@ -26,3 +26,12 @@ Ficha de regra com pergunta de negócio, cenários/versões, período/corte, gr�
 ## Caso de avaliação
 
 Realizado janeiro–março e forecast abril–dezembro compõem uma visão anual com corte março. Somar realizado anual a forecast anual sem delimitação duplica meses. Explique a escolha antes de escrever SQL.
+
+## Defaults, modelos e verificações incorporadas
+
+- Use o calendário e versões já fornecidos; na demonstração atual month é civil mensal, não calendário fiscal de um empregador.
+- Em visão anual, delimite meses realizados e projetados antes de somar; não sobreponha realizado e forecast.
+- Se orçamento/forecast não existe nos dados, trate como escopo futuro ou ausência, nunca gere números como se fossem aprovados.
+- Modelo da resposta: pergunta, cenários/versões, corte, grão, moeda, fórmula, exemplo e pendência material.
+
+Leia [o padrão de trabalho e os exemplos](references/working-patterns.md) para a saída esperada, contraprovas e critérios de aceite. Em implementação, consulte `databricks-pipeline-template/docs/ENGINEERING_STANDARDS.md` se disponível; padrões existentes prevalecem e ausência do checkout não autoriza inventar sua estrutura.

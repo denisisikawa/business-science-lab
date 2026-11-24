@@ -36,3 +36,12 @@ O resultado esperado é uma mudança no contrato e nos testes, não um filtro qu
 Para mudanças de significado financeiro, selecione primeiro a especialização de FP&A apropriada (planejamento/versões, variações ou alocação). Passe sua regra e exemplos ao domínio de dados para contrato e validação. Não trate fórmula técnica como política financeira aprovada.
 
 No checkout, consulte `databricks-pipeline-template/docs/SKILL_CATALOG.md` para selecionar apenas as referências necessárias. Se as especializações não estiverem disponíveis no assistente, use o catálogo como orientação e não alegue ter executado outra skill.
+
+## Defaults, modelos e verificações incorporadas
+
+- Reutilize contrato e nomenclatura existentes. Para regra nova, explicite objetivo, grão, versão e exemplos antes do código.
+- No laboratório, a entrada monetária continua BRL e os créditos válidos são preservados; não pergunte novamente sobre esses defaults em uma alteração que não os afeta.
+- Distinga inclusão de categoria de mudança de classificação histórica; a segunda precisa de versão/backfill e interpretação de negócio.
+- Não escolha orçamento, driver, taxa ou calendário desconhecido só para evitar uma pergunta material.
+
+Leia [o padrão de trabalho e os exemplos](references/working-patterns.md) para a saída esperada, contraprovas e critérios de aceite. Em implementação, consulte `databricks-pipeline-template/docs/ENGINEERING_STANDARDS.md` se disponível; padrões existentes prevalecem e ausência do checkout não autoriza inventar sua estrutura.

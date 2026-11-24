@@ -5,7 +5,7 @@ description: Definir apropriação e alocação gerencial de custos por drivers,
 
 # Alocação, drivers e capacidade
 
-Localize o checkout do Finance Evolution Lab e confira o README, o contrato em `databricks-pipeline-template/notebooks/pipeline_contract.py`, o adaptador adjacente e os testes na raiz. Não presuma que uma regra documentada já está implementada. Use dados fictícios; não introduza dbt neste pipeline nativo. A skill orienta o trabalho, não concede acesso nem aprovação de negócio.
+Para análise de negócio, use as definições e dados fornecidos; não exija o checkout inteiro. Se a tarefa envolver código, localize o Finance Evolution Lab e confira README, contrato, adaptador e testes afetados. Não presuma que uma regra documentada já está implementada. Use dados fictícios; não introduza dbt neste pipeline nativo. A skill orienta o trabalho, não concede acesso nem aprovação de negócio.
 
 ## Aplicar
 
@@ -26,3 +26,12 @@ Mapa custo → objeto/driver, fórmula, unidades, cobertura, exceções, regra d
 ## Caso de avaliação
 
 Pool de 100,00 com drivers 1:2 deve distribuir 33,33 e 66,67 sob política explícita de resíduo; total 100,00. Driver todo zero deve retornar exceção ou não alocado segundo política, não custo zero.
+
+## Defaults, modelos e verificações incorporadas
+
+- Primeiro separe direto, indireto e corporativo; não eleja um driver universal para simplificar a análise.
+- No exemplo fictício 100 com drivers 1:2, apresente uma política de centavos que conserve 100; não a trate como regra contábil universal.
+- Driver ausente/zero produz exceção/não alocado conforme política, não divisão por zero ou rateio igual improvisado.
+- Modelo: pool, objeto, driver/unidade, vigência, fórmula, resíduos, ociosidade/não alocado e reconciliação.
+
+Leia [o padrão de trabalho e os exemplos](references/working-patterns.md) para a saída esperada, contraprovas e critérios de aceite. Em implementação, consulte `databricks-pipeline-template/docs/ENGINEERING_STANDARDS.md` se disponível; padrões existentes prevalecem e ausência do checkout não autoriza inventar sua estrutura.

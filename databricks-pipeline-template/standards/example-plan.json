@@ -1,0 +1,166 @@
+{
+  "policy_version": "1.0",
+  "environment": "dev",
+  "directories": [
+    "notebooks",
+    "src/finance_pipeline",
+    "tests",
+    "config",
+    "contracts",
+    "resources",
+    "docs"
+  ],
+  "objects": [
+    {
+      "catalog": "finance_lab_dev",
+      "schema": "bronze",
+      "name": "cost_transactions_raw",
+      "kind": "table",
+      "grain": [
+        "_batch_id",
+        "source_row"
+      ],
+      "business_key": [],
+      "currency": "BRL",
+      "columns": [
+        {
+          "name": "_batch_id",
+          "type": "string",
+          "nullable": false
+        },
+        {
+          "name": "_source_table",
+          "type": "string",
+          "nullable": false
+        },
+        {
+          "name": "_ingested_at",
+          "type": "timestamp",
+          "nullable": false
+        },
+        {
+          "name": "source_row",
+          "type": "bigint",
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "catalog": "finance_lab_dev",
+      "schema": "silver",
+      "name": "cost_transactions",
+      "kind": "table",
+      "grain": [
+        "source_system",
+        "transaction_id"
+      ],
+      "business_key": [
+        "source_system",
+        "transaction_id"
+      ],
+      "currency": "BRL",
+      "columns": [
+        {
+          "name": "source_system",
+          "type": "string",
+          "nullable": false
+        },
+        {
+          "name": "transaction_id",
+          "type": "string",
+          "nullable": false
+        },
+        {
+          "name": "updated_at",
+          "type": "timestamp",
+          "nullable": false
+        },
+        {
+          "name": "month",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "currency",
+          "type": "string",
+          "nullable": false
+        },
+        {
+          "name": "amount",
+          "type": "decimal(18,2)",
+          "nullable": false
+        }
+      ]
+    },
+    {
+      "catalog": "finance_lab_dev",
+      "schema": "gold",
+      "name": "cost_monthly",
+      "kind": "table",
+      "grain": [
+        "month",
+        "cost_center",
+        "category"
+      ],
+      "business_key": [],
+      "currency": "BRL",
+      "columns": [
+        {
+          "name": "month",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "cost_center",
+          "type": "string",
+          "nullable": false
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "nullable": false
+        },
+        {
+          "name": "total_amount",
+          "type": "decimal(18,2)",
+          "nullable": false
+        },
+        {
+          "name": "transaction_count",
+          "type": "bigint",
+          "nullable": false
+        }
+      ]
+    }
+  ],
+  "job": {
+    "name": "finance_cost_pipeline_dev",
+    "tasks": [
+      {
+        "key": "ingest_bronze",
+        "depends_on": [],
+        "timeout_seconds": 900,
+        "max_retries": 0,
+        "idempotent": false
+      },
+      {
+        "key": "transform_silver",
+        "depends_on": [
+          "ingest_bronze"
+        ],
+        "timeout_seconds": 900,
+        "max_retries": 0,
+        "idempotent": false
+      },
+      {
+        "key": "aggregate_gold",
+        "depends_on": [
+          "transform_silver"
+        ],
+        "timeout_seconds": 900,
+        "max_retries": 0,
+        "idempotent": false
+      }
+    ]
+  }
+}

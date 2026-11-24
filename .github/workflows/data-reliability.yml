@@ -20,3 +20,8 @@ jobs:
       - run: python -m pytest tests/test_pipeline_contract.py tests/test_pipeline_spark.py -q
         env:
           RUN_SPARK_TESTS: '1'
+
+      - name: Validate engineering blueprint and negative cases
+        run: |
+          python databricks-pipeline-template/scripts/check_engineering_plan.py --plan databricks-pipeline-template/standards/example-plan.json
+          python -m pytest tests/test_engineering_plan.py -q
