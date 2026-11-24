@@ -34,3 +34,6 @@ jobs:
 
       - name: Verify reconciliation detects corrupted reporting groups
         run: python scripts/check_reconciliation_mutations.py
+
+      - name: Reproduce the educational offsetting-errors example
+        run: python scripts/demonstrate_offsetting_errors.py
