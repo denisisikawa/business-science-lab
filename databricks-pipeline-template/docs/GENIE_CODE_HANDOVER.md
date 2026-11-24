@@ -1,6 +1,6 @@
 # Evolução assistida com Genie Code
 
-Este template entrega código de pipeline e conhecimento de manutenção versionado para o próximo profissional. Três skills orientam alterações de regras, correções e revisão. Elas não substituem controles executáveis, revisão humana ou a esteira adotada pela organização.
+Este template entrega código de pipeline e conhecimento de manutenção versionado para o próximo profissional. Três skills transversais orientam alterações de regras, correções e revisão; seis especializações adicionais separam guardrails de dados e conhecimento de FP&A. Elas não substituem controles executáveis, revisão humana ou a esteira adotada pela organização.
 
 Veja também a [arquitetura de interfaces, papéis e guardrails](ARCHITECTURE_AND_ROLES.md): o analista integrado pode combinar negócio, FP&A e dados, com especialistas mantendo as skills financeiras e técnicas e revisão independente nas mudanças críticas.
 
@@ -13,12 +13,14 @@ Veja também a [arquitetura de interfaces, papéis e guardrails](ARCHITECTURE_AN
 ## Preparar no Databricks
 
 1. Disponibilize o checkout em uma Databricks Git folder e confira a revisão usada.
-2. No Genie Code, abra **Customizations → Skills → New → Add from workspace folder** e selecione a pasta pai `databricks-pipeline-template/skills`, que contém as três subpastas de skills. Não selecione um `SKILL.md` isolado. Essa configuração registra as skills para o usuário; não as publica para todos.
+2. No Genie Code, abra **Customizations → Skills → New → Add from workspace folder** e selecione a pasta pai `databricks-pipeline-template/skills`, para as três entradas transversais. Registre também `skills/data-guardrails` e `skills/fpa-business`, cada qual contendo três skills especializadas. Não presuma descoberta recursiva. Não selecione um `SKILL.md` isolado. Essa configuração registra as skills para o usuário; não as publica para todos.
 3. Alternativamente, use **Upload from computer** com as pastas das skills. Skills de workspace devem ser disponibilizadas pelo administrador conforme os controles da organização. Não substitua uma skill compartilhada de mesmo nome sem revisar o impacto.
 4. Confira se as skills aparecem e faça referência com `@` no chat. Deixe o código e os testes acessíveis ao assistente; a skill não contém uma cópia deles.
 5. Teste primeiro em ambiente de desenvolvimento com entradas fictícias. Após editar uma skill, abra um novo chat para carregar a revisão.
 
 Procedimento baseado na [documentação oficial de skills do Genie Code](https://learn.microsoft.com/en-us/azure/databricks/genie-code/skills), consultada em 2026-11-22. Disponibilidade e permissões devem ser verificadas no workspace de destino. Não se presume descoberta automática apenas por clonar este repositório.
+
+Consulte o [catálogo por domínio e os casos de avaliação](SKILL_CATALOG.md) para selecionar as especializações sem carregar toda a biblioteca.
 
 ## Escolher a skill
 

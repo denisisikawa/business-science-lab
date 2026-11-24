@@ -55,9 +55,24 @@ distinction between guidance and executable controls. This diagram is a referenc
 design: remote interfaces, access policies and deployment gates are not deployed
 or validated by the local demo.
 
+## Two knowledge domains: data guardrails and FP&A
+
+The repository now separates six focused skills into two domain groups, while
+preserving the three original implementation/maintenance/review entry points:
+
+| Domain | Specialized skills |
+| --- | --- |
+| Data guardrails | Contracts and money precision; quality and access; replay and release |
+| FP&A business knowledge | Planning and versions; variance and drivers; allocation and capacity |
+
+Read the [skill catalog and evaluation cases](docs/SKILL_CATALOG.md) for the nine
+entry points, bundled references, registration paths and the business-to-data
+handover contract. Short `SKILL.md` files load detail only when needed. These are
+knowledge assets, not newly deployed financial features or access controls.
+
 ## AI-assisted engineering and professional handover
 
-Three repository-owned skills support **Genie Code**, the Databricks coding
+Three transversal repository-owned skills support **Genie Code**, the Databricks coding
 assistant. They capture the financial invariants, implementation entry points,
 regression checks and evidence expected from a change:
 

@@ -31,3 +31,9 @@ Entregue causa, correção, reprodução, resultados, risco e recuperação prop
 ## Exemplo de solicitação
 
 “Uma versão antiga chegou depois da nova. Reproduza com dados sintéticos e verifique que o custo atual não retrocede; corrija o defeito se existir, mantendo replay e reconciliação.”
+
+## Especializações por domínio
+
+Para bugs e refatoração, selecione contratos/precisão, qualidade/acesso ou replay/entrega conforme o defeito. Se a correção alterar significado financeiro, formalize a regra de FP&A antes de ajustar o comportamento.
+
+No checkout, consulte `databricks-pipeline-template/docs/SKILL_CATALOG.md` para selecionar apenas as referências necessárias. Se as especializações não estiverem disponíveis no assistente, use o catálogo como orientação e não alegue ter executado outra skill.

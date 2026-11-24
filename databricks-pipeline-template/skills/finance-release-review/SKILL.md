@@ -18,3 +18,9 @@ Verifique proporcionalmente à mudança:
 Execute verificações relevantes disponíveis. Produza achados com severidade, arquivo, impacto e ação concreta; declare também o que não foi verificado. Um checklist completo não autoriza deploy, refresh, alteração de acesso nem publicação de dados.
 
 Exemplo: “Revise este diff de deduplicação. Verifique risco de regressão financeira, testes de replay e a diferença entre evidência local e execução Delta. Não execute jobs remotos.”
+
+## Especializações por domínio
+
+Revise separadamente o aceite de negócio e a evidência técnica. Confirme grão, cenário/corte, sinais e exceções com a especialização de FP&A; depois confira controles e runtime com o domínio de dados. Dois prompts não substituem revisão independente.
+
+No checkout, consulte `databricks-pipeline-template/docs/SKILL_CATALOG.md` para selecionar apenas as referências necessárias. Se as especializações não estiverem disponíveis no assistente, use o catálogo como orientação e não alegue ter executado outra skill.

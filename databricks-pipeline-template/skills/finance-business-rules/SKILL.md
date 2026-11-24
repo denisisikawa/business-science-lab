@@ -30,3 +30,9 @@ Apresente diff, regra antes/depois, testes executados, efeitos retroativos, plan
 “Aceitar a categoria NETWORK, preservando categorias atuais. Adicione casos para NETWORK, categoria inválida, replay e reconciliação. Explique se há necessidade de backfill.”
 
 O resultado esperado é uma mudança no contrato e nos testes, não um filtro que descarte categorias desconhecidas silenciosamente.
+
+## Especializações por domínio
+
+Para mudanças de significado financeiro, selecione primeiro a especialização de FP&A apropriada (planejamento/versões, variações ou alocação). Passe sua regra e exemplos ao domínio de dados para contrato e validação. Não trate fórmula técnica como política financeira aprovada.
+
+No checkout, consulte `databricks-pipeline-template/docs/SKILL_CATALOG.md` para selecionar apenas as referências necessárias. Se as especializações não estiverem disponíveis no assistente, use o catálogo como orientação e não alegue ter executado outra skill.
