@@ -1,5 +1,13 @@
 # Portfolio visual system and review
 
+## Catalog reading update
+
+The opening now uses one professional proposition, with direct paths to projects and experience. Business Science Lab names the project collection. The detailed working-method block is preserved in Engineering practices.
+
+Each closed project summary exposes the business problem, deliverable and component-specific stage. Implemented means executable code or sandbox, not production deployment. Demonstrative marks reference designs or integrations not verified in their target environment. Planned identifies documented work or validation still pending. Synthetic-data and employer-scope disclosures remain visible, with full context available on request.
+
+Executive diagrams are visible when their project is expanded. Banking and macro technical architectures are separate, initially closed native disclosures; deep links still open their containing panels. The output contract remains a further disclosure.
+
 This is a refinement of the existing static portfolio, not a replacement of its projects or identity. GitHub renamed `denisisikawa/denis-isikawa-databricks` to `denisisikawa/business-science-lab`. The canonical Pages URL is https://denisisikawa.github.io/business-science-lab/; the former Pages path returned 404 during review on 25 November 2026. No publishing settings or default branches were changed.
 
 ## Visual system
