@@ -8,7 +8,7 @@
 
 I use data and AI to explain cost variances, identify revenue leakage, and support financial planning decisions.
 
-[**Explore the work ↓**](#featured-projects) &nbsp;·&nbsp; [**Architecture ↓**](https://denisisikawa.github.io/business-science-lab/#macro-fpa) &nbsp;·&nbsp; [**Connect on LinkedIn ↗**](https://www.linkedin.com/in/denisisikawa)
+[**Explore the portfolio**](https://denisisikawa.github.io/business-science-lab/) &nbsp;·&nbsp; [**Project documentation**](#featured-projects) &nbsp;·&nbsp; [**Architecture ↓**](https://denisisikawa.github.io/business-science-lab/#macro-fpa) &nbsp;·&nbsp; [**Connect on LinkedIn ↗**](https://www.linkedin.com/in/denisisikawa)
 
 <br/>
 
@@ -42,7 +42,16 @@ What interests me most is not a dashboard by itself. It's the system behind it: 
 
 ## Featured projects
 
-Four core projects use **synthetic financial records** and run independently of any employer environment.
+The portfolio presents **eight independent projects**. Financial records are synthetic; the macroeconomic lab also uses public indicators. The four core engineering projects below are complemented by these interactive cases:
+
+| Case | Business question | Inspect |
+| :-- | :-- | :-- |
+| Franchise Expansion Intelligence | Where should a retail software franchise focus acquisition and sales capacity? | [Project](franchise-expansion-lab/README.md) · [Sandbox](https://denisisikawa.github.io/business-science-lab/franchise-expansion-sandbox/) |
+| RevenueGuard AI | Which billing differences need investigation and remediation? | [Project and current scope](revenueguard-ai/README.md) · [Sandbox](https://denisisikawa.github.io/business-science-lab/revenueguard-sandbox/) |
+| Banking Cost Intelligence | How do allocation assumptions affect product costs and unused capacity? | [Model](macro-fpa/synthetic-banking/README.md) · [Sandbox](https://denisisikawa.github.io/business-science-lab/banking-cost-sandbox/) |
+| Macro FP&A | How do FX, inflation and cost concentration inform a budget review? | [Project](macro-fpa/README.md) · [Executive and technical views](https://denisisikawa.github.io/business-science-lab/#macro-fpa) |
+
+The landing page opens project details on request. Its executive and technical views describe demonstration architectures, not an employer deployment.
 
 <table>
 <tr>
@@ -96,6 +105,10 @@ The [macro FP&A lab](macro-fpa/README.md) enriches synthetic cost and budget dat
 
 <img src="assets/architecture.svg" width="100%" alt="Conceptual source-to-decision finance data architecture with transformation and quality controls"/>
 
+**Data-first / AI-first**
+
+Financial definitions, data quality and reconciliation precede automation. AI-assisted paths keep request scope, source evidence and human review explicit. Custom skills define guardrails and guide performance and AI cost monitoring; this portfolio does not claim measured production savings or latency improvements.
+
 **My design principles**
 
 - **Make data trustworthy before making it beautiful.** Validate assumptions, grain and lineage before publishing a metric.
@@ -107,7 +120,7 @@ The [macro FP&A lab](macro-fpa/README.md) enriches synthetic cost and budget dat
 
 ## Proof of work
 
-The portfolio is not just a collection of technology names. Every featured project has documentation, and the runnable components have reproducible instructions.
+Review the implementation, tests and reproduction steps for each project.
 
 | Project | What to inspect | Execution |
 | :-- | :-- | :-- |
@@ -117,7 +130,7 @@ The portfolio is not just a collection of technology names. Every featured proje
 | [Finance Query AI](ai-agent-fpa-query/README.md) | Scoped SQL templates, audit metadata and mocked API checks | Local Python demo |
 
 <details>
-<summary><b>See sample forecasting outputs</b></summary>
+<summary><b>Open sample forecasting outputs (+)</b></summary>
 <br/>
 <table>
 <tr>
@@ -151,6 +164,15 @@ python -m pip install -r requirements-dbt.txt
 dbt build --profiles-dir .
 ```
 
+**Static portfolio preview** — no package installation or build step:
+
+```bash
+python -m http.server 8765 --directory docs
+python scripts/check_portfolio_site.py
+```
+
+Open `http://localhost:8765`. The site is served directly from `docs/` by GitHub Pages. See [the visual system and review notes](docs/PORTFOLIO_DESIGN.md).
+
 See each project's README for the full context, prerequisites and limitations.
 
 ---
@@ -171,7 +193,7 @@ Financial records are **synthetic**. The macro FP&A lab can use **public BCB and
 
 <div align="center">
 
-### Build systems people can trust.
+### Explore the projects and implementation
 
 **Finance systems × Data engineering × Decision intelligence**
 
