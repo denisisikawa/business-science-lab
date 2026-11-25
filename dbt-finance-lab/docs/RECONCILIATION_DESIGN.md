@@ -75,3 +75,24 @@ anterior; não é um mecanismo portátil de produção para qualquer adaptador.
 | Classificação incorreta na origem | Cadastro/contrato/razão de referência independente |
 
 Essas extensões são propostas, não funcionalidades implementadas por este caso.
+
+## Cobertura independente — extensão de 25/11/2026
+
+`finance_reporting_scope` é um seed tipado e separado dos fatos; declara os 18
+grupos esperados do caso fictício. `assert_reporting_scope_coverage` compara a
+união das chaves do escopo/staging/mart e retorna indicadores de presença. Assim,
+perda simultânea de um grupo nos dois fatos não fica invisível. Grupos extras
+também falham; o teste de validade do escopo trata duplicação, nulos/brancos e
+mês fora do primeiro dia. A decisão de quais grupos exigir é de negócio.
+
+O helper novo executa os controles compilados em cópias em memória, com a base
+original read-only. Sete cenários de cobertura: mês inteiro perdido nos dois
+lados, fatos totalmente vazios, um grupo perdido nos dois, perda só no staging,
+perda só no mart, grupo inesperado nos dois e escopo excluindo grupo observado.
+Três cenários do escopo: duplicata, data não mensal e centro vazio. Casos de
+perda compartilhada confirmam também que a reconciliação antiga não os detecta.
+
+Isto não verifica pontualidade/freshness, calendário fiscal empresarial ou dados
+realmente esperados fora do contrato declarado. Se escopo e fatos forem mudados
+incorretamente juntos, o controle pode passar; revisão e versão do escopo são
+parte da governança. Nenhum valor ausente é preenchido automaticamente com zero.

@@ -37,3 +37,6 @@ jobs:
 
       - name: Reproduce the educational offsetting-errors example
         run: python scripts/demonstrate_offsetting_errors.py
+
+      - name: Verify independent reporting coverage detects shared losses
+        run: python scripts/check_reporting_scope_mutations.py

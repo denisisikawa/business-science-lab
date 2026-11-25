@@ -30,3 +30,14 @@ models:
         data_tests: [not_null]
       - name: transaction_count
         data_tests: [not_null]
+
+seeds:
+  - name: finance_reporting_scope
+    description: Independent synthetic reporting scope, Jan-Mar 2026; every listed group must exist in staging and mart.
+    columns:
+      - name: month
+        data_tests: [not_null]
+      - name: cost_center
+        data_tests: [not_null]
+      - name: category
+        data_tests: [not_null]

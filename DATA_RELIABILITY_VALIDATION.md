@@ -111,3 +111,20 @@ Reliability workflow now runs the plan checker and these negative cases.
 Root regression: 99 passed, one optional Spark test skipped locally. No live
 Databricks, JDBC, Delta writes or Genie Code behavior was tested in this change.
 There is no measured reduction of analyst time, token usage, cost or study needs.
+
+## Independent reporting coverage — 2026-11-25
+
+The dbt lab now declares an independent synthetic reporting scope: 18 month ×
+cost-center × category groups for Jan–Mar 2026. Separate coverage and scope
+validity tests detect missing/unexpected groups in staging and mart, invalid
+month-starts, blank attributes and duplicate scope groups. Scope correctness
+still requires business review; this is not a freshness/SLA implementation.
+
+Local build with the previously recorded dbt/DuckDB environment passed all 24
+nodes: 20 data tests, two models and two seeds. Seven coverage mutations and
+three invalid-scope mutations passed in isolated memory, attaching the original
+DB read-only. Removing February from both facts left the old reconciliation
+passing but returned six failures in independent coverage. Emptying both facts
+returned 18 missing groups. The previous seven reconciliation mutations and the
+BRL 100,000 educational example also passed. CI now executes the new checker;
+consult that revision's workflow before claiming remote success.

@@ -132,6 +132,30 @@ Consulte a [CI específica do laboratório](https://github.com/denisisikawa/busi
 para o resultado da revisão atual e o [registro de validação](../DATA_RELIABILITY_VALIDATION.md)
 para ambiente e limites. Um workflow de outra revisão não prova esta revisão.
 
+### Um segundo ponto cego: os dois lados podem perder o mesmo mês
+
+A reconciliação staging × mart passa se os dois lados perderem o mesmo grupo.
+Por isso o laboratório agora mantém um [escopo de reporte independente](seeds/finance_reporting_scope.csv):
+18 combinações fictícias de mês × centro × categoria esperadas entre janeiro e
+março de 2026. O escopo foi declarado para o caso, não extraído dos fatos que chegaram.
+
+O [controle de cobertura](tests/assert_reporting_scope_coverage.sql) compara cada
+grupo esperado com as duas camadas, identifica a presença em cada uma e também
+retorna grupos inesperados. Outro [teste](tests/assert_reporting_scope_valid.sql)
+rejeita escopo duplicado, mês fora do primeiro dia e atributos vazios.
+
+O [verificador de cobertura](scripts/check_reporting_scope_mutations.py) comprova
+sete cenários de perda/inclusão e três corrupções do escopo, em memória. Ao apagar
+fevereiro dos dois lados, a reconciliação antiga continua aprovando os grupos
+restantes; a nova cobertura aponta **seis grupos ausentes**. Com ambos os fatos
+vazios, aponta os **18 grupos esperados**.
+
+Em 25/11/2026, o build local passou com **20 testes de dados, dois modelos e dois
+seeds**. Os dez cenários adicionais passaram, assim como os sete cenários de
+reconciliação anteriores e o exemplo de R$ 100 mil. Isso é evidência da fixture,
+não um calendário corporativo completo, controle de freshness ou SLA implantado.
+O escopo também pode estar errado: sua manutenção precisa de revisão de negócio.
+
 ## 5. Reproduza o caso
 
 Python 3.11+ recomendado. Da raiz do repositório:
@@ -152,6 +176,7 @@ dbt debug --profiles-dir .
 dbt build --profiles-dir .
 python scripts/demonstrate_offsetting_errors.py
 python scripts/check_reconciliation_mutations.py
+python scripts/check_reporting_scope_mutations.py
 # Opcional: gerar a documentação de dependências
 dbt docs generate --profiles-dir .
 ```
@@ -185,8 +210,9 @@ Também não garante:
 
 - Identidade de cada transação: valores e contagens iguais podem esconder trocas
   entre registros dentro do mesmo grupo. Os testes de chave são complementares.
-- Cobertura temporal esperada: se ambos os lados estiverem vazios, esta
-  reconciliação não detecta a ausência de um mês esperado. Requer calendário/SLA.
+- Completude universal ou freshness: a reconciliação sozinha não detecta perdas
+  compartilhadas. O novo controle cobre os grupos declarados no escopo fictício,
+  mas não prova que o escopo está correto, nem verifica horário de entrega/SLA.
 - Política contábil completa: a restrição existente de custo mensal positivo é
   específica do seed. Créditos líquidos e estornos exigem uma política própria.
 - Segurança de acesso, publicação atômica ou execução em Databricks/Power BI.
@@ -204,6 +230,8 @@ reconciliação representa a decisão financeira nem comprova a qualidade da ori
 | [Mart mensal](models/marts/fct_monthly_costs.sql) | Valores e contagens no grão financeiro |
 | [Testes de schema](models/schema.yml) | Unicidade, obrigatoriedade e categorias |
 | [Teste de reconciliação](tests/assert_monthly_costs_reconcile.sql) | Comparação exata por grupo |
+| [Escopo independente](seeds/finance_reporting_scope.csv) | Grupos esperados, separados dos fatos |
+| [Cobertura](tests/assert_reporting_scope_coverage.sql) | Presença esperada em staging e mart |
 | [Desenho técnico detalhado](docs/RECONCILIATION_DESIGN.md) | Decisões, falhas e investigação |
 | [Workflow](../.github/workflows/dbt-finance-ci.yml) | Build e exemplos negativos em CI |
 
@@ -213,7 +241,8 @@ reconciliação representa a decisão financeira nem comprova a qualidade da ori
 - [x] Reconciliação de valores/contagens e sete cenários de corrupção.
 - [x] Exemplo didático de erros compensatórios usando SQL compilado.
 - [ ] Realizado versus orçamento com granularidade explícita.
-- [ ] Calendário e cobertura por período; dimensões e integridade referencial.
+- [x] Cobertura por escopo independente no caso fictício janeiro–março/2026.
+- [ ] Calendário fiscal completo/freshness; dimensões e integridade referencial.
 - [ ] Histórico, incrementais e política de reprocessamento.
 - [ ] Adaptador Databricks e execução real em ambiente autorizado.
 

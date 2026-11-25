@@ -14,3 +14,8 @@ models:
 seeds:
   finance_dbt_lab:
     +quote_columns: false
+    finance_reporting_scope:
+      +column_types:
+        month: date
+        cost_center: varchar
+        category: varchar
