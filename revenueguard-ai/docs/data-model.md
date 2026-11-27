@@ -40,3 +40,44 @@ Validate unique primary keys, foreign keys, item-month uniqueness, period covera
 
 ## Privacy
 No real customer names, identifiers, documents, contracts, bank information or employer data. IDs are generated from counters. Dataset is reproducible by seed and configuration.
+
+## Runtime input boundary
+
+Before reconciliation, the sandbox validates only `products`, `contract_items`,
+`service_usage` and `invoice_items`, the datasets actually consumed by this
+expected-versus-billed control:
+
+| Input | Required uniqueness | Additional checks |
+|---|---|---|
+| Products | product_id | Name/model present; model recurring or metered; positive integer catalog tariff |
+| Contract items | item_id | Contract ID present; known product; positive integer price and committed quantity |
+| Usage | item_id × period | Known item; valid YYYY-MM; nonnegative integer delivered quantity |
+| Invoice items | invoice_item_id AND item_id × period | Known item; matching usage evidence; nonnegative integer billed cents |
+
+All required attributes must be nonblank. Identity/reference fields must not
+contain surrounding whitespace. Required/matching CSV headers must exist even
+for an empty file; duplicate headers, missing row values or extra row cells fail.
+Additional named columns are permitted but do not become business rules.
+
+Errors identify dataset, row position and reason without echoing raw payloads.
+Input validation rejects structural corruption; it does not deduplicate it using
+an arbitrary winner. Reconciliation produces no returned result on such failure.
+There is no persistent quarantine/audit implementation in this sandbox.
+
+A missing invoice is a legitimate MISSING_BILLING finding, not a schema error.
+An existing invoice billed at zero is valid input and may produce UNDERBILLING.
+An invoice without service-usage evidence raises an explicit input error instead
+of disappearing from totals. Multiple invoices per item-period are unsupported
+by this flattened model, even if they might be legitimate in another billing
+system; supporting them needs a different grain and aggregation policy.
+
+Contract/customer references and validity dates are not validated here, nor is
+journal agreement. The manifest's currency is a synthetic scenario declaration,
+not a multi-currency parser. No source completeness or freshness is inferred from
+the rows received. Ground truth remains evaluation-only and is not read by the
+billing detector.
+
+Tests deliberately corrupt keys, references, periods, numeric domains, attributes
+and CSV shape, preserve the missing/zero-billing business cases, and check equality
+of local and browser-embedded Python source. This source parity check is not a
+fresh execution of Pyodide or a production browser integration test.
