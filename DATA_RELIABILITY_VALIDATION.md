@@ -128,3 +128,26 @@ passing but returned six failures in independent coverage. Emptying both facts
 returned 18 missing groups. The previous seven reconciliation mutations and the
 BRL 100,000 educational example also passed. CI now executes the new checker;
 consult that revision's workflow before claiming remote success.
+
+## RevenueGuard input contracts — 2026-11-27
+
+The billing detector now validates its four consumed CSV datasets before building
+lookup dictionaries: products, contract items, usage and invoice items. Duplicate
+keys can no longer silently replace earlier records. Required headers/attributes,
+CSV shape, month validity, integer money/quantity domains, billing-model domain,
+product/item references and invoice-to-usage evidence fail explicitly when invalid.
+Missing invoices and zero billed charges remain business findings, not structural
+errors. Contract/customer validity, journal reconciliation, source completeness,
+multi-currency, credits and multi-invoice billing grain remain out of scope.
+
+Local RevenueGuard unittest suite: 15 tests passed (including ten new test
+methods and parameterized subcases). Root pytest: 109 passed, one optional Spark
+test skipped, 28 subtests passed. Banking: 576 simulation checks passed. Main
+portfolio HTML checker passed with eight closed cards and 392 translated elements;
+main and RevenueGuard JavaScript syntax checks passed. Local and browser-embedded
+Python sources are equal. A live Pyodide/browser run was not performed in this
+change. The generator/evaluation seed behavior remained covered by existing tests;
+no new accuracy, scale or business savings claim is made.
+
+Before this work, the clean checkout was fast-forwarded to 84309d4 to preserve
+recent portfolio design changes. The patch changes no layout or visual assets.

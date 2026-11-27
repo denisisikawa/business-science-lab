@@ -46,6 +46,27 @@ python -m unittest discover -s tests -v
 
 The generator writes data locally. Do not commit generated datasets or credentials. The full-scale target is 10,000 customers, 12,000 contracts, 25,000 items and approximately one million total rows; this is a roadmap target, not a measured result. The initial generator uses two items per contract and one contract per customer.
 
+### Input reliability before financial calculations
+
+The billing control now validates the four datasets it consumes before building
+lookup dictionaries. Duplicate product/item keys, invoice IDs or item-period
+keys fail explicitly instead of silently keeping the last CSV row. It also
+checks required headers/attributes, CSV row shape, real YYYY-MM periods,
+nonnegative integer quantities/charges, positive tariffs/committed quantities,
+supported billing models, item/product references and invoice-to-usage evidence.
+
+Structural corruption raises `ValueError` before a result is returned. This is a
+fail-closed local control, not a quarantine workflow. Missing invoices remain
+valid business exceptions; a zero billed amount remains eligible for underbilling
+analysis. The original expected/actual/exposure calculations are unchanged for
+valid input. The Python engine bundled in the browser page is synchronized and
+checked against the local module.
+
+Scope is deliberately limited: this does not validate contract-to-customer
+relationships, contract dates, journal reconciliation, source completeness,
+multiple invoices per item-month, credits or multiple currencies. Those require
+separate contracts and controls. See the [detailed input boundary](docs/data-model.md#runtime-input-boundary).
+
 ### External testing
 - [Browser sandbox (GitHub Pages)](https://denisisikawa.github.io/business-science-lab/revenueguard-sandbox/) — standalone Python-in-browser demonstration; public, unlinked from the portfolio landing page.
 - [Deployment and acceptance tests](docs/external-testing.md) — optional Streamlit Community Cloud deployment and local testing.
